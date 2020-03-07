@@ -28,6 +28,7 @@ body{
 
 header{
   width:100%;
+  min-width: 800px;
   height: 70px;
   background-color: #252729;
   margin: 0 auto;
@@ -39,7 +40,6 @@ header{
   margin: auto 25px;
 }
 #header-menu{
-  height: 70px;
   margin: 10px 25px;
   float: right;
 }
@@ -51,23 +51,45 @@ header{
   color: white;
   text-decoration:none;
 }
+.header-contents{
+  display: inline-block;
+}
 .header-contents:hover{
   background-color: #4D4D4D;
 }
 
 #main{
   max-width: 1500px;
+  min-width: 1150px;
   margin: 10px auto;
 }
 
 #contents{
   max-width: 1200px;
   float: left;
+  padding: auto 20px;
+  font-size: 1.2em;
 }
 
 #side{
   max-width: 400px;
   float: right;
+}
+.imp-info{
+  margin: 10px auto;
+  border: dashed red 2px !important;
+}
+.side-info{
+  margin: 10px auto;
+  border: dashed #999999 1px;
+}
+.side-info{
+  margin: 10px auto;
+  border: dashed #999999 1px;
+}
+.side-info p{
+  margin: 20px 10px;
+  font-size: large;
 }
 
 footer{
