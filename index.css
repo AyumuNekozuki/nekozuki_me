@@ -28,7 +28,6 @@ body{
 
 header{
   width:100%;
-  min-width: 800px;
   height: 70px;
   background-color: #252729;
   margin: 0 auto;
@@ -60,18 +59,17 @@ header{
 
 #main{
   max-width: 1500px;
-  min-width: 1150px;
   margin: 10px auto;
 }
 
 #contents{
-  max-width: 1200px;
+  max-width: 60%;
   float: left;
   font-size: 1.2em;
 }
 
 #side{
-  max-width: 400px;
+  max-width: 30%;
   float: right;
 }
 .imp-info{
@@ -97,8 +95,27 @@ footer{
   width: 100%; 
   background-color: #cacaca;
   color: black;
-  text-align: center;
   padding: 20px 0;
-
+  text-align: center;
   margin-top: auto;
+}
+.fotter-contents{
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+  text-align: left;
+}
+.fotter-contents p{
+  margin: 15px 25px;
+  vertical-align: top;
+}
+.fotter-contents a{
+  text-decoration:underline;
+  color: blue;
+}
+
+#fotter-logo{
+  height: 100px;
+  fill: black;
+  margin: auto 25px;
 }
