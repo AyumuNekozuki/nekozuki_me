@@ -119,3 +119,16 @@ footer{
   fill: black;
   margin: auto 25px;
 }
+#twitter{
+  fill: #1DA1F2;
+  height: 1.75em;
+  vertical-align: bottom;
+}
+#mastodon{
+  fill: #FAFAFA;
+  height: 1.75em;
+  vertical-align: bottom;
+}
+.umekomi-head a{
+  text-decoration: underline;
+}
