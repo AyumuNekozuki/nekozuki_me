@@ -1,0 +1,113 @@
+a{
+    text-decoration:none;
+}
+
+header{
+    width: 100%; 
+    background-color: black;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.portfolio{
+    padding: 0 30px;
+    z-index: 1;
+    position:relative;
+}
+
+.portfolio a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+}
+
+.portfolio:hover{
+    color: #21759b;
+}
+
+body {
+    /*フッター関係*/
+    padding: 0;
+    margin: 0;
+    /*フッター関係ここまで*/
+
+    background-color: #f4f4f4;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+
+    min-height: 100vh;
+    font-size:22px;
+
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+/*通常表示*/
+.main-area {
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 750px;
+}
+
+ul{
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+
+
+footer{
+    width: 100%; 
+    background-color: #cacaca;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+
+    margin-top: auto;
+}
+
+
+/*totopscroll*/
+#page_top{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background: #3f98ef;
+    opacity: 0.6;
+  }
+  #page_top a{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+  }
+  #page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }

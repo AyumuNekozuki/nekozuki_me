@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>テレアノ換算 v1.0.0</title>
+    <link rel="stylesheet" media="(min-width: 640px)" href="index_pc.css">
+    <link rel="stylesheet" media="(max-width: 640px)" href="index_sp.css">
+</head>
+
+<body>
+
+    <!--
+        ロゴ
+        説明
+        使い方
+        input
+        change-rate
+        output 
+    -->
+
+    <div class=logo-area>
+        <img src="../images/logo.png" id=logo>
+    </div>
+
+
+    <div class="main-area">
+        <p>このサイトでは、テレビとかで出てくる"あの単位"に換算できます！</p>
+
+        <p>
+            <input type="text" id="motonumber" placeholder="元の数値を入力してね！" value=""> km²
+        </p>
+
+        <p>
+            <select name="換算後の単位" id="unit">
+                <option value="">換算後の単位を選択してね！</option>
+                <option value="1">サッカーコート(FIFA推奨面積)</option>
+                <option value="2">野球場(甲子園球場)</option>
+                <option value="3">東京ドーム</option>
+                <option value="4">東京23区</option>
+                <option value="5">日本</option>
+                <option value="6">バチカン市国</option>
+            </select>
+        </p>
+
+        <p>
+            <button type="button" id=change>換算する！</button>
+        </p>
+    </div>
+
+
+    <div id="result-text"></div>
+
+    <script src="changer.js"></script>
+
+    <footer>
+        © 2019 AyumuNekozuki<br>
+        <a href="https://github.com/AyumuNekozuki/unit-changer">Github</a>　
+        <a href="https://site.nekozuki.me/">Portfolio</a>
+    </footer>
+
+</body>
+
+</html>
