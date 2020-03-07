@@ -102,7 +102,7 @@ footer{
 .fotter-contents{
   display: inline-block;
   height: 100%;
-  vertical-align: top;
+  vertical-align: middle;
   text-align: left;
 }
 .fotter-contents p{
