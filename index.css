@@ -58,18 +58,21 @@ header{
 }
 
 #main{
-  max-width: 1500px;
+  width: 99%;
+  max-width:1500px;
   margin: 10px auto;
 }
 
 #contents{
-  max-width: 60%;
+  width: 100%;
+  max-width: 1050px;
   float: left;
   font-size: 1.2em;
 }
 
 #side{
-  max-width: 30%;
+  width: 100%;
+  max-width: 400px;
   float: right;
 }
 .imp-info{
@@ -132,3 +135,31 @@ footer{
 .umekomi-head a{
   text-decoration: underline;
 }
+
+#contents h3{
+  padding:0.2em 0.5em;
+  background-color: #ececec;
+  border-left: 15px solid #9acd32;
+}
+
+#top-page-icon{
+  max-width: 300px;
+  width: 100%;
+}
+
+#contents li {
+  list-style-type: none; /*点を非表示*/
+  position: relative; /*基準位置*/
+  padding-left: 1em;
+  }
+#contents li:before {
+  border-radius: 50%; /*丸くする*/
+  width: 7px; /*点の幅*/
+  height: 7px; /*点の高さ*/
+  display: block;
+  position: absolute; /*絶対配置*/
+  left: 0; /*点の位置*/
+  top: 0.6em; /*点の位置*/
+  content: "";
+  background: #9acd32; /*点の色*/
+  }
