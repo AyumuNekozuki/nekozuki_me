@@ -92,6 +92,37 @@ text-decoration: underline;
   color: #8FC9F1;
   text-decoration: underline;
 }
+
+.tso:hover{
+  color: #00B4F4;
+}
+.vrchat:hover{
+  color: #085289;
+}
+.vket:hover{
+  color: #2399D1;
+}
+.meish:hover{
+  color: #6A6A6A;
+}
+.fa-youtube{
+  color: #c4302b;
+}
+.youtube:hover{
+  color: #c4302b;
+  text-decoration: underline;
+}
+.fa-twitch{
+  color: #6441a5;
+}
+.twitch:hover{
+  color: #6441a5;
+  text-decoration: underline;
+}
+.mirrativ:hover{
+  color: #18C0C6;
+  text-decoration: underline;
+}
 .fa-github{
   color: #24292E;
   }
@@ -101,5 +132,37 @@ text-decoration: underline;
 }
 .qiita:hover{
   color: #55C500;
+  text-decoration: underline;
+}
+.fa-steam{
+  color: #173B56;
+}
+.steam:hover{
+  color: #173B56;
+  text-decoration: underline;
+}
+.compass:hover{
+  color: #FF8808;
+}
+.switch:hover{
+  color: #E80000;
+}
+.booth:hover{
+  color: #FB4C4F;
+  text-decoration: underline;
+}
+.fa-amazon{
+  color: #FF9900;
+}
+.amazon:hover{
+  color: #FF9900;
+  text-decoration: underline;
+}
+.paypay:hover{
+  color: #FF0033;
+  text-decoration: underline;
+}
+.kyash:hover{
+  color: #2AD1FF;
   text-decoration: underline;
 }
