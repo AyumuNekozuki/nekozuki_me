@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>連絡先一覧 - 猫月あゆむPORTAL (β)</title>
   <link rel="stylesheet" type="text/css" href="../index.css">
+  <link rel="stylesheet" type="text/css" href="contact.css">
 
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
 </head>
 
 <body>
@@ -54,11 +56,28 @@
   <div id="main">
 
     <div id="contents">
-      <div class="side-info imp-info">
-        <p><strong>旧ページを強制的に表示させています</strong></p>
-        <p>旧サイトのデザインのまま統合しています。少しずつ改修を進めるので、気長にお待ち下さい。</p>
+      <h2>連絡先一覧</h2>
+
+      <div class="links-hidden-div">
+        <input type="checkbox" id="links-sns" class="links-input" checked="checked" />
+        <label for="links-sns">何かありましたらコチラまで。</label>
+        <div class="links-HS-div">
+          <p><a class="twitter" href="https://twitter.com/nekozuki_2525"><i
+                class="fab fa-twitter links-icon"></i>@nekozuki_2525</a></p>
+          <p><a class="mastodon" href="https://friends.cafe/@nekozuki_2525"><i
+                class="fab fa-mastodon links-icon"></i>@nekozuki_2525@friends.cafe</a></p>
+          <p><a class="discord" href="https://discordapp.com/users/305238286581104642"><i
+                class="fab fa-discord links-icon"></i>猫月あゆむ#2525</a></p>
+        </div>
       </div>
-      <iframe src="old_index.html" width="950" height="500" style="border: none;"></iframe>
+      <div class="links-hidden-div">
+        <input type="checkbox" id="links-mail" class="links-input" />
+        <label for="links-mail">★ → @ へ変更して送信ください。</label>
+        <div class="links-HS-div">
+          <p><a class="mail"><i class="fas fa-envelope links-icon"></i>ayuku★nekozuki.me</a></p>
+        </div>
+      </div>
+
     </div>
 
     <div id="side">
