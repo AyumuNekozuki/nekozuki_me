@@ -180,3 +180,10 @@ footer{
   .hobby-links{
     font-size: 0.8em;
   }
+
+#side-twitter{
+  color: #1DA1F2;
+}
+#side-mastodon{
+  color: #3088D4;
+}

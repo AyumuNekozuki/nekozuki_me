@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>リンク一覧 - 猫月あゆむPORTAL (β)</title>
   <link rel="stylesheet" type="text/css" href="../index.css">
+  <link rel="stylesheet" type="text/css" href="links.css">
 
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
 </head>
 
 <body>
@@ -54,11 +56,55 @@
   <div id="main">
 
     <div id="contents">
-      <div class="side-info imp-info">
-        <p><strong>旧ページを強制的に表示させています</strong></p>
-        <p>旧サイトのデザインのまま統合しています。少しずつ改修を進めるので、気長にお待ち下さい。</p>
+      <h2>リンク集</h2>
+
+      <div class="links-hidden-div">
+        <input type="checkbox" id="links-sns" class="links-input" checked="checked" />
+        <label for="links-sns">SNS</label>
+        <div class="links-HS-div">
+          <p><a class="twitter" href="https://twitter.com/nekozuki_2525"><i
+                class="fab fa-twitter links-icon"></i>@nekozuki_2525（メイン）</a></p>
+          <p><a class="twitter" href="https://twitter.com/nekozuki_dev"><i
+                class="fab fa-twitter links-icon"></i>@nekozuki_dev（技術情報）</a></p>
+          <p><a class="mastodon" href="https://friends.cafe/@nekozuki_2525"><i
+                class="fab fa-mastodon links-icon"></i>@nekozuki_2525@friends.cafe</a></p>
+          <p><a class="instagram" href="https://instagram.com/nekozuki_2525"><i
+                class="fab fa-instagram links-icon"></i>nekozuki_2525</a></p>
+        </div>
       </div>
-      <iframe src="old_index.html" width="950" height="2000" style="border: none;"></iframe>
+      <div class="links-hidden-div">
+        <input type="checkbox" id="links-nico" class="links-input" />
+        <label for="links-nico">niconico</label>
+        <div class="links-HS-div">
+          <p><a class="nico" href="https://nicovideo.jp/user/45048152"><img src="../img/nicologo.png"
+                class="links-icon-png links-icon">user/45048152（動画マイページ）</a></p>
+          <p><a class="nico" href="https://com.nicovideo.jp/community/co3567180"><img src="../img/nicocom.png"
+                class="links-icon-png links-icon">co3567180（メインコミュニティ）</a></p>
+          <p><a class="nico" href="https://com.nicovideo.jp/community/co4012710"><img src="../img/nicocom.png"
+                class="links-icon-png links-icon">co4012710（作業コミュニティ）</a></p>
+          <p><a class="nicoseiga" href="https://seiga.nicovideo.jp/user/illust/45048152"><img src="../img/nicoseiga.png"
+                class="links-icon-png links-icon">静画マイページ</a></p>
+          <p><a class="nico" href="https://ch.nicovideo.jp/ch2636716"><img src="../img/nicoch.png"
+                class="links-icon-png links-icon">ch2636716（ねこづきのブロマガ）</a></p>
+          <p><a class="nicodic" href="https://dic.nicovideo.jp/u/45048152"><img src="../img/nicodic.png"
+                class="links-icon-png links-icon">大百科ユーザー記事</a></p>
+          <p><a class="nico3d" href="https://3d.nicovideo.jp/users/45048152"><img src="../img/nico3d.png"
+                class="links-icon-png links-icon">立体ユーザーページ</a></p>
+        </div>
+      </div>
+      <div class="links-hidden-div">
+        <input type="checkbox" id="links-dev" class="links-input" />
+        <label for="links-dev">技術系</label>
+        <div class="links-HS-div">
+          <p><a class="github" href="https://nicovideo.jp/user/45048152"><i
+                class="fab fa-github links-icon"></i>AyumuNekozuki</a></p>
+          <p><a class="qiita" href="https://nicovideo.jp/user/45048152"><img src="../img/qiita.png"
+            class="links-icon-png links-icon">nekozuki_dev</a></p>
+
+        </div>
+      </div>
+
+
     </div>
 
     <div id="side">
@@ -79,10 +125,7 @@
 
       <div id="twitter-iframe">
         <h3 class="umekomi-head">
-          <svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-            <path class="cls-2"
-              d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" />
-          </svg>
+          <i class="fab fa-twitter side-twitter"></i>
           <a style="color: #1DA1F2;" href="https://twitter.com/nekozuki_2525">Twitter</a></h3>
         <a class="twitter-timeline" data-height="500" data-dnt="true" data-chrome="noheader nofooter"
           href="https://twitter.com/nekozuki_2525?ref_src=twsrc%5Etfw">Tweets by nekozuki_2525</a>
@@ -91,14 +134,7 @@
 
       <div id="mastodon-iframe">
         <h3 class="umekomi-head">
-          <svg id="mastodon" xmlns="http://www.w3.org/2000/svg" aria-label="Mastodon" role="img" viewBox="0 0 512 512">
-            <rect width="512" height="512" rx="15%" />
-            <path
-              d="m409 290c-5 24-43 50-85 56-86 11-137-6-137-6 3 13-4 54 70 52 31 0 58-7 58-7l2 27c-51 24-107 15-140 6-67-17-79-90-81-162v-59c0-74 49-96 49-96 50-24 180-22 222 0 0 0 49 22 49 96 0 0 1 55-7 93"
-              fill="#3088d4" />
-            <path
-              d="m358 202v91h-35v-88c0-18-8-27-23-27-18 0-27 11-27 33v47h-34v-47c0-22-9-33-27-33-15 0-23 9-23 27v88h-35v-91c0-18 5-60 52-60 39 0 50 37 50 37s10-37 50-37c45 0 52 42 52 60" />
-          </svg>
+          <i class="fab fa-mastodon side-mastodon"></i>
           <a style="color: #3088D4;" ref="me" href="https://friends.cafe/@nekozuki_2525">friends.cafe</a></h3>
         <iframe allowfullscreen sandbox="allow-top-navigation allow-scripts" width="100%" height="500"
           src="https://www.mastofeed.com/apiv2/feed?userurl=https%3A%2F%2Ffriends.cafe%2Fusers%2Fnekozuki_2525&theme=dark&size=100&header=false&replies=true&boosts=true">
