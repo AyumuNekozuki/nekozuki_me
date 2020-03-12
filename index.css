@@ -7,6 +7,9 @@
 .tab{
   display: none;
 }
+header input {
+  display: none;
+}
 
 ::-webkit-scrollbar{
   width: 15px;
