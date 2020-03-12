@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>猫月あゆむPORTAL (β)</title>
   <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="tab_index.css">
+  <link rel="stylesheet" type="text/css" href="sp_index.css">
 
   <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+
+  <!--最小限のビューポート設定-->
+  <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
@@ -34,6 +40,9 @@
       </svg>
     </a>
 
+    <input type="checkbox" id="header-drop" class="header-drop sp tab" />
+    <label for="header-drop" class="sp tab"></label>
+
     <div id="header-menu">
       <div class="header-contents">
         <a class="header-links" href="https://nekozuki.me/portfolio">Portfolio</a>
@@ -48,6 +57,7 @@
         <a class="header-links" href="https://nekozuki.me/contact">Contact</a>
       </div>
     </div>
+
 
   </header>
 
@@ -64,13 +74,13 @@
       <p>猫月あゆむについてのあれこれしかないよ</p>
 
       <h3 id="h3-1">猫月あゆむとは。</h3>
-      <div style="  float: left;">
+      <div class="spmyicon" style="float: left;">
         <img src="./img/icon.png" alt="icon" id="top-page-icon">
-        <p style="font-size: 0.9em; text-align: center;">
+        <p class="spnone" style="font-size: 0.9em; text-align: center;">
           アイコン撮影：<a href="https://twitter.com/nomad_vc">のまどさん(@nomad_vc)</a></p>
       </div>
       <div>
-        <p style="font-size:1.3em;"><strong>猫月遥歩（ねこづきあゆむ）</strong></p>
+        <p class="spnone" style="font-size:1.3em;"><strong>猫月遥歩（ねこづきあゆむ）</strong></p>
         <p>ニコ厨高校生。</p>
         <p>2020年3月現在、N高等学校 第2学年 在学中。</p>
         <p>将来のためにプログラミングなどを勉強中。</p>
@@ -121,7 +131,7 @@
           </div>
         </div>
 
-        <p><a style="color: black;" href="https://dic.nicovideo.jp/u/45048152">▶ ニコニコ大百科 ユーザー記事 経歴欄参照</a></p>
+        <p class="keireki-p"><a style="color: black;" href="https://dic.nicovideo.jp/u/45048152">▶ ニコニコ大百科 ユーザー記事 経歴欄参照</a></p>
       </div>
 
       <h4>その他履歴</h4>
@@ -135,6 +145,12 @@
         <li>ボカロ鑑賞　<a class="hobby-links" href="https://nicovideo.jp/user/45048152/mylist">ボカロおすすめマイリスト</a></li>
         <li>ゲーム（エンジョイ勢/ガチりません）　<a class="hobby-links" href="https://dic.nicovideo.jp/u/45048152">所持ゲーム（ゲーム欄参照）</a></li>
       </ul>
+
+      <div id="fotter-banner" class="sp tab">
+        <a href="https://ch.nicovideo.jp/nekozuki_blog"><img src="./img/banner/blomaga.png"></a>
+        <a href="https://twitter.com/nekozuki_2525"><img src="./img/banner/twitter.png"></a>
+        <a href="https://friends.cafe/@nekozuki_2525"><img src="./img/banner/mastodon.png"></a>
+      </div>
     </div>
 
     <div id="side">
@@ -181,6 +197,8 @@
         </iframe>
       </div>
     </div>
+    
+
   </div>
 
   <footer>
@@ -205,7 +223,7 @@
       </svg>
     </div>
     <div class="fotter-contents">
-      <p><a href="https://github.com/AyumuNekozuki/nekozuki_me">GitHub</a></p>
+      <p class="spnone"><a href="https://github.com/AyumuNekozuki/nekozuki_me">GitHub</a></p>
       <p>© 2020 AyumuNekozuki</p>
     </div>
   </footer>
