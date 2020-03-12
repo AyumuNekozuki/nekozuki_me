@@ -141,6 +141,10 @@ footer{
   background-color: #ececec;
   border-left: 15px solid #9acd32;
 }
+#contents h4{
+  padding:0.2em 0.5em;
+  border-left: 10px solid #9acd32;
+}
 
 #top-page-icon{
   max-width: 300px;
@@ -162,4 +166,17 @@ footer{
   top: 0.6em; /*点の位置*/
   content: "";
   background: #9acd32; /*点の色*/
+  }
+
+  .keireki-naka{
+    max-width: 50%;
+    height: 300px;
+    overflow:auto;
+    display: inline-block;
+  }
+  #keireki-real{
+    float: right;
+  }
+  .hobby-links{
+    font-size: 0.8em;
   }
