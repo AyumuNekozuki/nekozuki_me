@@ -15,3 +15,17 @@
 .top-si-name{
   font-size: x-large;
 }
+
+@media screen and (max-width: 480px) { 
+
+  .top-icon-div{
+    width: 100%;
+  }
+  .top-self-intro{
+    margin-left: 0;
+  }
+  .top-si-name{
+    font-size: larger;
+  }
+
+}

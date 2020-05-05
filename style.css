@@ -44,10 +44,10 @@ nav{
 }
 .nav-menu{
   max-width: 1152px;
-  overflow: hidden;
+
 }
 .nav-menu li{
-  float: left;
+  display: inline-block;
   list-style-type: none;
 }
 .nav-menu li a{
@@ -201,6 +201,42 @@ h3{
 }
 
 @media screen and (max-width: 480px) { 
+  body{
+    overflow-x: hidden;
+  }
+
+  nav{
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .nav-logo{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .nav-contents{
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin:  0 auto;
+  }
+  .nav-menu{
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+
+    
+    margin:  0 auto;
+  }
+  .nav-menu li{
+    margin:  0 auto;
+    display: table-cell;
+  }
+  .nav-menu li a{
+    padding: 1.5em 0.75em;
+  }
+
 
   section{
     margin: 1px;
