@@ -1,0 +1,238 @@
+a{
+    text-decoration:none;
+}
+
+header{
+    width: 100%; 
+    background-color: black;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.sns , .blog , .mail{
+    padding: 0 30px;
+    z-index: 1;
+    position:relative;
+}
+
+.sns a , .blog a , .mail a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+}
+
+.sns:hover{
+    color: #00acee;
+}
+.blog:hover{
+    color: #21759b;
+}
+.mail:hover{
+    color: #db4a39;
+}
+
+
+
+body {
+    /*フッター関係*/
+    padding: 0;
+    margin: 0;
+    /*フッター関係ここまで*/
+
+    background-color: #f4f4f4;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+
+    min-height: 100vh;
+    font-size:20px;
+
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+
+/*通常表示*/
+.main {
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 750px;
+}
+
+
+
+#icon {
+    width: 200px;
+    height: 200px;
+    padding: 1em 0.25em;
+    border-radius: 25%;
+}
+
+.name {
+    font-size: 60px;
+    padding: 0.25em 0.5em;
+}
+
+.name rt{
+    font-size: 20px;
+}
+
+
+h3 {
+    margin-left: auto;
+    margin-right: auto;
+    border-left:solid 5px #00fa9a; 
+    border-right: solid 5px #00fa9a;
+    padding: 0.5em 0.5em;
+
+    max-width: 400px;
+}
+
+div{
+    padding: 0.5em 0.5em;
+}
+
+ul{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+
+
+.workdiv {
+    position: relative;
+    border-radius: 20px;
+    display: block;
+}
+
+.workdiv:after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+
+.workdiv:hover {
+    background-color:#f0ffe0;
+}
+
+.workdiv a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+}
+
+.format {
+    color: white;
+    background-color: #b2bac2;
+    border-radius: 5px;
+    float: right;
+}
+
+.text {
+    padding: 0 0.25em;
+}
+
+.work-img {
+    float: left;
+    max-width: 150px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    padding: 0.5em 0.5em;
+}
+
+.date {
+    font-size: 13px;
+    text-align: right;
+    padding: 0 0.5em;
+}
+
+footer{
+    width: 100%; 
+    background-color: #cacaca;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+
+    margin-top: auto;
+}
+
+
+/*totopscroll*/
+#page_top{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background: #3f98ef;
+    opacity: 0.6;
+  }
+  #page_top a{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+  }
+  #page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+  .clearfix:after{
+      content: "";
+      clear: both;
+      display: block;
+  }
+
+  .dnone{
+      display: none;
+  }
+
+  button{
+      border: none;
+      height: 30px;
+      font-size: 20px;
+      margin: auto;
+      background-color: #cacaca;
+      cursor: pointer;
+  }
+
+  .worksort{
+      border: #cacaca dashed;
+      margin: auto;
+      border-radius: 20px;
+  }
+
+  .index{
+    border: #cacaca dashed;
+    margin: auto;
+    border-radius: 20px;
+  }

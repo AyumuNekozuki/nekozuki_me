@@ -1,0 +1,12 @@
+.works{
+  max-width: 475px;
+  display: inline-block;
+}
+
+.works h3{
+  margin: 0;
+}
+
+.works img{
+  width: 100%;
+}
