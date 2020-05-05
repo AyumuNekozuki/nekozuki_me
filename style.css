@@ -199,3 +199,15 @@ h3{
   line-height: 1.25rem;
   margin: 1rem;
 }
+
+@media screen and (max-width: 480px) { 
+
+  section{
+    margin: 1px;
+    padding: 1px;
+  }
+  .card{
+    margin: 1rem;
+  }
+
+}
