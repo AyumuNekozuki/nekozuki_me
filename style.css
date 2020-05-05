@@ -44,10 +44,10 @@ nav{
 }
 .nav-menu{
   max-width: 1152px;
-
+  display: inline-block;
 }
 .nav-menu li{
-  display: inline-block;
+  float: left;
   list-style-type: none;
 }
 .nav-menu li a{
@@ -200,7 +200,8 @@ h3{
   margin: 1rem;
 }
 
-@media screen and (max-width: 480px) { 
+
+@media screen and (max-width: 620px) { 
   body{
     overflow-x: hidden;
   }
@@ -226,15 +227,16 @@ h3{
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 
-    
+    text-align: center;
     margin:  0 auto;
   }
   .nav-menu li{
+    float: none;
     margin:  0 auto;
-    display: table-cell;
+    display: inline-block;
   }
   .nav-menu li a{
-    padding: 1.5em 0.75em;
+    padding: 1.5em 1em;
   }
 
 
