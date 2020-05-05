@@ -217,7 +217,7 @@ h3{
   }
   .nav-contents{
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     margin:  0 auto;
