@@ -200,6 +200,13 @@ h3{
   margin: 1rem;
 }
 
+hr{
+  margin: 1.5rem;
+  height: 2px;
+  background-color: #434a56;
+  border: none;
+}
+
 
 @media screen and (max-width: 620px) { 
   body{
