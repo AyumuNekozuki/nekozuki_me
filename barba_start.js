@@ -7,6 +7,7 @@ barba.init({
         name: 'default-transition',
         leave() {
             // create your stunning leave animation here
+            
         },
         enter() {
             // create your stunning leave animation here
