@@ -1,258 +1,162 @@
-*{
-  margin: 0px;
-  padding: 0px;
-}
-
 body{
-  font-family:'Kosugi Maru','sans-serif';
-  background-image: url(https://media.discordapp.net/attachments/542501461439938596/706968558831271966/unknown.png?width=960&height=488);
-  background-repeat: no-repeat;
+  font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Hiragino Kaku Gothic ProN,Meiryo,sans-serif;
+  background-color: #FAFAFA;
+  background-image: url("../img/port_BG.png");
   background-size: cover;
   background-attachment: fixed;
+  background-position: 40% bottom;
+  overflow: hidden;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: #4B4B4B;
+}
+::-webkit-scrollbar-thumb{
+  background: #727272;
+  border-radius: 10px;
 }
 
-/*navbar*/
-nav{
-  min-height: 3.25rem;
-  background-color: #191D29;
+footer small{
+  padding: 3px;
+  background-color: #4B4B4B;
   color: white;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-
-  opacity:0.8;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 50;
 }
 
-.container{
-  max-width: 1152px;
-  margin-right: auto;
-  margin-left : auto;
-}
-.nav-logo{
-  min-width: 150px;
-  display: inline-block;
-  margin-right: 1rem;
+
+.header-logo-a{ 
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  border-radius: 5px;
+  background-color: #4B4B4B;
+  z-index: 50;
 }
 #header-logo{
-  min-height: 3rem;
-  min-width: 150px;
-  max-width: 150px;
+  height: 75px;
+  padding: 5px 15px;
   fill: white;
 }
 
-.nav-contents{
-  display: inline-block;
-}
-.nav-menu{
-  max-width: 1152px;
-  display: inline-block;
-}
-.nav-menu li{
-  float: left;
-  list-style-type: none;
-}
-.nav-menu li a{
-  display: block;
-  padding: 1.5em 1em;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  background-color: #191D29;
-  color: #fff;
-}
-
-.nav-menu li a:hover {
-  background-color: #373D48;
-}
-
-/*section*/
-section{
-  max-width: 1152px;
-  margin-right: auto;
-  margin-left : auto;
-
-  padding:3rem 1.5rem;
-}
-
-.card{
-  margin: 1.5rem;
-  padding: 1.5rem;
-  border-radius: 10px;
-  
-  color: white;
-  background-color: #373D48;
-  opacity:0.8;
-}
-
-/*fotter*/
-footer{
-  max-width: 1152px;
-  margin-right: auto;
-  margin-left : auto;
-  opacity:0.8;
-  
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-
-  margin-bottom: 5rem;
-
-  color: white;
-  font-size:15px;
-}
-#footer-logo{
-  max-height: 4rem;
-  max-width: 150px;
-  fill:white;
-}
-
-.footer-but{
-  float: right;
-  font-size:20px;
-}
-.footer-but a{
-  display: block;
-  padding: 1.25em 1.25em;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  border-radius: 25px;
-}
-
-.footer-but a:hover {
-  background-color: #373D48;
-}
-
-/*back to top*/
-.back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 20px;
-  color: #fff;
-  width: 50px;
-  height: 50px;
-  z-index: 2;
+#menu-cb{
   display: none;
 }
-.back-to-top:before {
-  content: "";
-  display: block;
-  width: 45px;
-  height: 45px;
-  border-radius: 20px;
+
+#menu-label{
+  display: inline-block;
   position: absolute;
-  left: 0;
+  top: 10px;
+  right: 20px;
+  font-size: 50px;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  background-color: #4B4B4B;
+  z-index: 50;
+}
+#menu-label i {
+  margin-top: 5px;
+}
+#menu-label:hover{
+  background-color: #727272;
+}
+
+#menu-div{
+  background-color: #4B4B4B;
+  position: fixed;
   top: 0;
-  background: #373D48;
-}
-.back-to-top:after {
-  font-family: "Font Awesome 5 Free";
-  content: "\f077";
-  font-weight: 900;
-  display: block;
-  text-align: center;
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  position: absolute;
-  left: 0;
-  top: 0;
+  right: -750px;
+  width: 100%;
+  max-width: 750px;
+  height: 100%;
+  border-radius: 15px 0 0 15px;
+  padding: 100px 15px 30px 15px;
+  transition: left .5s, right .5s;
+  overflow-x: auto;
+  z-index: 49;
+  box-shadow:-3px 0px 20px -5px whitesmoke;
 }
 
-/*default*/
-.codeblock{
-  font-family: 'Inconsolata', 'monospace';
-}
-iframe{
-  margin-left: 2rem;
-  max-width: 80%;
-}
-.blogcard{
-  width: 80%;
-}
-.a2a_kit{
-  margin-left: 2rem;
-  margin-top: 1rem;
-}
-
-
-p{
-  margin: 1rem;
-  line-height: 1.25rem;
-}
-a{
-  color: #4E8ED0;
-  font-weight: bold;
-  text-decoration: none;
-}
-a:hover{
+#menu-ul li{
+  border-bottom: 0.5px solid #727272;
+  font-size: 28px;
+  line-height: 42px;
   color: white;
 }
-
-h3{
-  margin: 1rem;
+#menu-ul li a{
+  padding: 10px 5px;
+}
+#menu-ul li a i{
+  margin: 0 20px;
+}
+#menu-ul li:hover{
+  background-color: #727272;
+}
+.menu-a{
+  display: block;
+}
+.menu-a::after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f054";
+  position: absolute;
+  right: 40px;
+  font-size: 18px;
+}
+.menu-a-div{
+  text-align: center;
+  padding: 20px;
+}
+.menu-a-div a{
+  margin: 20px;
+  display: inline-block;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+.menu-a-div a i{
+  position:relative;
+  top: 10px;
+}
+.menu-a-div .twitter{
+  background-color: #55acee;
+  color: white;
+}
+.menu-a-div .github{
+  background-color: #24292E;
+  color: white;
+}
+.menu-a-div .nico{
+  background-color: #F4F4F4;
 }
 
-.card ul{
-  margin-top: 1rem;
-  margin-left: 2rem;
-}
-.card li{
-  line-height: 1.25rem;
-  margin: 1rem;
-}
-
-hr{
-  margin: 1.5rem;
-  height: 2px;
-  background-color: #434a56;
-  border: none;
+#menu-cb:checked + #menu-label + #menu-div{
+  right: 0;
 }
 
 
-@media screen and (max-width: 620px) { 
-  body{
-    overflow-x: hidden;
-  }
+[data-barba="wrapper"]{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 976px;
+  color: white;
+}
+[data-barba="container"]{
+  height: 100vh;
+  overflow: auto;
+  padding: 110px 10px 50px;
+  background-color: #4B4B4B;
+  opacity: 0.9;
+}
 
-  nav{
-    padding-right: 0;
-    padding-left: 0;
-  }
-  .nav-logo{
-    width: 100%;
-    text-align: center;
-    margin: 0;
-  }
-  .nav-contents{
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    margin:  0 auto;
-  }
-  .nav-menu{
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-
-    text-align: center;
-    margin:  0 auto;
-  }
-  .nav-menu li{
-    float: none;
-    margin:  0 auto;
-    display: inline-block;
-  }
-  .nav-menu li a{
-    padding: 1.5em 1em;
-  }
-
-
-  section{
-    margin: 1px;
-    padding: 1px;
-  }
-  .card{
-    margin: 1rem;
-  }
-
+[data-barba-namespace="home"]{
+  position: absolute;
+  top: -150vh;
 }
