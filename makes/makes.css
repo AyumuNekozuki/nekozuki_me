@@ -1,7 +1,19 @@
 .works{
-  max-width: 475px;
+  max-width:45%;
   display: inline-block;
   vertical-align:top;
+  text-align: center;
+  margin: 1rem 1%;
+  padding: 1.25%;
+  color: white !important;
+  border-radius: 5px;
+  position: relative;
+}
+.works:hover{
+  background-color: #666;
+}
+.works:hover span{
+  background-color: #666;
 }
 
 .works h3{
@@ -19,4 +31,13 @@
     max-width: 100%;
   }
 
+}
+
+span{
+  position: absolute;
+  right: 1.25%;
+  top: 1.25%;
+  padding: .25rem;
+  background-color: #4B4B4B;
+  border: .25px solid #999;
 }
