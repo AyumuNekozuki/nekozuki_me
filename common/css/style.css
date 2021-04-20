@@ -4,7 +4,7 @@ body{
   background-image: url("../img/port_BG.png");
   background-size: cover;
   background-attachment: fixed;
-  background-position: 40% bottom;
+  background-position: 20% bottom;
   overflow: hidden;
 }
 ::-webkit-scrollbar{
@@ -143,9 +143,9 @@ footer small{
 
 
 [data-barba="wrapper"]{
-  margin: 0 auto;
+  margin: 0 0 0 auto;
   width: 100%;
-  max-width: 976px;
+  max-width: 750px;
   color: white;
 }
 [data-barba="container"]{
