@@ -1,5 +1,5 @@
 .works{
-  max-width:45%;
+  max-width:calc(50% - 2.5%);
   display: inline-block;
   vertical-align:top;
   text-align: center;
@@ -12,13 +12,19 @@
 .works:hover{
   background-color: #666;
 }
-.works:hover .type{
-  background-color: #666;
+
+.works_pick{
+  max-width:100%;
+  width: calc(100% - 1rem);
+  margin: 1rem 5% 1rem 1%;
 }
 
 .works h3{
   margin: 0;
   margin-top: 1rem;
+}
+.works p{
+  font-size: 14px;
 }
 
 .works img{
@@ -36,14 +42,14 @@
 
 .type{
   position: absolute;
-  right: 1.25%;
+  left: 1.25%;
   top: 1.25%;
-  background-color: #4B4B4B;
   z-index: 10;
 }
 
-.type span{
-  border: .25px solid #999;
+.type>span{
+  border-radius: 5px;
+  font-size: 10px;
   padding: 0 .25rem;
-  background-color: #4B4B4B;
+  background-color: #252525;
 }

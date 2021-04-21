@@ -1,17 +1,14 @@
-$("a").click(function () {
-    $("#menu-cb").prop('checked', false);
-});
-
 barba.init({
     transitions: [{
         name: 'default-transition',
         leave() {
             // create your stunning leave animation here
-            
+            $("a").click(function () {
+                $("#menu-cb").prop('checked', false);
+            });
         },
         enter() {
             // create your stunning leave animation here
-            
         }
     }]
 });

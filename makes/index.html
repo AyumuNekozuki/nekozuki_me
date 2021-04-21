@@ -21,6 +21,11 @@
   <link rel="stylesheet" href="/common/css/loading.css">
   <script src="/common/js/include.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+  <script src="https://unpkg.com/@barba/core"></script>
+
 
   <!-- ogp -->
   <meta name="twitter:card" content="summary" />
@@ -37,7 +42,7 @@
   <div id="loader-bg" class="is-hide">
     <div id="loader" class="is-hide">
       <p>
-        <img src="/img/loading.gif"><br>
+        <img src="/common/img/loading.gif"><br>
         NOW LOADING
       </p>
     </div>
@@ -53,14 +58,14 @@
     <div data-barba="wrapper">
       <main data-barba="container" data-barba-namespace="makes">
         <div class="card">
-          <h2>つくったもの一覧</h2>
-          <p>猫月遥歩（ねこづきあゆむ）がつくったもの一覧です。</p>
+          <h2>代表作</h2>
         </div>
 
-        <a class="works" target="_blank" href="https://github.com/AyumuNekozuki/niconico-darkmode">
-          <img src="/common/img/workimg/nicodark-logo.png">
+        <a class="works works_pick browser-ex" target="_blank" href="https://github.com/AyumuNekozuki/niconico-darkmode">
+          <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm37578183" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"></iframe>
+          <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm37759605" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"></iframe>
           <h3>niconico Darkmode</h3>
-          <p>niconicoサイト上をダークモード化する拡張機能です。</p>
+          <p>各紹介動画３万再生超え。ニコニコサイト上をダークモード化する拡張機能です。</p>
           <div class="type">
             <span>ブラウザ拡張</span>
             <span>SCSS</span>
@@ -68,17 +73,59 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://siberia.nekozuki.me">
-          <img src="/common/img/workimg/siberia.png">
+        <a class="works works_pick webpage" target="_blank" href="https://siberia.nekozuki.me">
+          <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm37197529" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"></iframe>
+          <iframe width="312" height="176" src="https://ext.nicovideo.jp/thumb/sm38010010" scrolling="no" style="border:solid 1px #ccc;" frameborder="0"></iframe>
           <h3>シベリア送り</h3>
-          <p>ニコニコネット超会議夏に合わせて作成。</p>
-          <p>あなたをシベリアへお送りします。</p>
+          <p>「N予備校 動くWebページコンテスト2020夏 N高部門 優秀賞」受賞作品。あなたをシベリアへお送りします。</p>
           <div class="type">
             <span>WebPage</span>
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://nekozuki.me/">
+        <a class="works webpage" target="_blank" href="https://dic.nicovideo.jp/u/45048152">
+          <h3>ニコニコ大百科 記事編集</h3>
+          <p>「百ッカデミー賞」3年連続受賞中です。一部制限が解除されている<span style="color:orange;">★</span>編集者です。</p>
+          <div class="type">
+            <span>ニコニコ大百科</span>
+          </div>
+        </a>
+        <a class="works webpage" target="_blank" href="https://nicovideo.jp/user/45048152/video">
+          <h3>動画投稿</h3>
+          <p>主にVOICEROIDを利用した動画を投稿中です。解説や劇場、料理など幅広く投稿中です。</p>
+          <div class="type">
+            <span>ニコニコ動画</span>
+          </div>
+        </a>
+
+        <hr>
+        
+        <div class="card">
+          <h2>制作物一覧</h2>
+          <p>猫月遥歩（ねこづきあゆむ）がつくったもの一覧です。</p>
+        </div>
+
+        <a class="works browser-ex" target="_blank" href="https://github.com/AyumuNekozuki/niconico-darkmode">
+          <img src="/common/img/workimg/nicodark-logo.png">
+          <h3>niconico Darkmode</h3>
+          <p>ニコニコサイト上をダークモード化する拡張機能です。</p>
+          <div class="type">
+            <span>ブラウザ拡張</span>
+            <span>SCSS</span>
+            <span>Docker</span>
+          </div>
+        </a>
+
+        <a class="works webpage" target="_blank" href="https://siberia.nekozuki.me">
+          <img src="/common/img/workimg/siberia.png">
+          <h3>シベリア送り</h3>
+          <p>ニコニコネット超会議夏に合わせて作成。あなたをシベリアへお送りします。</p>
+          <div class="type">
+            <span>WebPage</span>
+          </div>
+        </a>
+
+        <a class="works webpage" target="_blank" href="https://nekozuki.me/">
           <img src="/common/img/workimg/nekozuki-portal_v4.png">
           <h3>猫月あゆむPORTAL(v4)</h3>
           <p>このサイトです。</p>
@@ -88,21 +135,20 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://vcnp.nekozuki.me">
+        <a class="works webapp" target="_blank" href="https://vcnp.nekozuki.me">
           <img src="/common/img/workimg/vcnp.png">
           <h3>Vキャス新聞 公式サイト</h3>
           <p>Vキャス内での出来事を新聞で紹介する「Vキャス新聞」公式サイトです。</p>
           <div class="type">
-            <span>WebPage</span>
+            <span>WebApp</span>
             <span>Firebase</span>
           </div>
         </a>
 
-        <a class="works">
+        <a class="works webapp" target="_blank" href="https://mstdn.nekozuki.me/">
           <img src="/common/img/workimg/nekozukidon.png">
           <h3>ねこづきどん</h3>
-          <p>お試しで立てたMastodonインスタンスです。</p>
-          <p>維持費がかかるのですでに閉鎖しています。</p>
+          <p>お試しで立てたMastodonインスタンスです。維持費がかかるのですでに閉鎖しています。</p>
           <div class="type">
             <span>WebApp</span>
             <span>Mastodon</span>
@@ -110,7 +156,7 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://portfolio.nekozuki.me">
+        <a class="works webpage" target="_blank" href="https://portfolio.nekozuki.me">
           <img src="/common/img/workimg/hugo-postfolio.png">
           <h3>ポートフォリオ</h3>
           <p>猫月あゆむのポートフォリオです。</p>
@@ -120,7 +166,7 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://blog.nekozuki.me">
+        <a class="works webpage" target="_blank" href="https://blog.nekozuki.me">
           <img src="/common/img/workimg/nekozuki-blog.png">
           <h3>ねころぐ</h3>
           <p>猫月あゆむのブログです。</p>
@@ -130,7 +176,7 @@
           </div>
         </a>
 
-        <a class="works">
+        <a class="works bot">
           <img src="/common/img/workimg/ve2site.png">
           <h3>VE2 イベント参加フォーム 通知bot</h3>
           <p>バーチャルキャスト非公式2周年イベント「VE2」の運営用で作成した、フォームに投稿があるとDiscordに通知してくれるbotです。</p>
@@ -141,7 +187,7 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://site.nekozuki.me/vc2ndaniv">
+        <a class="works webpage" target="_blank" href="https://site.nekozuki.me/vc2ndaniv">
           <img src="/common/img/workimg/ve2site.png">
           <h3>VE2 特設サイト</h3>
           <p>バーチャルキャスト非公式2周年イベント「VE2」の特設サイトです。</p>
@@ -150,7 +196,7 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://www.v-market.work/ec/items/188/detail/">
+        <a class="works vci" target="_blank" href="https://www.v-market.work/ec/items/188/detail/">
           <img src="/common/img/workimg/vci-usedetails.png">
           <h3>VCI UseDetails</h3>
           <p>オブジェクトに触ると文章を表示させる機能を簡単にVCIに導入できるキットです。</p>
@@ -159,7 +205,7 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://nekozuki.me/makes/nicoad-ex">
+        <a class="works browser-ex" target="_blank" href="https://nekozuki.me/makes/nicoad-ex">
           <img src="/common/img/workimg/nicoadex.png">
           <h3>ニコニ広告ex.</h3>
           <p>ニコニコ動画・生放送ページのニコニ広告を、ポップアップではなくコメント欄に表示してくれるブラウザ拡張機能です。</p>
@@ -170,7 +216,7 @@
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://seed.online/items/a066e943223a6fa6c1e6ffec5b73321fcc39a69f963a0f88c03e2ec56f365f5d">
+        <a class="works vci" target="_blank" href="https://seed.online/items/a066e943223a6fa6c1e6ffec5b73321fcc39a69f963a0f88c03e2ec56f365f5d">
           <img src="/common/img/workimg/vci-weather.png">
           <h3>天候VCI</h3>
           <p>雨・雪のエフェクトを降らせるVCIです。</p>
@@ -180,28 +226,26 @@
           </div>
         </a>
 
-        <a class="works">
+        <a class="works webapp">
           <img src="/old/v2/portfolio/vr/support/images/support_image.png">
           <h3>WebVRポートフォリオ</h3>
-          <p>ブラウザ上で見れるVRポートフォリオです。</p>
-          <p>A-frameのバージョンが変わり表示が崩れているので、現在は閲覧できません。</p>
+          <p>ブラウザ上で見れるVRポートフォリオです。A-frameのバージョンが変わり表示が崩れているので、現在は閲覧できません。</p>
           <div class="type">
             <span>WebApp</span>
             <span>A-frame</span>
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://nekozuki.me/makes/unit-changer">
+        <a class="works webpage" target="_blank" href="https://nekozuki.me/makes/unit-changer">
           <img src="/common/img/workimg/unit-changer.png">
           <h3>テレアノ換算</h3>
-          <p>「N予備校 動くWebページコンテスト2019夏」出品作品。</p>
-          <p>テレビでよく出るあの単位に換算してくれます。</p>
+          <p>「N予備校 動くWebページコンテスト2019夏」出品作品。テレビでよく出るあの単位に換算してくれます。</p>
           <div class="type">
             <span>WebPage</span>
           </div>
         </a>
 
-        <a class="works" target="_blank" href="https://seed.online/items/3b54877f1945a64e4dc49c4e7e3fc190b2f4fc77b1ff787729de7885f9d8f57d">
+        <a class="works vci" target="_blank" href="https://seed.online/items/3b54877f1945a64e4dc49c4e7e3fc190b2f4fc77b1ff787729de7885f9d8f57d">
           <img src="/common/img/workimg/vci-meishi.png">
           <h3>名刺VCI</h3>
           <p>バーチャルキャスト内で使える名刺です。</p>
@@ -219,11 +263,8 @@
     </footer>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
-    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
   <script src="/common/js/barba_start.js"></script>
+
 </body>
 
 </html>
