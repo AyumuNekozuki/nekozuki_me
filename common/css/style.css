@@ -174,7 +174,7 @@ footer small{
   min-height: 100vh;
   overflow-x: hidden;
   min-width: 700px;
-  padding: 110px 10px 50px;
+  padding: 30px 10px 50px;
   background-color: #4B4B4B;
   opacity: 0.9;
 }
@@ -182,4 +182,17 @@ footer small{
 [data-barba-namespace="home"]{
   position: absolute;
   top: -150vh;
+}
+
+
+/* sp web */
+@media screen and (max-width:600px) {
+  [data-barba="container"]{
+    padding-top: 70px;
+    min-width: 100vw;
+  }
+  #menu-div{
+    min-width: 100vw;
+    right: calc(-100vw - 10px);
+  }
 }

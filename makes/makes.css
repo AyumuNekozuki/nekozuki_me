@@ -1,9 +1,16 @@
+.works_card_wrap{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .works{
-  max-width:calc(50% - 2.5%);
+  width: 50%;
   display: inline-block;
   vertical-align:top;
   text-align: center;
-  margin: 1rem 1%;
+  margin: 1rem auto;
   padding: 1.25%;
   color: white !important;
   border-radius: 5px;
@@ -15,8 +22,7 @@
 
 .works_pick{
   max-width:100%;
-  width: calc(100% - 1rem);
-  margin: 1rem 5% 1rem 1%;
+  width: 100%;
 }
 
 .works h3{
@@ -52,4 +58,14 @@
   font-size: 10px;
   padding: 0 .25rem;
   background-color: #252525;
+}
+
+/* sp web */
+@media screen and (max-width:600px) {
+  .sphide{
+    display: none;
+  }
+  .works{
+    width: 100%;
+  }
 }
