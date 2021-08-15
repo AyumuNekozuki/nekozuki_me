@@ -1,13 +1,14 @@
 <template>
-  <canvas id="universe_background"></canvas>
+  <canvas id="universe"></canvas>
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>
 
 <style lang="scss">
-#universe_background {
+#universe {
   width: 100vw;
   height: 100vh;
   background: radial-gradient(1600px at 70% 120%, #212750 10%, #020409 100%);

@@ -36,7 +36,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/jquery_init.js', ssr: false }
+    { src: '~/plugins/jquery_init.js', ssr: false },
+    { src: '~/plugins/universe.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -76,6 +77,9 @@ export default {
   helmet: {
     frameguard: false,
     hidePoweredBy: true
+  },
+  axios: {
+    proxy: true,
   },
   proxy: {
     '/api/nekozuki_blog/': {
