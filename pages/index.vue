@@ -142,7 +142,7 @@ export default {
   async asyncData({ params }) {
     try {
       const blog_rss = await parser.parseURL(
-        "http://localhost:3000/api/nekozuki_blog/"
+        "/api/nekozuki_blog/"
       );
 
       setTimeout(timeup_blog, 3000);
@@ -159,12 +159,13 @@ export default {
         blog_datas.push(blog_data);
       }
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
 
     try {
+
       const video_rss = await parser.parseURL(
-        "http://localhost:3000/api/nico/user_45048152/"
+        "/api/nico/user_45048152/"
       );
 
       setTimeout(timeup_video, 3000);

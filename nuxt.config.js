@@ -52,7 +52,6 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'nuxt-helmet',
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
     'nuxt-webfontloader'
@@ -106,6 +105,10 @@ export default {
           '@firebase/analytics': 'commonjs @firebase/analytics',
         }
       }
+    },
+    babel: {
+      babelrc: false,
+      compact: false
     }
   },
 
