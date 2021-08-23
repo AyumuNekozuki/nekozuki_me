@@ -190,7 +190,7 @@ export default {
       }
     } catch (err) {
       console.error(err);
-    },
+    }
 
     const document_pickup_ids = await components_db
       .doc("works_pickup")
