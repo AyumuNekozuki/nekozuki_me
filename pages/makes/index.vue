@@ -1,7 +1,7 @@
 <template>
   <div id="page_makes">
     <main>
-      <Mainvisual />
+      <!--<Mainvisual />-->
       <div class="parts_area">
         <section id="pickup" class="makes_pickup_contents">
           <h3>ピックアップ</h3>
