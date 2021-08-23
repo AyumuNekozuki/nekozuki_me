@@ -140,6 +140,7 @@ export default {
     };
   },
   async asyncData({ params }) {
+    /*
     try {
       const blog_rss = await parser.parseURL(
         "/api/nekozuki_blog/"
@@ -190,7 +191,7 @@ export default {
       }
     } catch (err) {
       console.error(err);
-    }
+    },*/
 
     const document_pickup_ids = await components_db
       .doc("works_pickup")
