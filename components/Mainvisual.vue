@@ -3,7 +3,7 @@
     <hooper
       :infiniteScroll="true"
       :centerMode="true"
-      :itemsToShow="2.5"
+      :itemsToShow="1.5"
       :autoPlay="true"
       :playSpeed="5000"
     >
@@ -56,4 +56,5 @@ export default {
 </script>
 
 <style>
+
 </style>

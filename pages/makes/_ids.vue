@@ -51,7 +51,8 @@
             </ul>
           </div>
         </div>
-        <div v-html="contetnts_document.contents_text"></div>
+        <div v-html="contetnts_document.contents_text">
+        </div>
       </div>
     </article>
   </div>

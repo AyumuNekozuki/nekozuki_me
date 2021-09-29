@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'server',
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -20,7 +20,7 @@ export default {
       { hid: 'og:title', property: 'og:title', content: 'ねこづきあゆむのうぇぶさいと' },
       { hid: 'og:description', property: 'og:description', content: 'ねこづきあゆむのうぇぶさいとです。' },
       { hid: 'og:image', property: 'og:image', content: 'https://nekozuki.me/img/thumb/nekozuki.png' },
-      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
@@ -47,65 +47,8 @@ export default {
   buildModules: [
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    'nuxt-helmet',
-    '@nuxtjs/axios',
-    'bootstrap-vue/nuxt',
-    'nuxt-fontawesome',
-    'nuxt-webfontloader'
-  ],
-  fontawesome: {
-    imports: [
-      {
-        set: '@fortawesome/free-solid-svg-icons',
-        icons: ['fas']
-      },
-      {
-        set: '@fortawesome/free-brands-svg-icons',
-        icons: ['fab']
-      }
-    ]
-  },
-  webfontloader: {
-    google: {
-      families: ['Kosugi+Maru']
-    }
-  },
-  helmet: {
-    frameguard: false,
-    hidePoweredBy: true
-  },
-  axios: {
-    proxy: true,
-  },
-  proxy: {
-    '/api/nekozuki_blog/': {
-      target: 'https://blog.nekozuki.me/atom.xml',
-      pathRewrite: {
-        '^/api/nekozuki_blog/': '/'
-      }
-    },
-    '/api/nico/user_45048152/': {
-      target: 'http://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.nicovideo.me%2Fmusic%2Fuser%2F45048152&item=%23playlistTable+tr&item_title=span.playlistTableTitle&item_url=span.playlistTableTitle&item_image=img.playlistTableThumb&max=5&order=document&guid=0',
-      pathRewrite: {
-        '^/api/nico/user_45048152/': '/?url=https%3A%2F%2Fwww.nicovideo.me%2Fmusic%2Fuser%2F45048152&item=%23playlistTable+tr&item_title=span.playlistTableTitle&item_url=span.playlistTableTitle&item_image=img.playlistTableThumb&max=5&order=document&guid=0'
-      }
-    }
-  },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend ( config, { isDev, isClient, isServer } ) {
-      if(isServer){
-        config.externals = {
-          '@firebase/app': 'commonjs @firebase/app',
-          '@firebase/firestore': 'commonjs @firebase/firestore',
-          '@firebase/analytics': 'commonjs @firebase/analytics',
-        }
-      }
-    },
     babel: {
       babelrc: false,
       compact: false
@@ -116,5 +59,36 @@ export default {
     color: '#3273dc',
     failedColor: 'red',
     height: '2px'
-  }
+  },
+
+
+    // Modules: https://go.nuxtjs.dev/config-modules
+    modules: [
+      // https://go.nuxtjs.dev/bootstrap
+      'nuxt-helmet',
+      'bootstrap-vue/nuxt',
+      'nuxt-fontawesome',
+      'nuxt-webfontloader',
+    ],
+    fontawesome: {
+      imports: [
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['fas']
+        },
+        {
+          set: '@fortawesome/free-brands-svg-icons',
+          icons: ['fab']
+        }
+      ]
+    },
+    webfontloader: {
+      google: {
+        families: ['M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900']
+      }
+    },
+    helmet: {
+      frameguard: false,
+      hidePoweredBy: true
+    }
 }

@@ -1,6 +1,6 @@
 <template>
   <header id="commonHeader">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <nuxt-link class="navbar-brand" to="/">ねこづきあゆむのうぇぶさいと</nuxt-link>
         <button
@@ -80,25 +80,3 @@
 <script>
 export default {};
 </script>
-
-<style lang="scss">
-#commonHeader{
-  box-shadow: 0px 5px 10px -5px rgba(0,0,0,0.6);
-  margin-bottom: 20px;
-  z-index: 10;
-  transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
-
-  nav{
-    background-color: rgba(40,44,52,0.5);
-    backdrop-filter: none;
-
-    a.navbar-brand{
-      color: rgba(255, 255, 255, 0.75);
-      &:hover{
-        color: rgba(255, 255, 255, 1);
-      }
-    }
-    
-  }
-}
-</style>

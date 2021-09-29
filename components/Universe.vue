@@ -2,11 +2,6 @@
   <canvas id="universe"></canvas>
 </template>
 
-<script>
-export default {
-}
-</script>
-
 <style lang="scss">
 #universe {
   width: 100vw;

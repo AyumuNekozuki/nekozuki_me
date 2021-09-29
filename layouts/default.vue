@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Universe />
+    <!-- <Universe /> -->
     <Header />
     <Nuxt />
     <Footer />
@@ -21,10 +21,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-body{
-  background: #0e1225;
-  font-family: 'Kosugi Maru', 'sans-serif';
-}
-</style>
