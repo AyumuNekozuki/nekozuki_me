@@ -25,7 +25,6 @@ Header
 ===================*/
 #commonHeader{
   box-shadow: 0px 5px 10px -5px rgba(0,0,0,0.6);
-  margin-bottom: 20px;
   z-index: 10;
   transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
 
@@ -268,13 +267,73 @@ footer#commonFooter{
   }
 }
 
+/*===================
+visual
+===================*/
+.mainvisual_area {
+  position: relative;
+  width: 100%;
+  height: 30rem;
+
+  /* 各スライドdivの背景画像設定 */
+  #photo1 {
+    background-image: url("@/assets/visualimg/01.jpg");
+  }
+  #photo2 {
+    background-image: url("@/assets/visualimg/02.jpg");
+  }
+  #photo3 {
+    background-image: url("@/assets/visualimg/03.jpg");
+  }
+  #photo4 {
+    background-image: url("@/assets/visualimg/04.jpg");
+  }
+
+  .frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    animation: imgTrans 28s infinite;
+  }
+  #photo2 {
+    animation-delay: 7s;
+  }
+  #photo3 {
+    animation-delay: 14s;
+  }
+  #photo4 {
+    animation-delay: 21s;
+  }
+
+  @keyframes imgTrans {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    18% {
+      opacity: 1;
+    }
+    22% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
 
 /*===================
 index
 ===================*/
 #page_index {
   .mainvisual_area {
-    height: 350px;
     overflow: hidden;
   }
   .parts_area {
@@ -330,6 +389,7 @@ index
 makes
 ===================*/
 #page_makes {
+  margin-top: 20px;
   .mainvisual_area {
     height: 350px;
     overflow: hidden;
@@ -345,6 +405,10 @@ makes
   }
 }
 
+
+#page_about{
+  margin-top: 20px;
+}
 /*===================
 パーツ
 ===================*/

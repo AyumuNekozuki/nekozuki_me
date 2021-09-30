@@ -1,12 +1,9 @@
 <template>
   <div id="page_index">
     <main>
-      <!-- <Mainvisual /> -->
+      <Mainvisual />
       <div id="page_index_about" class="text_pages">
         <article>
-          <div class="article_thumb">
-            <img src="@/static/img/thumb/nekozuki.png" alt="" srcset="" />
-          </div>
           <div class="text_area">
             <h2>ねこづきあゆむとは</h2>
             <p>
