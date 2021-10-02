@@ -24,7 +24,7 @@ export default {
       { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/img/ogp/icon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: 'i/img/ogp/icon.png' }
     ]
   },
 
@@ -52,6 +52,15 @@ export default {
     babel: {
       babelrc: false,
       compact: false
+    },
+    extend ( config, { isDev, isClient, isServer } ) {
+      if(isServer){
+        config.externals = {
+          '@firebase/app': 'commonjs @firebase/app',
+          '@firebase/firestore': 'commonjs @firebase/firestore',
+          '@firebase/analytics': 'commonjs @firebase/analytics',
+        }
+      }
     }
   },
 
