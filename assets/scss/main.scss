@@ -7,7 +7,27 @@ $background2: #fafafa;
 $border1: #ccc;
 $border2: #999;
 
+$bs-info: #17a2b8;
+
 $card-shadow: 0 4px 10px #00000020, 0 0 1px #00000020;
+
+$twitter: #1da1f2;
+$mastodon: #2691DA;
+$nekolog: #2A2E4C;
+$nicovideo: #252525;
+$github: #333;
+$youtube: #F20103;
+$bilibili: #379BE3;
+$fanbox: #F8BB29;
+$booth: #F34D51;
+$steam: #1B2838;
+$vrchat: #1C5891;
+$tso: #3289FF;
+$amazon: #F69A03;
+$switch: #E60113;
+$discord: #404FED;
+
+$gform: #744BBC;
 
 body{
   //background: #0e1225;
@@ -24,6 +44,7 @@ body{
 Header
 ===================*/
 #commonHeader{
+  position:relative;
   box-shadow: 0px 5px 10px -5px rgba(0,0,0,0.6);
   z-index: 10;
   transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s;
@@ -78,6 +99,7 @@ footer#commonFooter{
 共通
 ===================*/
 .text_pages{
+  margin-top: 20px;
   article{
     margin: 0 auto;
     max-width: 980px;
@@ -89,6 +111,8 @@ footer#commonFooter{
     opacity: 1;
     border-radius: 4px;
     box-shadow: $card-shadow;
+    transition: box-shadow ease .3s;
+    transition: opacity ease .3s;
 
     .article_thumb{
       width: 100%;
@@ -166,6 +190,10 @@ footer#commonFooter{
             padding: 0.5em 0.75em;
             vertical-align: top;
             border-bottom: 1px solid $border1;
+            &:first-of-type{
+              font-size: 90%;
+              line-height: 2;
+            }
           }
           &:last-of-type{
             td{
@@ -320,7 +348,7 @@ visual
     18% {
       opacity: 1;
     }
-    22% {
+    30% {
       opacity: 0;
     }
     100% {
@@ -358,6 +386,8 @@ index
           z-index: 2;
           position: absolute;
           top: 0;
+          cursor: not-allowed;
+
           iframe{
             z-index: -1;
           }
@@ -375,7 +405,7 @@ index
       width: 100%;
 
       h3{
-        padding: 0 1em;
+        padding: 0 1.5rem;
       }
 
       .item{
@@ -403,12 +433,132 @@ makes
       margin-top: 40px;
     }
   }
+  h3{
+    padding-left: 1rem;
+  }
 }
 
+/*===================
+links
+===================*/
+#page_links{
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 10px;
 
-#page_about{
-  margin-top: 20px;
+  h2{
+    border-bottom: 3px solid $border1;
+    font-size: 1.75rem;
+    line-height: 2;
+    margin-bottom: 1rem;
+    padding-left: .5rem;
+    color: $textcolor2;
+    font-weight: 800;
+  }
+  h3{
+    padding-left: .5rem;
+  }
+
+  a,button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em auto;
+    box-shadow: $card-shadow;
+    transition: box-shadow ease .3s;
+    transition: opacity ease .3s;
+    font-size: 110%;
+
+    &:hover{
+      box-shadow: none;
+      opacity: .8;
+    }
+
+    &>*{
+      margin: 0 10px;
+    }
+
+    &.twitter{
+      background-color: $twitter;
+      border-color: $twitter;
+    }
+    &.mastodon{
+      background-color: $mastodon;
+      border-color: $mastodon;
+    }
+    &.nekolog{
+      background-color: $nekolog;
+      border-color: $nekolog;
+    }
+
+    &.nicovideo{
+      background-color: $nicovideo;
+      border-color: $nicovideo;
+    }
+    &.github{
+      background-color: $github;
+      border-color: $github;
+    }
+
+    &.youtube{
+      background-color: $youtube;
+      border-color: $youtube;
+    }
+    &.bilibili{
+      background-color: $bilibili;
+      border-color: $bilibili;
+    }
+    &.fanbox{
+      background-color: $fanbox;
+      border-color: $fanbox;
+    }
+    &.booth{
+      background-color: $booth;
+      border-color: $booth;
+    }
+    &.tso{
+      background-color: $tso;
+      border-color: $tso;
+    }
+    &.amazon{
+      background-color: $amazon;
+      border-color: $amazon;
+    }
+    &.steam{
+      background-color: $steam;
+      border-color: $steam;
+    }
+    &.vrchat{
+      background-color: $vrchat;
+      border-color: $vrchat;
+    }
+    &.switch{
+      background-color: $switch;
+      border-color: $switch;
+      &:hover{
+        cursor: default;
+        opacity: 1;
+        box-shadow: $card-shadow;
+      }
+    }
+
+    &.discord{
+      background-color: $discord;
+      border-color: $discord;
+    }
+
+    &.mail{
+      background-color: $bs-info;
+      border-color: $bs-info;
+    }
+    &.form{
+      background-color: $gform;
+      border-color: $gform;
+    }
+  }
 }
+
 /*===================
 パーツ
 ===================*/
@@ -427,6 +577,8 @@ makes
       background-color: $background2;
       backdrop-filter: none;
       box-shadow: $card-shadow;
+      transition: box-shadow ease .3s;
+      transition: opacity ease .3s;
 
       .thumb_area {
         width: 100%;

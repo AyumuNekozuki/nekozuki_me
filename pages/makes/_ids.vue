@@ -13,7 +13,7 @@
           {{ contetnts_document.title
           }}<span class="desc">{{ contetnts_document.desc }}</span>
         </h2>
-        <div class="heading_contents_area">
+        <div class="heading_contents_area" v-if="!taghide && contetnts_document.contents_text">
           <div class="tag_area">
             <p>Category: {{ contetnts_document.type }}</p>
             <ul class="tag_list">
@@ -53,6 +53,9 @@
         </div>
         <div v-html="contetnts_document.contents_text">
         </div>
+        <div v-if="!contetnts_document.contents_text">
+          <p class="h3 m-5 text-center"><b-badge class="p-3" variant="warning">👷 このページは現在工事中です</b-badge></p>
+        </div>
       </div>
     </article>
   </div>
@@ -78,7 +81,7 @@ export default {
     return {
       meta: {
         title: title,
-        description: title + "についてs",
+        description: title + "について",
         type: "pages",
         url: "https://nekozuki.me/makes/" + contents_id,
         image: ogp_image,
@@ -86,6 +89,8 @@ export default {
     };
   },
   async asyncData({ params }) {
+    let taghide = false;
+
     //データ取得
     contents_id = params.ids + "";
     const document_contents_snapshot = await makes_db
@@ -109,6 +114,10 @@ export default {
     contents_tag_imgs = contetnts_document.tag_imgs;
     contents_links = contetnts_document.links;
 
+    if(contetnts_document.type == "contents"){
+      taghide = true;
+    }
+
     return {
       title,
       contents_id,
@@ -117,6 +126,7 @@ export default {
       contents_tags,
       contents_tag_imgs,
       contents_links,
+      taghide
     };
   },
 };
