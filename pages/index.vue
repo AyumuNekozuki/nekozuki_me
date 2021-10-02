@@ -96,27 +96,28 @@
 
 <script>
 import firebase from "~/plugins/firebase";
+import Mainvisual from "~/components/Mainvisual.vue";
+
 const db = firebase.firestore();
 const makes_db = db.collection("works");
 const components_db = db.collection("components");
 const schedule_db = db.collection("schedule_pick");
-import Mainvisual from "@/components/Mainvisual.vue";
 
 let pickup_datas = [];
 let schedule_datas = [];
 let trycount = 0;
 
 export default {
+  components: {
+    Mainvisual
+  },
   head() {
     return {
       titleTemplate: null,
       title: "ねこづきあゆむのうぇぶさいと",
     };
   },
-  components: {
-    Mainvisual,
-  },
-  async asyncData({ params }) {
+  async asyncData() {
     if (trycount == 0) {
       const document_pickup_ids = await components_db
         .doc("works_pickup")

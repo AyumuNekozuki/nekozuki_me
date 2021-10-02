@@ -24,20 +24,19 @@ export default {
       { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'i/img/ogp/icon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/img/ogp/icon.png' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/static/icomoon_fonts/icomoon-style.css',
-    '@/assets/scss/main.scss'
+    '~/assets/scss/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/jquery_init.js', ssr: false },
-    // { src: '~/plugins/universe.js', ssr: false }
+    { src: '~/plugins/jquery_init.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,10 +48,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    babel: {
-      babelrc: false,
-      compact: false
-    },
     extend ( config, { isDev, isClient, isServer } ) {
       if(isServer){
         config.externals = {
