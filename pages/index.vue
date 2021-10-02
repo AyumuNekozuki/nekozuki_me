@@ -23,7 +23,7 @@
       </div>
       <div id="page_index_parts_area" class="text_pages">
         <section id="pickup" class="makes_pickup_contents">
-          <h3><a href="/makes">制作物ピックアップ</a></h3>
+          <h3><nuxt-link to="/makes">制作物ピックアップ</nuxt-link></h3>
           <div class="contents_list_area">
             <div
               class="item"

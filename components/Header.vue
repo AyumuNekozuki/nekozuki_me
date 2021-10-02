@@ -57,6 +57,16 @@
             <a
               class="nav-link"
               target="_blank"
+              rel="me"
+              href="https://friends.cafe/@nekozuki_2525"
+            >
+              <font-awesome-icon :icon="['fab', 'mastodon']" />
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              target="_blank"
               href="https://www.nicovideo.jp/user/45048152/video"
             >
               <i class="icon2-niconico"></i>
