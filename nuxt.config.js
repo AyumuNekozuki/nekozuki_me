@@ -1,9 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
-  router: {
-    base: '/'
-  },
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -40,7 +37,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/jquery_init.js', ssr: false },
-    { src: '~/plugins/universe.js', ssr: false }
+    // { src: '~/plugins/universe.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
