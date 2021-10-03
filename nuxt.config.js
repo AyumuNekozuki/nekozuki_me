@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'server',
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -46,10 +46,40 @@ export default {
   buildModules: [
   ],
 
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/bootstrap
+    'nuxt-helmet',
+    'bootstrap-vue/nuxt',
+    'nuxt-fontawesome',
+    'nuxt-webfontloader',
+  ],
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab']
+      }
+    ]
+  },
+  webfontloader: {
+    google: {
+      families: ['M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900']
+    }
+  },
+  helmet: {
+    frameguard: false,
+    hidePoweredBy: true
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend ( config, { isDev, isClient, isServer } ) {
-      if(isServer){
+    extend(config, { isDev, isClient, isServer }) {
+      if (isServer) {
         config.externals = {
           '@firebase/app': 'commonjs @firebase/app',
           '@firebase/firestore': 'commonjs @firebase/firestore',
@@ -64,35 +94,4 @@ export default {
     failedColor: 'red',
     height: '2px'
   },
-
-
-    // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [
-      // https://go.nuxtjs.dev/bootstrap
-      'nuxt-helmet',
-      'bootstrap-vue/nuxt',
-      'nuxt-fontawesome',
-      'nuxt-webfontloader',
-    ],
-    fontawesome: {
-      imports: [
-        {
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: ['fas']
-        },
-        {
-          set: '@fortawesome/free-brands-svg-icons',
-          icons: ['fab']
-        }
-      ]
-    },
-    webfontloader: {
-      google: {
-        families: ['M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900']
-      }
-    },
-    helmet: {
-      frameguard: false,
-      hidePoweredBy: true
-    }
 }

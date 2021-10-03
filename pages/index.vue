@@ -108,7 +108,7 @@ let schedule_datas = [];
 let trycount = 0;
 
 export default {
-  components: {
+  components:{
     Mainvisual
   },
   head() {

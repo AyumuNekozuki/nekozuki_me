@@ -145,7 +145,6 @@ const makes_db = db.collection("works");
 const components_db = db.collection("components");
 
 import Meta from "~/mixins/meta";
-import Mainvisual from "@/components/Mainvisual.vue";
 
 let pickup_datas = [];
 let extention_datas = [];
@@ -248,9 +247,6 @@ export default {
         solid_datas,
       };
     }
-  },
-  components: {
-    Mainvisual,
   },
 };
 </script>
