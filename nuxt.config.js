@@ -1,20 +1,34 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nekozuki_me_fx2',
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#',
+      lang: 'ja'
+    },
+    titleTemplate: '%s - ねこづきあゆむのうぇぶさいと',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'description', name: 'description', content: 'ねこづきあゆむのうぇぶさいとです。' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'ねこづきあゆむのうぇぶさいと' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://nekozuki.me' },
+      { hid: 'og:title', property: 'og:title', content: 'ねこづきあゆむのうぇぶさいと' },
+      { hid: 'og:description', property: 'og:description', content: 'ねこづきあゆむのうぇぶさいとです。' },
+      { hid: 'og:image', property: 'og:image', content: 'https://nekozuki.me/img/thumb/nekozuki.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/img/icon.png' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/icomoon_fonts/icomoon-style.css',
+    '~/assets/style/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -36,7 +50,36 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'nuxt-helmet',
+    'nuxt-fontawesome',
+    'nuxt-webfontloader',
   ],
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab']
+      }
+    ]
+  },
+  webfontloader: {
+    google: {
+      families: ['M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900']
+    }
+  },
+  helmet: {
+    frameguard: false,
+    hidePoweredBy: true
+  },
+  loading: {
+    color: '#3273dc',
+    failedColor: 'red',
+    height: '2px'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -44,7 +87,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'ja'
     }
   },
 
