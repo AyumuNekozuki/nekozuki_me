@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import Meta from "~/mixins/meta";
 import firebase from "~/plugins/firebase";
 import Mainvisual from "~/components/Mainvisual.vue";
 
@@ -111,6 +112,7 @@ export default {
   components:{
     Mainvisual
   },
+  mixins: [Meta],
   head() {
     return {
       titleTemplate: null,
