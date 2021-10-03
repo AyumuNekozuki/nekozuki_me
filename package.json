@@ -7,7 +7,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "ghpdeploy": "yarn generate && yarn deploy"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
