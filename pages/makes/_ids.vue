@@ -13,7 +13,10 @@
           {{ contetnts_document.title
           }}<span class="desc">{{ contetnts_document.desc }}</span>
         </h2>
-        <div class="heading_contents_area" v-if="!taghide && contetnts_document.contents_text">
+        <div
+          class="heading_contents_area"
+          v-if="!taghide && contetnts_document.contents_text"
+        >
           <div class="tag_area">
             <p>Category: {{ contetnts_document.type }}</p>
             <ul class="tag_list">
@@ -51,10 +54,13 @@
             </ul>
           </div>
         </div>
-        <div v-html="contetnts_document.contents_text">
-        </div>
+        <div v-html="contetnts_document.contents_text"></div>
         <div v-if="!contetnts_document.contents_text">
-          <p class="h3 m-5 text-center"><b-badge class="p-3" variant="warning">👷 このページは現在工事中です</b-badge></p>
+          <p class="h3 m-5 text-center">
+            <b-badge class="p-3" variant="warning"
+              >👷 このページは現在工事中です</b-badge
+            >
+          </p>
         </div>
       </div>
     </article>
@@ -76,6 +82,51 @@ let title,
   contents_links;
 
 export default {
+  async asyncData({ params, error }) {
+    try {
+      let taghide = false;
+
+      //データ取得
+      contents_id = params.ids + "";
+      const document_contents_snapshot = await makes_db
+        .doc(contents_id)
+        .get()
+        .catch(function (error) {
+          this.$nuxt.error({
+            statusCode: 404,
+            message: error,
+          });
+        });
+      contetnts_document = document_contents_snapshot.data();
+
+      //データ整備
+      title = contetnts_document.title;
+      ogp_image = contetnts_document.thumb;
+      if (ogp_image.slice(0, 1) == "/") {
+        ogp_image = "https://nekozuki.me" + ogp_image;
+      }
+      contents_tags = contetnts_document.tags;
+      contents_tag_imgs = contetnts_document.tag_imgs;
+      contents_links = contetnts_document.links;
+
+      if (contetnts_document.type == "contents") {
+        taghide = true;
+      }
+
+      return {
+        title,
+        contents_id,
+        ogp_image,
+        contetnts_document,
+        contents_tags,
+        contents_tag_imgs,
+        contents_links,
+        taghide,
+      };
+    } catch {
+      error({ statusCode: 404, message: 'Page not Found' })
+    }
+  },
   mixins: [Meta],
   data() {
     return {
@@ -88,49 +139,5 @@ export default {
       },
     };
   },
-  async asyncData({ params }) {
-    let taghide = false;
-
-    //データ取得
-    contents_id = params.ids + "";
-    const document_contents_snapshot = await makes_db
-      .doc(contents_id)
-      .get()
-      .catch(function (error) {
-        this.$nuxt.error({
-          statusCode: 404,
-          message: error,
-        });
-      });
-    contetnts_document = document_contents_snapshot.data();
-
-    //データ整備
-    title = contetnts_document.title;
-    ogp_image = contetnts_document.thumb;
-    if (ogp_image.slice(0, 1) == "/") {
-      ogp_image = "https://nekozuki.me" + ogp_image;
-    }
-    contents_tags = contetnts_document.tags;
-    contents_tag_imgs = contetnts_document.tag_imgs;
-    contents_links = contetnts_document.links;
-
-    if(contetnts_document.type == "contents"){
-      taghide = true;
-    }
-
-    return {
-      title,
-      contents_id,
-      ogp_image,
-      contetnts_document,
-      contents_tags,
-      contents_tag_imgs,
-      contents_links,
-      taghide
-    };
-  },
 };
 </script>
-
-<style lang="scss">
-</style>
