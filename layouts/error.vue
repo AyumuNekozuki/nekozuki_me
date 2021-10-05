@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       meta: {
-        title: error.statusCode + " - " + error.message,
+        title: "Error!",
         description: "",
         type: "pages",
         url: "https://nekozuki.me",

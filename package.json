@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "gstart": "yarn generate && yarn start",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "ghpdeploy": "yarn generate && yarn deploy"
   },
