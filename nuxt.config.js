@@ -17,19 +17,18 @@ export default {
       { hid: 'og:url', property: 'og:url', content: 'https://nekozuki.me' },
       { hid: 'og:title', property: 'og:title', content: 'ねこづきあゆむのうぇぶさいと' },
       { hid: 'og:description', property: 'og:description', content: 'ねこづきあゆむのうぇぶさいとです。' },
-      // { hid: 'og:image', property: 'og:image', content: 'https://nekozuki.me/img/thumb/nekozuki.png' },
+      { hid: 'og:image', property: 'og:image', content: 'https://nekozuki.me/img/thumb/nekozuki.png' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // { rel: 'icon', type: 'image/x-icon', href: '/img/ogp/icon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/img/ogp/icon.png' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    // '~/static/icomoon_fonts/icomoon-style.css',
+    '~/assets/icomoon_fonts/icomoon-style.css',
     '~/assets/scss/main.scss'
   ],
 
@@ -50,8 +49,6 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
     // https://firebase.nuxtjs.org/
     '@nuxtjs/firebase',
     'nuxt-helmet',
@@ -61,13 +58,6 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
-
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'ja'
-    }
-  },
 
   // Firebase module config: https://firebase.nuxtjs.org/
   firebase: {
@@ -125,5 +115,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  loading: {
+    color: '#3273dc',
+    failedColor: 'red',
+    height: '2px'
+  },
 }

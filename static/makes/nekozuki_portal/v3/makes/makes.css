@@ -1,0 +1,22 @@
+.works{
+  max-width: 475px;
+  display: inline-block;
+  vertical-align:top;
+}
+
+.works h3{
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.works img{
+  width: 100%;
+}
+
+@media screen and (max-width: 1200px) { 
+
+  .works{
+    max-width: 100%;
+  }
+
+}

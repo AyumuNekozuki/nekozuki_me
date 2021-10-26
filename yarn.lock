@@ -2380,6 +2380,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@vendia/serverless-express@^4.3.4":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@vendia/serverless-express/-/serverless-express-4.5.2.tgz#b9ddcea0590fb171cf9f64b9a677f183708e62b6"
+  integrity sha512-mekBOPnBxfhIvBYKVwfvjp9NtS+bOs3F08Vudxa3Fb7zkxtdjRn0UMLRT6zwWf6i4V5rjk2aEhzbIDSCV1GQ0w==
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.2.1.tgz#31624a7a505fb14da1d58023725a4c5f270e6a81"
@@ -9663,6 +9668,13 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
+
+nuxt-aws-lambda@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/nuxt-aws-lambda/-/nuxt-aws-lambda-1.5.0.tgz#a84a0322bf0ca8dd51f172549dfbcb9d5f57d60b"
+  integrity sha512-jinOIN15HFoeNO2FHmKKw4jz2ekoglsFewDFZA3fiy/76OSKZ5ddXnTOLRMdsLZ2MWH3ENsL8kxTZw/QWmdNRA==
+  dependencies:
+    "@vendia/serverless-express" "^4.3.4"
 
 nuxt-fontawesome@^0.4.0:
   version "0.4.0"

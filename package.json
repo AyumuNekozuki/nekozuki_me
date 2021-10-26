@@ -22,6 +22,7 @@
     "firebase-tools": "^9.21.0",
     "node-sass": "4.14.1",
     "nuxt": "^2.15.7",
+    "nuxt-aws-lambda": "^1.5.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-helmet": "^2.0.1",
     "nuxt-webfontloader": "^1.1.0",
