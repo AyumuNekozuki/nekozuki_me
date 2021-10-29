@@ -1,15 +1,36 @@
 <template>
-  <footer id="commonFooter" class="justify-content-center p-2">
-    <p class="text-center footer_links">
-      <nuxt-link to="/policy">Policy</nuxt-link>
-      <a href="https://github.com/AyumuNekozuki/nekozuki_me">GitHub</a>
-      <span class="cl"><span style="font-family:'Times New Roman', 'Times';">&copy;</span> 2018-2021 AyumuNekozuki</span>
-    </p>
+  <footer class="commonFooter">
+    <div class="container">
+      <div class="level">
+        <div class="level-start">
+          <a class="footer-logo is-block mb-2" href="/">
+            <img
+              class="logo-img"
+              src="@/assets/imgs/logo.png"
+              alt="ねころぐ"
+              height="28"
+            />
+          </a>
+          <p class="size-small">
+            © 2018 - 2021 AyumuNekozuki
+          </p>
+        </div>
+        <div class="level-end">
+          <div class="field has-addons">
+            <p class="control">
+              <a
+                class="button is-transparent is-large"
+                target="_blank"
+                rel="noopener"
+                title="Pullreq &amp; issue is Here"
+                href="https://github.com/AyumuNekozuki/nekozuki_me"
+              >
+                <font-awesome-icon :icon="['fab', 'github']" />
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 </template>
-
-<script>
-export default {
-
-}
-</script>

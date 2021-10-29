@@ -1,92 +1,44 @@
 <template>
-  <header id="commonHeader">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <nuxt-link class="navbar-brand" to="/">ねこづきあゆむのうぇぶさいと</nuxt-link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <nuxt-link class="nav-link" aria-current="page" to="/">Home</nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link class="nav-link" aria-current="page" to="/about">About</nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link class="nav-link" aria-current="page" to="/makes">Makes</nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link class="nav-link" aria-current="page" to="/links">Links</nuxt-link>
-            </li>
-            <li class="nav-item">
-              <nuxt-link class="nav-link" aria-current="page" to="/contact"
-                >Contact</nuxt-link
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+  <header class="commonHeader">
+    <b-navbar toggleable="lg" type="light" class="commonHeader_wrapper">
+      <b-navbar-brand href="/">
+        <h1 class="logo"></h1>
+      </b-navbar-brand>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://blog.nekozuki.me">
-              <font-awesome-icon :icon="['fas', 'blog']" />
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              target="_blank"
-              href="https://twitter.com/nekozuki_2525"
-            >
-              <font-awesome-icon :icon="['fab', 'twitter']" />
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              target="_blank"
-              rel="me"
-              href="https://friends.cafe/@nekozuki_2525"
-            >
-              <font-awesome-icon :icon="['fab', 'mastodon']" />
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              target="_blank"
-              href="https://www.nicovideo.jp/user/45048152/video"
-            >
-              <i class="icon2-niconico"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              target="_blank"
-              href="https://github.com/AyumuNekozuki"
-            >
-              <font-awesome-icon :icon="['fab', 'github']" />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="/about">About</b-nav-item>
+          <b-nav-item href="/makes">Makes</b-nav-item>
+          <b-nav-item href="/links">Links</b-nav-item>
+          <b-nav-item href="/contact">Contact</b-nav-item>
+          <b-nav-item href="https://blog.nekozuki.me">Blog</b-nav-item>
+        </b-navbar-nav>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto sphide">
+          <b-nav-item target="_blank" href="https://twitter.com/nekozuki_2525">
+            <font-awesome-icon :icon="['fab', 'twitter']" />
+          </b-nav-item>
+          <b-nav-item
+            target="_blank"
+            href="https://friends.cafe/@nekozuki_2525"
+            rel="me"
+          >
+            <font-awesome-icon :icon="['fab', 'mastodon']" />
+          </b-nav-item>
+          <b-nav-item
+            target="_blank"
+            href="https://www.nicovideo.jp/user/45048152/video"
+          >
+            <i class="icon2-niconico"></i>
+          </b-nav-item>
+          <b-nav-item target="_blank" href="https://github.com/AyumuNekozuki">
+            <font-awesome-icon :icon="['fab', 'github']" />
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
   </header>
 </template>
-
-<script>
-export default {};
-</script>
