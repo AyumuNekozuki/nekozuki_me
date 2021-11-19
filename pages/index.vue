@@ -28,7 +28,7 @@
             <div
               class="item"
               v-for="pickup_datas in pickup_datas"
-              :key="pickup_datas.length"
+              :key="pickup_datas"
             >
               <nuxt-link :to="pickup_datas.link">
                 <div class="thumb_area">
@@ -60,7 +60,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="schedule_datas in schedule_datas" :key="schedule_datas.length">
+                  <tr v-for="schedule_datas in schedule_datas" :key="schedule_datas">
                     <td><b-badge :variant="schedule_datas.typecolor" style="font-size:110%">{{ schedule_datas.category }}（{{ schedule_datas.type }}）</b-badge></td>
                     <td>{{ schedule_datas.date }}~</td>
                     <td style="font-weight: 800;"><a :href="schedule_datas.href" target="_blank" rel="noopener noreferrer">{{ schedule_datas.title }}</a></td>
