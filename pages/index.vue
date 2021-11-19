@@ -96,13 +96,7 @@
 
 <script>
 import Meta from "~/mixins/meta";
-import firebase from "~/plugins/firebase";
 import Mainvisual from "~/components/Mainvisual.vue";
-
-const db = firebase.firestore();
-const makes_db = db.collection("works");
-const components_db = db.collection("components");
-const schedule_db = db.collection("schedule_pick");
 
 let pickup_datas = [];
 let schedule_datas = [];
@@ -119,7 +113,13 @@ export default {
       title: "ねこづきあゆむのうぇぶさいと",
     };
   },
-  async asyncData() {
+  async asyncData({ $fire }) {
+    const db = $fire.firestore;
+    const makes_db = db.collection("works");
+    const components_db = db.collection("components");
+    const schedule_db = db.collection("schedule_pick");
+
+
     if (trycount == 0) {
       const document_pickup_ids = await components_db
         .doc("works_pickup")

@@ -139,11 +139,6 @@
 </template>
 
 <script>
-import firebase from "~/plugins/firebase";
-const db = firebase.firestore();
-const makes_db = db.collection("works");
-const components_db = db.collection("components");
-
 import Meta from "~/mixins/meta";
 
 let pickup_datas = [];
@@ -165,7 +160,11 @@ export default {
       },
     };
   },
-  async asyncData({ params }) {
+  async asyncData({ $fire, params }) {
+    const db = $fire.firestore;
+    const makes_db = db.collection("works");
+    const components_db = db.collection("components");
+
     if (trycount == 0) {
       const document_pickup_ids = await components_db
         .doc("works_pickup")
