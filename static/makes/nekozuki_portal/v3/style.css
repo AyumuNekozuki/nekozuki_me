@@ -1,0 +1,263 @@
+.warn{
+  background-color: rgb(255,0,0,0.75) !important;
+  color: white !important;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  font-family:'Kosugi Maru','sans-serif';
+  background-image: url(https://media.discordapp.net/attachments/542501461439938596/706968558831271966/unknown.png?width=960&height=488);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/*navbar*/
+nav{
+  min-height: 3.25rem;
+  background-color: #191D29;
+  color: white;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  opacity:0.8;
+}
+
+.container{
+  max-width: 1152px;
+  margin-right: auto;
+  margin-left : auto;
+}
+.nav-logo{
+  min-width: 150px;
+  display: inline-block;
+  margin-right: 1rem;
+}
+#header-logo{
+  min-height: 3rem;
+  min-width: 150px;
+  max-width: 150px;
+  fill: white;
+}
+
+.nav-contents{
+  display: inline-block;
+}
+.nav-menu{
+  max-width: 1152px;
+  display: inline-block;
+}
+.nav-menu li{
+  float: left;
+  list-style-type: none;
+}
+.nav-menu li a{
+  display: block;
+  padding: 1.5em 1em;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #191D29;
+  color: #fff;
+}
+
+.nav-menu li a:hover {
+  background-color: #373D48;
+}
+
+/*section*/
+section{
+  max-width: 1152px;
+  margin-right: auto;
+  margin-left : auto;
+
+  padding:3rem 1.5rem;
+}
+
+.card{
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  
+  color: white;
+  background-color: #373D48;
+  opacity:0.8;
+}
+
+/*fotter*/
+footer{
+  max-width: 1152px;
+  margin-right: auto;
+  margin-left : auto;
+  opacity:0.8;
+  
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  margin-bottom: 5rem;
+
+  color: white;
+  font-size:15px;
+}
+#footer-logo{
+  max-height: 4rem;
+  max-width: 150px;
+  fill:white;
+}
+
+.footer-but{
+  float: right;
+  font-size:20px;
+}
+.footer-but a{
+  display: block;
+  padding: 1.25em 1.25em;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 25px;
+}
+
+.footer-but a:hover {
+  background-color: #373D48;
+}
+
+/*back to top*/
+.back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  display: none;
+}
+.back-to-top:before {
+  content: "";
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #373D48;
+}
+.back-to-top:after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f077";
+  font-weight: 900;
+  display: block;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/*default*/
+.codeblock{
+  font-family: 'Inconsolata', 'monospace';
+}
+iframe{
+  margin-left: 2rem;
+  max-width: 80%;
+}
+.blogcard{
+  width: 80%;
+}
+.a2a_kit{
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+
+p{
+  margin: 1rem;
+  line-height: 1.25rem;
+}
+a{
+  color: #4E8ED0;
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover{
+  color: white;
+}
+
+h3{
+  margin: 1rem;
+}
+
+.card ul{
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.card li{
+  line-height: 1.25rem;
+  margin: 1rem;
+}
+
+hr{
+  margin: 1.5rem;
+  height: 2px;
+  background-color: #434a56;
+  border: none;
+}
+
+
+@media screen and (max-width: 620px) { 
+  body{
+    overflow-x: hidden;
+  }
+
+  nav{
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .nav-logo{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .nav-contents{
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin:  0 auto;
+  }
+  .nav-menu{
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+
+    text-align: center;
+    margin:  0 auto;
+  }
+  .nav-menu li{
+    float: none;
+    margin:  0 auto;
+    display: inline-block;
+  }
+  .nav-menu li a{
+    padding: 1.5em 1em;
+  }
+
+
+  section{
+    margin: 1px;
+    padding: 1px;
+  }
+  .card{
+    margin: 1rem;
+  }
+
+}
