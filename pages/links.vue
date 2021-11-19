@@ -53,6 +53,9 @@
     <b-button href="https://room.virtualcast.jp/users/100010" class="tso">
       <span>VirtutalCast</span><span>users/100010</span>
     </b-button>
+    <b-button href="https://jp.finalfantasyxiv.com/lodestone/character/37497187/" class="ff14">
+      <span>FF14</span><span>Yuuna Minazuki (Asura)</span>
+    </b-button>
     <b-button class="switch">
       <span>Nintendo Switch</span><span>SW-16295666-8388</span>
     </b-button>
