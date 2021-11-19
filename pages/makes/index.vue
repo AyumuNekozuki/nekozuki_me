@@ -158,27 +158,31 @@ export default {
   },
   async asyncData({ $microcms, params }) {
     let pickup_datas = await $microcms.get({
-      endpoint: "works_pickup"
+      endpoint: "works_pickup",
+      queries: {orders: 'createdAt'}
     });
 
     let extention_datas = await $microcms.get({
       endpoint: "makes",
-      queries: {filters: 'type[equals]extentions'}
+      queries: {
+        filters: 'type[equals]extentions',
+        orders: 'createdAt'
+      },
     });
 
     let web_datas = await $microcms.get({
       endpoint: "makes",
-      queries: {filters: 'type[equals]web'}
+      queries: {filters: 'type[equals]web', orders: 'createdAt'}
     });
 
     let contents_datas = await $microcms.get({
       endpoint: "makes",
-      queries: {filters: 'type[equals]contents'}
+      queries: {filters: 'type[equals]contents', orders: 'createdAt'}
     });
 
     let solid_datas = await $microcms.get({
       endpoint: "makes",
-      queries: {filters: 'type[equals]solid'}
+      queries: {filters: 'type[equals]solid', orders: 'createdAt'}
     });
 
     trycount = 1;
