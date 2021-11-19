@@ -104,6 +104,7 @@ export default {
     //   }
     // }
   },
+  buildDir: 'dist',
 
   loading: {
     color: '#3273dc',
