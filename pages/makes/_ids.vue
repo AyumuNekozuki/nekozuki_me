@@ -68,10 +68,6 @@
 </template>
 
 <script>
-import firebase from "~/plugins/firebase";
-const db = firebase.firestore();
-const makes_db = db.collection("works");
-
 import Meta from "~/mixins/meta";
 let title,
   contents_id,
@@ -82,7 +78,10 @@ let title,
   contents_links;
 
 export default {
-  async asyncData({ params, error }) {
+  async asyncData({ $fire, params, error }) {
+    const db = $fire.firestore;
+    const makes_db = db.collection("works");
+
     try {
       let taghide = false;
 
