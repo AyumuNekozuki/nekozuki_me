@@ -44,7 +44,16 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    'nuxt-microcms-module',
+    '@nuxtjs/date-fns'
   ],
+  microcms: {
+    options: {
+      serviceDomain: process.env.SERVICE_DOMAIN,
+      apiKey: process.env.API_KEY,
+    },
+    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -53,7 +62,6 @@ export default {
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
     'nuxt-webfontloader',
-    '@nuxtjs/firebase',
   ],
   fontawesome: {
     imports: [
@@ -76,33 +84,10 @@ export default {
     frameguard: false,
     hidePoweredBy: true
   },
-  firebase: {
-    config: {
-      apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      storageBucket: process.env.FIREBASE_STORAGE_BACKET,
-      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-      appId: process.env.FIREBASE_APP_ID,
-      measurementId: process.env.FIREBASE_MEASUREMENT_ID
-    },
-    services: {
-      firestore: true,
-      analytics: true,
-    }
-  },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend(config, { isDev, isClient, isServer }) {
-      if (isServer) {
-        config.externals = {
-          '@firebase/app': 'commonjs @firebase/app',
-          '@firebase/firestore': 'commonjs @firebase/firestore',
-          '@firebase/analytics': 'commonjs @firebase/analytics',
-        }
-      }
-    }
   },
   buildDir: 'dist',
 

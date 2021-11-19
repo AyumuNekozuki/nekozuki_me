@@ -27,20 +27,20 @@
           <div class="contents_list_area">
             <div
               class="item"
-              v-for="pickup_datas in pickup_datas"
-              :key="pickup_datas"
+              v-for="data in pickup_datas.pickupid"
+              :key="data"
             >
-              <nuxt-link :to="pickup_datas.link">
+              <nuxt-link :to="'/makes/'+ data.id" >
                 <div class="thumb_area">
-                  <img :src="pickup_datas.thumb" alt="" srcset="" />
+                  <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
                 <div class="title_area">
-                  <p class="title">{{ pickup_datas.title }}</p>
-                  <p class="desc">{{ pickup_datas.desc }}</p>
+                  <p class="title">{{ data.title }}</p>
+                  <p class="desc">{{ data.desc }}</p>
                 </div>
               </nuxt-link>
             </div>
-            <div class="contents_list_area_err" v-if="pickup_datas.length == 0">
+            <div class="contents_list_area_err" v-if="!pickup_datas">
               <p>データの取得に失敗しました</p>
             </div>
           </div>
@@ -50,7 +50,7 @@
         <article>
           <div class="text_area">
             <h2>猫月遥歩（ねこづきあゆむ）公開スケジュール</h2>
-            <div class="list_picks mb-4" style="border-bottom: 2px dashed #ccc" v-if="!schedule_datas.length == 0">
+            <div class="list_picks mb-4" style="border-bottom: 2px dashed #ccc" v-if="schedule_datas">
               <table class="mb-3">
                 <thead>
                   <tr>
@@ -60,10 +60,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="schedule_datas in schedule_datas" :key="schedule_datas">
-                    <td><b-badge :variant="schedule_datas.typecolor" style="font-size:110%">{{ schedule_datas.category }}（{{ schedule_datas.type }}）</b-badge></td>
-                    <td>{{ schedule_datas.date }}~</td>
-                    <td style="font-weight: 800;"><a :href="schedule_datas.href" target="_blank" rel="noopener noreferrer">{{ schedule_datas.title }}</a></td>
+                  <tr v-for="scdata in schedule_datas.contents" :key="scdata">
+                    <td><b-badge :variant="scdata.typecolor" style="font-size:110%">{{ scdata.category }}（{{ scdata.type }}）</b-badge></td>
+                    <td>{{ $dateFns.format(new Date(scdata.date), 'yyyy/MM/dd HH:mm') }}〜
+                    </td>
+                    <td style="font-weight: 800;"><a :href="scdata.href" target="_blank" rel="noopener noreferrer">{{ scdata.title }}</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -98,8 +99,7 @@
 import Meta from "~/mixins/meta";
 import Mainvisual from "~/components/Mainvisual.vue";
 
-let pickup_datas = [];
-let schedule_datas = [];
+// let schedule_datas = [];
 let trycount = 0;
 
 export default {
@@ -113,75 +113,40 @@ export default {
       title: "ねこづきあゆむのうぇぶさいと",
     };
   },
-  async asyncData({ $fire }) {
-    const db = $fire.firestore;
-    const makes_db = db.collection("works");
-    const components_db = db.collection("components");
-    const schedule_db = db.collection("schedule_pick");
+  async asyncData({ $microcms }) {
+    let pickup_datas = await $microcms.get({
+      endpoint: "works_pickup"
+    });
 
+    let yesterday_date = new Date(); 
+    yesterday_date.setDate(yesterday_date.getDate() - 1);
 
-    if (trycount == 0) {
-      const document_pickup_ids = await components_db
-        .doc("works_pickup")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      var document_pickup_ids_doc = document_pickup_ids.data();
-      for (var i = 0; i < document_pickup_ids_doc.pickup_id.length; i++) {
-        var document_pickup_doc = await makes_db
-          .doc(document_pickup_ids_doc.pickup_id[i])
-          .get()
-          .catch(function (error) {
-            console.error(error);
-          });
-        var data = document_pickup_doc.data();
-        data.link = "/makes/" + data.id;
-        pickup_datas.push(data);
+    console.log(yesterday_date)
+
+    let schedule_datas = await $microcms.get({
+      endpoint: "schedule",
+      queries: {
+        orders: 'date',
+        filters: 'date[greater_than]'+yesterday_date.toISOString()
       }
+    });
+    console.log(schedule_datas.contents)
 
-      const today_timestamp = new Date().getTime();
-      const Snapshot_schedule = await schedule_db
-        .orderBy("date")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      Snapshot_schedule.forEach((doc) => {
-        var data = doc.data();
-
-        if(data.date.seconds > Math.floor(today_timestamp / 1000)){
-          data.date = new Date(data.date.seconds * 1000);
-          data.date = changedatetype(data.date);
-
-          if(data.category == '生放送番組' && (data.type == 'ゲスト出演' || data.type == '企画参加')){
-            data.typecolor = 'info';
-          }else{
-            data.typecolor = 'secondary';
-          }
-
-          schedule_datas.push(data)
-        }
-      });
-
-      function changedatetype(dt){
-        var year = dt.getFullYear() ;
-        var month = dt.getMonth() + 1 ;
-        var date = dt.getDate();
-        var hours = dt.getHours() ;
-        var minutes = dt.getMinutes();
-        var ymdhms = new String( year ) + "/" + ( "00" + new String( month )).slice( -2 ) + "/" + ( "00" + new String( date )).slice( -2 ) ;
-        ymdhms += " " + ( "00" + new String( hours )).slice( -2 ) + ":" + ( "00" + new String( minutes )).slice( -2 );
-        return ymdhms;
-      }
-
-
-      trycount = 1;
-      return {
-        pickup_datas,
-        schedule_datas
-      };
+    function changedatetype(dt){
+      var year = dt.getFullYear() ;
+      var month = dt.getMonth() + 1 ;
+      var date = dt.getDate();
+      var hours = dt.getHours() ;
+      var minutes = dt.getMinutes();
+      var ymdhms = new String( year ) + "/" + ( "00" + new String( month )).slice( -2 ) + "/" + ( "00" + new String( date )).slice( -2 ) ;
+      ymdhms += " " + ( "00" + new String( hours )).slice( -2 ) + ":" + ( "00" + new String( minutes )).slice( -2 );
+      return ymdhms;
     }
+
+    return {
+      pickup_datas,
+      schedule_datas
+    };
   },
 };
 </script>

@@ -9,22 +9,22 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.15.7",
-    "core-js": "^3.15.1",
+    "@nuxtjs/date-fns": "^1.5.0",
     "@nuxtjs/vercel-builder": "^0.22.1",
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7",
     "nuxt-helmet": "^2.0.1",
-    "@nuxtjs/firebase": "7.6.1",
-    "firebase": "8.10.0"
+    "nuxt-microcms-module": "^2.0.0"
   },
   "devDependencies": {
-    "nuxt-fontawesome": "^0.4.0",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
-    "nuxt-webfontloader": "^1.1.0",
     "fibers": "^5.0.0",
     "node-sass": "^6.0.1",
+    "nuxt-fontawesome": "^0.4.0",
+    "nuxt-webfontloader": "^1.1.0",
     "sass-loader": "10",
     "save": "^2.4.0",
     "style-loader": "^3.2.1"

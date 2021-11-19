@@ -8,22 +8,23 @@
           <div class="contents_list_area">
             <div
               class="item"
-              v-for="pickup_datas in pickup_datas"
-              :key="pickup_datas.length"
+              v-if="pickup_datas" 
+              v-for="data in pickup_datas.pickupid"
+              :key="data"
             >
-              <nuxt-link :to="pickup_datas.link">
+              <nuxt-link :to="'/makes/' + data.id">
                 <div class="thumb_area">
-                  <img :src="pickup_datas.thumb" alt="" srcset="" />
+                  <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
                 <div class="title_area">
-                  <p class="title">{{ pickup_datas.title }}</p>
-                  <p class="desc">{{ pickup_datas.desc }}</p>
+                  <p class="title">{{ data.title }}</p>
+                  <p class="desc">{{ data.desc }}</p>
                 </div>
               </nuxt-link>
             </div>
             <div
               class="contents_list_area_err"
-              v-if="pickup_datas.length == 0"
+              v-if="!pickup_datas"
             >
               <p>データの取得に失敗しました</p>
             </div>
@@ -33,23 +34,23 @@
           <h3>Webページ／Webアプリ</h3>
           <div class="contents_list_area">
             <div
-              class="item"
-              v-for="web_datas in web_datas"
-              :key="web_datas.length"
+              class="item" v-if="web_datas"
+              v-for="data in web_datas.contents"
+              :key="data"
             >
-              <nuxt-link :to="web_datas.link">
+              <nuxt-link :to="'/makes/' + data.id">
                 <div class="thumb_area">
-                  <img :src="web_datas.thumb" alt="" srcset="" />
+                  <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
                 <div class="title_area">
-                  <p class="title">{{ web_datas.title }}</p>
-                  <p class="desc">{{ web_datas.desc }}</p>
+                  <p class="title">{{ data.title }}</p>
+                  <p class="desc">{{ data.desc }}</p>
                 </div>
               </nuxt-link>
             </div>
             <div
               class="contents_list_area_err"
-              v-if="web_datas.length == 0"
+              v-if="!web_datas"
             >
               <p>データの取得に失敗しました</p>
             </div>
@@ -59,23 +60,23 @@
           <h3>ブラウザ拡張機能</h3>
           <div class="contents_list_area">
             <div
-              class="item"
-              v-for="extention_datas in extention_datas"
-              :key="extention_datas.length"
+              class="item" v-if="extention_datas"
+              v-for="data in extention_datas.contents"
+              :key="data"
             >
-              <nuxt-link :to="extention_datas.link">
+              <nuxt-link :to="'/makes/' + data.id">
                 <div class="thumb_area">
-                  <img :src="extention_datas.thumb" alt="" srcset="" />
+                  <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
                 <div class="title_area">
-                  <p class="title">{{ extention_datas.title }}</p>
-                  <p class="desc">{{ extention_datas.desc }}</p>
+                  <p class="title">{{ data.title }}</p>
+                  <p class="desc">{{ data.desc }}</p>
                 </div>
               </nuxt-link>
             </div>
             <div
               class="contents_list_area_err"
-              v-if="extention_datas.length == 0"
+              v-if="!extention_datas"
             >
               <p>データの取得に失敗しました</p>
             </div>
@@ -85,23 +86,23 @@
           <h3>コンテンツ</h3>
           <div class="contents_list_area">
             <div
-              class="item"
-              v-for="contents_datas in contents_datas"
-              :key="contents_datas.length"
+              class="item" v-if="contents_datas"
+              v-for="data in contents_datas.contents"
+              :key="data"
             >
-              <nuxt-link :to="contents_datas.link">
+              <nuxt-link :to="'/makes/' + data.id">
                 <div class="thumb_area">
-                  <img :src="contents_datas.thumb" alt="" srcset="" />
+                  <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
                 <div class="title_area">
-                  <p class="title">{{ contents_datas.title }}</p>
-                  <p class="desc">{{ contents_datas.desc }}</p>
+                  <p class="title">{{ data.title }}</p>
+                  <p class="desc">{{ data.desc }}</p>
                 </div>
               </nuxt-link>
             </div>
             <div
               class="contents_list_area_err"
-              v-if="contents_datas.length == 0"
+              v-if="!contents_datas"
             >
               <p>データの取得に失敗しました</p>
             </div>
@@ -111,23 +112,23 @@
           <h3>3Dアイテム／3Dコンテンツ</h3>
           <div class="contents_list_area">
             <div
-              class="item"
-              v-for="solid_datas in solid_datas"
-              :key="solid_datas.length"
+              class="item" v-if="solid_datas"
+              v-for="data in solid_datas.contents"
+              :key="data"
             >
-              <nuxt-link :to="solid_datas.link">
+              <nuxt-link :to="'/makes/' + data.id">
                 <div class="thumb_area">
-                  <img :src="solid_datas.thumb" alt="" srcset="" />
+                  <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
                 <div class="title_area">
-                  <p class="title">{{ solid_datas.title }}</p>
-                  <p class="desc">{{ solid_datas.desc }}</p>
+                  <p class="title">{{ data.title }}</p>
+                  <p class="desc">{{ data.desc }}</p>
                 </div>
               </nuxt-link>
             </div>
             <div
               class="contents_list_area_err"
-              v-if="solid_datas.length == 0"
+              v-if="!solid_datas"
             >
               <p>データの取得に失敗しました</p>
             </div>
@@ -141,11 +142,6 @@
 <script>
 import Meta from "~/mixins/meta";
 
-let pickup_datas = [];
-let extention_datas = [];
-let web_datas = [];
-let contents_datas = [];
-let solid_datas = [];
 let trycount = 0;
 
 export default {
@@ -160,92 +156,45 @@ export default {
       },
     };
   },
-  async asyncData({ $fire, params }) {
-    const db = $fire.firestore;
-    const makes_db = db.collection("works");
-    const components_db = db.collection("components");
+  async asyncData({ $microcms, params }) {
+    let pickup_datas = await $microcms.get({
+      endpoint: "works_pickup"
+    });
 
-    if (trycount == 0) {
-      const document_pickup_ids = await components_db
-        .doc("works_pickup")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      var document_pickup_ids_doc = document_pickup_ids.data();
-      for (var i = 0; i < document_pickup_ids_doc.pickup_id.length; i++) {
-        var document_pickup_doc = await makes_db
-          .doc(document_pickup_ids_doc.pickup_id[i])
-          .get()
-          .catch(function (error) {
-            console.error(error);
-          });
-        var data = document_pickup_doc.data();
-        data.link = "/makes/" + data.id;
-        pickup_datas.push(data);
-      }
+    let extention_datas = await $microcms.get({
+      endpoint: "makes",
+      queries: {filters: 'type[equals]extentions'}
+    });
 
-      const Snapshot_extention = await makes_db
-        .orderBy("update", "desc")
-        .where("type", "==", "extentions")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      Snapshot_extention.forEach((doc) => {
-        var data = doc.data();
-        data.link = "/makes/" + data.id;
-        extention_datas.push(data);
-      });
+    let web_datas = await $microcms.get({
+      endpoint: "makes",
+      queries: {filters: 'type[equals]web'}
+    });
 
-      const Snapshot_web = await makes_db
-        .orderBy("update", "desc")
-        .where("type", "==", "web")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      Snapshot_web.forEach((doc) => {
-        var data = doc.data();
-        data.link = "/makes/" + data.id;
-        web_datas.push(data);
-      });
+    let contents_datas = await $microcms.get({
+      endpoint: "makes",
+      queries: {filters: 'type[equals]contents'}
+    });
 
-      const Snapshot_contents = await makes_db
-        .orderBy("update", "desc")
-        .where("type", "==", "contents")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      Snapshot_contents.forEach((doc) => {
-        var data = doc.data();
-        data.link = "/makes/" + data.id;
-        contents_datas.push(data);
-      });
+    let solid_datas = await $microcms.get({
+      endpoint: "makes",
+      queries: {filters: 'type[equals]solid'}
+    });
 
-      const Snapshot_solid = await makes_db
-        .orderBy("update", "desc")
-        .where("type", "==", "solid")
-        .get()
-        .catch(function (error) {
-          console.error(error);
-        });
-      Snapshot_solid.forEach((doc) => {
-        var data = doc.data();
-        data.link = "/makes/" + data.id;
-        solid_datas.push(data);
-      });
+    trycount = 1;
 
-      trycount = 1;
-      return {
-        pickup_datas,
-        web_datas,
-        extention_datas,
-        contents_datas,
-        solid_datas,
-      };
+    console.log(pickup_datas);
+    console.log(extention_datas);
+
+
+    return {
+      pickup_datas,
+      extention_datas,
+      web_datas,
+      contents_datas,
+      solid_datas
     }
-  },
-};
+  }
+}
+
 </script>

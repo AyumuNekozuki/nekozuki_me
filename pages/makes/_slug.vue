@@ -3,7 +3,7 @@
     <article>
       <div class="article_thumb">
         <img
-          :src="contetnts_document.thumb"
+          :src="contetnts_document.thumbnail.url"
           :alt="contetnts_document.title"
           srcset=""
         />
@@ -21,31 +21,30 @@
             <p>Category: {{ contetnts_document.type }}</p>
             <ul class="tag_list">
               <li
-                v-for="contents_tags in contents_tags"
-                :key="contents_tags.length"
+                v-for="tag in contetnts_document.tag"
+                :key="tag"
               >
                 <font-awesome-icon :icon="['fas', 'tag']" />
-                {{ contents_tags }}
+                {{ tag.tag }}
               </li>
             </ul>
             <ul class="tag_img_list">
               <li
-                v-for="contents_tag_imgs in contents_tag_imgs"
-                :key="contents_tag_imgs.length"
+                v-for="imgtag in contetnts_document.imglinks"
+                :key="imgtag"
               >
-                <img :src="contents_tag_imgs" alt="" srcset="" />
+                <img :src="imgtag.imglink" alt="" srcset="" />
               </li>
             </ul>
           </div>
           <div class="link_area">
             <ul class="link_list">
               <li
-                v-for="contents_links in contents_links"
-                :key="contents_links.length"
+                v-for="link in contetnts_document.links"
+                :key="link"
               >
-                <a :href="contents_links.href">
-                  <span class="icon" v-html="contents_links.icon"> </span>
-                  <span class="title">{{ contents_links.title }}</span>
+                <a :href="link.href">
+                  <span class="title">{{ link.title }}</span>
                   <span class="ex">
                     <font-awesome-icon :icon="['fas', 'external-link-alt']" />
                   </span>
@@ -54,7 +53,9 @@
             </ul>
           </div>
         </div>
-        <div v-html="contetnts_document.contents_text"></div>
+        <div v-if="contetnts_document.contents_text">
+          <div v-for="contntdata in contetnts_document.contents_text" :key="contntdata" v-html="contntdata.editor"></div>
+        </div>
         <div v-if="!contetnts_document.contents_text">
           <p class="h3 m-5 text-center">
             <b-badge class="p-3" variant="warning"
@@ -69,57 +70,36 @@
 
 <script>
 import Meta from "~/mixins/meta";
-let title,
-  contents_id,
-  ogp_image,
-  contetnts_document,
-  contents_tags,
-  contents_tag_imgs,
-  contents_links;
+let ogp_title, ogp_id, ogp_image;
 
 export default {
-  async asyncData({ $fire, params, error }) {
-    const db = $fire.firestore;
-    const makes_db = db.collection("works");
-
+  async asyncData({ $microcms, params, error }) {
     try {
       let taghide = false;
 
-      //データ取得
-      contents_id = params.ids + "";
-      const document_contents_snapshot = await makes_db
-        .doc(contents_id)
-        .get()
-        .catch(function (error) {
-          this.$nuxt.error({
-            statusCode: 404,
-            message: error,
-          });
+      let contetnts_document = await $microcms.get({
+        endpoint: `makes/${params.slug}`,
+        query: {limit: 0}
+      }).catch(function (error) {
+        this.$nuxt.error({
+          statusCode: 404,
+          message: error,
         });
-      contetnts_document = document_contents_snapshot.data();
-
-      //データ整備
-      title = contetnts_document.title;
-      ogp_image = contetnts_document.thumb;
-      if (ogp_image.slice(0, 1) == "/") {
-        ogp_image = "https://nekozuki.me" + ogp_image;
-      }
-      contents_tags = contetnts_document.tags;
-      contents_tag_imgs = contetnts_document.tag_imgs;
-      contents_links = contetnts_document.links;
+      });
 
       if (contetnts_document.type == "contents") {
         taghide = true;
       }
 
+      ogp_title = contetnts_document.title;
+      ogp_id = contetnts_document.id;
+      ogp_image = contetnts_document.thumbnail.url;
+
       return {
-        title,
-        contents_id,
-        ogp_image,
         contetnts_document,
-        contents_tags,
-        contents_tag_imgs,
-        contents_links,
+        ogp_title,
+        ogp_id,
+        ogp_image,
         taghide,
       };
     } catch {
@@ -130,10 +110,10 @@ export default {
   data() {
     return {
       meta: {
-        title: title,
-        description: title + "について",
+        title: ogp_title,
+        description: ogp_title + "について",
         type: "pages",
-        url: "https://nekozuki.me/makes/" + contents_id,
+        url: "https://nekozuki.me/makes/" + ogp_id,
         image: ogp_image,
       },
     };
