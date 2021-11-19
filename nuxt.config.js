@@ -1,16 +1,5 @@
 export default {
 
-  //env inport
-  // privateRuntimeConfig: {
-  //   fb_apiKey: process.env.FIREBASE_API_KEY,
-  //   fb_authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  //   fb_projectId: process.env.FIREBASE_PROJECT_ID,
-  //   fb_storageBucket: process.env.FIREBASE_STORAGE_BACKET,
-  //   fb_messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  //   fb_appId: process.env.FIREBASE_APP_ID,
-  //   fb_measurementId: process.env.FIREBASE_MEASUREMENT_ID
-  // },
-
   // Target: https://go.nuxtjs.dev/config-target
   target: 'server',
 
