@@ -11,7 +11,7 @@
             </p>
             <p>
               好きなものはスイーツとガジェット。嫌いなものは辛い/苦いものと生き物。詳細は
-              <nuxt-link to="/about">こちら</nuxt-link> から。
+              <a href="/about">こちら</a> から。
             </p>
 
             <h3>このサイトについて</h3>
@@ -23,14 +23,14 @@
       </div>
       <div id="page_index_parts_area" class="text_pages">
         <section id="pickup" class="makes_pickup_contents">
-          <h3><nuxt-link to="/makes">制作物ピックアップ</nuxt-link></h3>
+          <h3><a href="/makes">制作物ピックアップ</a></h3>
           <div class="contents_list_area">
             <div
               class="item"
               v-for="data in pickup_datas.pickupid"
               :key="data"
             >
-              <nuxt-link :to="'/makes/'+ data.id" >
+              <a :href="'/makes/'+ data.id" >
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -38,7 +38,7 @@
                   <p class="title">{{ data.title }}</p>
                   <p class="desc">{{ data.desc }}</p>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
             <div class="contents_list_area_err" v-if="!pickup_datas">
               <p>データの取得に失敗しました</p>

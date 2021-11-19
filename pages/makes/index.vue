@@ -12,7 +12,7 @@
               v-for="data in pickup_datas.pickupid"
               :key="data"
             >
-              <nuxt-link :to="'/makes/' + data.id">
+              <a :href="'/makes/' + data.id">
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -20,7 +20,7 @@
                   <p class="title">{{ data.title }}</p>
                   <p class="desc">{{ data.desc }}</p>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
             <div
               class="contents_list_area_err"
@@ -38,7 +38,7 @@
               v-for="data in web_datas.contents"
               :key="data"
             >
-              <nuxt-link :to="'/makes/' + data.id">
+              <a :href="'/makes/' + data.id">
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -46,7 +46,7 @@
                   <p class="title">{{ data.title }}</p>
                   <p class="desc">{{ data.desc }}</p>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
             <div
               class="contents_list_area_err"
@@ -64,7 +64,7 @@
               v-for="data in extention_datas.contents"
               :key="data"
             >
-              <nuxt-link :to="'/makes/' + data.id">
+              <a :href="'/makes/' + data.id">
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -72,7 +72,7 @@
                   <p class="title">{{ data.title }}</p>
                   <p class="desc">{{ data.desc }}</p>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
             <div
               class="contents_list_area_err"
@@ -90,7 +90,7 @@
               v-for="data in contents_datas.contents"
               :key="data"
             >
-              <nuxt-link :to="'/makes/' + data.id">
+              <a :href="'/makes/' + data.id">
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -98,7 +98,7 @@
                   <p class="title">{{ data.title }}</p>
                   <p class="desc">{{ data.desc }}</p>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
             <div
               class="contents_list_area_err"
@@ -116,7 +116,7 @@
               v-for="data in solid_datas.contents"
               :key="data"
             >
-              <nuxt-link :to="'/makes/' + data.id">
+              <a :href="'/makes/' + data.id">
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -124,7 +124,7 @@
                   <p class="title">{{ data.title }}</p>
                   <p class="desc">{{ data.desc }}</p>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
             <div
               class="contents_list_area_err"
