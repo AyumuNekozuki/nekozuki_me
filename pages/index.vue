@@ -21,16 +21,56 @@
           </div>
         </article>
       </div>
+      <div id="page_index_nico_area" class="text_pages">
+        <section>
+          <h3>
+            <a href="https://nico.ms/user/45048152"
+              ><i class="icon2-niconico"></i> 新着コンテンツ</a
+            >
+          </h3>
+          <div class="contents_list_area nico">
+            <div class="item" v-for="data in limitCount_movie" :key="data">
+              <a :href="data.object.url">
+                <div class="thumb_area">
+                  <span class="video">動画</span>
+                  <img :src="data.object.image" alt="" srcset="" />
+                </div>
+                <div class="title_area">
+                  <p class="title">{{ data.object.name }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="contents_list_area_err" v-if="!latest_movies">
+              <p>データの取得に失敗しました</p>
+            </div>
+          </div>
+          <div class="contents_list_area nico">
+            <div class="item" v-for="data in limitCount_streams" :key="data">
+              <a :href="data.object.url">
+                <div class="thumb_area">
+                  <span class="live">生放送</span>
+                  <img :src="data.object.image" alt="" srcset="" />
+                </div>
+                <div class="title_area">
+                  <p class="title">{{ data.object.name }}</p>
+                  <p class="desc">
+                    {{ $dateFns.format(new Date(data.updated), "yyyy/MM/dd HH:mm") }}
+                  </p>
+                </div>
+              </a>
+            </div>
+            <div class="contents_list_area_err" v-if="!latest_streams">
+              <p>データの取得に失敗しました</p>
+            </div>
+          </div>
+        </section>
+      </div>
       <div id="page_index_parts_area" class="text_pages">
         <section id="pickup" class="makes_pickup_contents">
           <h3><a href="/makes">制作物ピックアップ</a></h3>
           <div class="contents_list_area">
-            <div
-              class="item"
-              v-for="data in pickup_datas.pickupid"
-              :key="data"
-            >
-              <a :href="'/makes/'+ data.id" >
+            <div class="item" v-for="data in pickup_datas.pickupid" :key="data">
+              <a :href="'/makes/' + data.id">
                 <div class="thumb_area">
                   <img :src="data.thumbnail.url" alt="" srcset="" />
                 </div>
@@ -50,21 +90,44 @@
         <article>
           <div class="text_area">
             <h2>猫月遥歩（ねこづきあゆむ）公開スケジュール</h2>
-            <div class="list_picks mb-4" style="border-bottom: 2px dashed #ccc" v-if="schedule_datas">
+            <div
+              class="list_picks mb-4"
+              style="border-bottom: 2px dashed #ccc"
+              v-if="schedule_datas"
+            >
               <table class="mb-3">
                 <thead>
                   <tr>
-                    <th style="width:25%;">形式</th>
-                    <th style="width:20%;">日時</th>
+                    <th style="width: 25%">形式</th>
+                    <th style="width: 20%">日時</th>
                     <th>タイトル・リンク</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="scdata in schedule_datas.contents" :key="scdata">
-                    <td><b-badge :variant="scdata.typecolor" style="font-size:110%">{{ scdata.category }}（{{ scdata.type }}）</b-badge></td>
-                    <td>{{ $dateFns.format(new Date(scdata.date), 'yyyy/MM/dd HH:mm') }}〜
+                    <td>
+                      <b-badge
+                        :variant="scdata.typecolor"
+                        style="font-size: 110%"
+                        >{{ scdata.category }}（{{ scdata.type }}）</b-badge
+                      >
                     </td>
-                    <td style="font-weight: 800;"><a :href="scdata.href" target="_blank" rel="noopener noreferrer">{{ scdata.title }}</a></td>
+                    <td>
+                      {{
+                        $dateFns.format(
+                          new Date(scdata.date),
+                          "yyyy/MM/dd HH:mm"
+                        )
+                      }}〜
+                    </td>
+                    <td style="font-weight: 800">
+                      <a
+                        :href="scdata.href"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{{ scdata.title }}</a
+                      >
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -98,13 +161,13 @@
 <script>
 import Meta from "~/mixins/meta";
 import Mainvisual from "~/components/Mainvisual.vue";
-
+1
 // let schedule_datas = [];
 let trycount = 0;
 
 export default {
-  components:{
-    Mainvisual
+  components: {
+    Mainvisual,
   },
   mixins: [Meta],
   head() {
@@ -113,40 +176,64 @@ export default {
       title: "ねこづきあゆむのうぇぶさいと",
     };
   },
-  async asyncData({ $microcms }) {
+  async asyncData({ $microcms, $axios }) {
     let pickup_datas = await $microcms.get({
-      endpoint: "works_pickup"
+      endpoint: "works_pickup",
     });
 
-    let yesterday_date = new Date(); 
+    let yesterday_date = new Date();
     yesterday_date.setDate(yesterday_date.getDate() - 1);
-
-    console.log(yesterday_date)
 
     let schedule_datas = await $microcms.get({
       endpoint: "schedule",
       queries: {
-        orders: 'date',
-        filters: 'date[greater_than]'+yesterday_date.toISOString()
-      }
+        orders: "date",
+        filters: "date[greater_than]" + yesterday_date.toISOString(),
+      },
     });
-    console.log(schedule_datas.contents)
 
-    function changedatetype(dt){
-      var year = dt.getFullYear() ;
-      var month = dt.getMonth() + 1 ;
+    function changedatetype(dt) {
+      var year = dt.getFullYear();
+      var month = dt.getMonth() + 1;
       var date = dt.getDate();
-      var hours = dt.getHours() ;
+      var hours = dt.getHours();
       var minutes = dt.getMinutes();
-      var ymdhms = new String( year ) + "/" + ( "00" + new String( month )).slice( -2 ) + "/" + ( "00" + new String( date )).slice( -2 ) ;
-      ymdhms += " " + ( "00" + new String( hours )).slice( -2 ) + ":" + ( "00" + new String( minutes )).slice( -2 );
+      var ymdhms =
+        new String(year) +
+        "/" +
+        ("00" + new String(month)).slice(-2) +
+        "/" +
+        ("00" + new String(date)).slice(-2);
+      ymdhms +=
+        " " +
+        ("00" + new String(hours)).slice(-2) +
+        ":" +
+        ("00" + new String(minutes)).slice(-2);
       return ymdhms;
     }
 
+    let latest_movies = await $axios.$get(
+      "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
+    );
+
+    let latest_streams = await $axios.$get(
+      "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
+    );
+
     return {
       pickup_datas,
-      schedule_datas
+      schedule_datas,
+      latest_movies,
+      latest_streams,
     };
+  },
+  computed: {
+    limitCount_movie() {
+      return this.latest_movies.data.slice(0, 4);
+    },
+    limitCount_streams() {
+      return this.latest_streams.data.slice(0, 4);
+    },
   },
 };
 </script>

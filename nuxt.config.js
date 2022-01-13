@@ -62,6 +62,8 @@ export default {
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
     'nuxt-webfontloader',
+    '@nuxtjs/axios',
+    '@nuxtjs/date-fns'
   ],
   fontawesome: {
     imports: [

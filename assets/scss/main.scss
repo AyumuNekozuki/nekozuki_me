@@ -423,7 +423,9 @@ index
   }
   #page_index_about,
   #page_index_schedule,
-  #page_index_parts_area {
+  #page_index_parts_area,
+  #page_index_nico_area,
+  #page_index_stream_area {
     margin: 40px 0;
     article {
       .wrap {
@@ -458,6 +460,48 @@ index
 
       .item {
         width: calc(100% / 3);
+      }
+    }
+  }
+
+  #page_index_nico_area{
+    section {
+      margin: 0 auto;
+      max-width: 980px;
+      width: 100%;
+
+      h3 {
+        padding: 0 1.5rem;
+      }
+
+      .item {
+        width: calc(100% / 4);
+        font-size: 14px;
+        .thumb_area{
+          aspect-ratio: 16 / 9;
+          height: auto;
+          position: relative;
+          img{
+            background-color: white;
+            object-fit: contain;
+          }
+          span{
+            position: absolute;
+            background-color: #252525;
+            color: #fafafa;
+            font-size: 12px;
+            margin: .5em;
+            padding: 0 .25em;
+            border-radius: 3px;
+
+            &.live{
+              background-color: #f03;
+            }
+          }
+        }
+        .title_area{
+          height: 60px;
+        }
       }
     }
   }
