@@ -279,17 +279,17 @@ export default {
   },
   async asyncData({ $axios, params }) {
     let pickup_datas = await $axios.$get(
-      "http://localhost:3000/api_mc_nekozukime/v1/works_pickup"
+      "/api_mc_nekozukime/v1/works_pickup"
     );
 
     let extention_datas = await $axios.$get(
-      "http://localhost:3000/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dextentions&orders=createdAt"
+      "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dextentions&orders=createdAt"
     );
     let web_datas = await $axios.$get(
-      "http://localhost:3000/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dweb&orders=createdAt"
+      "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dweb&orders=createdAt"
     );
     let contents_datas = await $axios.$get(
-      "http://localhost:3000/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dcontents&orders=createdAt"
+      "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dcontents&orders=createdAt"
     );
 
     return {

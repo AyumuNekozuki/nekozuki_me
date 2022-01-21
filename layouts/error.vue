@@ -11,7 +11,7 @@
 
         <div class="text_area" v-if="error.statusCode !== 404">
           <h2>エラーが発生しました</h2>
-          <p>URLに間違いがないかご確認ください。</p>
+          <p>@nekozuki_devまでご連絡ください</p>
           <p><nuxt-link to="/"> TOP</nuxt-link></p>
         </div>
       </div>
