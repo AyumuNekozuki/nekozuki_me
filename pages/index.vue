@@ -1,12 +1,20 @@
 <template>
   <div class="index">
     <div class="wrapper">
-      <section class="about"></section>
+      <section class="about">
+        
+      </section>
 
       <client-only>
         <section class="contents_list_wrap events">
           <div class="contents_list_header">
             <h2>スケジュールピックアップ</h2>
+            <a
+              href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf"
+            >
+              <font-awesome-icon :icon="['fas', 'calendar']" class="events" />
+              予定を見る
+            </a>
           </div>
           <div class="contents_list_area events">
             <swiper
@@ -17,9 +25,9 @@
               <swiper-slide
                 class="item events"
                 v-for="data in eventslist.contents"
-                :key="data"
+                :key="data.id"
               >
-                <a :href="data.href" class="events">
+                <a :href="data.href" :v-data-id="data.id" class="events">
                   <div class="thumb_area">
                     <span class="event">{{ data.category }}</span>
                     <img
@@ -52,8 +60,13 @@
               </swiper-slide>
 
               <swiper-slide class="item more" v-if="eventslist">
-                <a href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf">
-                  <font-awesome-icon :icon="['fas', 'calendar']" class="events" />
+                <a
+                  href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf"
+                >
+                  <font-awesome-icon
+                    :icon="['fas', 'calendar']"
+                    class="events"
+                  />
                   <p>予定を見る</p>
                 </a>
               </swiper-slide>
@@ -72,6 +85,13 @@
         </section>
 
         <section class="contents_list_wrap nicovideo">
+          <div class="contents_list_header">
+            <h2>動画</h2>
+            <a href="https://www.nicovideo.jp/user/45048152/video">
+              <i class="nico-tvchan"></i>
+              もっとみる
+            </a>
+          </div>
           <div class="contents_list_area nico">
             <swiper
               class="nicovideo"
@@ -81,7 +101,7 @@
               <swiper-slide
                 class="item"
                 v-for="data in newest_nicovideo.data"
-                :key="data"
+                :key="data.id"
               >
                 <a :href="data.object.url">
                   <div class="thumb_area">
@@ -130,6 +150,15 @@
         </section>
 
         <section class="contents_list_wrap nicolive">
+          <div class="contents_list_header">
+            <h2>生放送</h2>
+            <a
+              href="https://www.nicovideo.jp/user/45048152/nicorepo?type=programOnair"
+            >
+              <i class="nico-namaco"></i>
+              もっとみる
+            </a>
+          </div>
           <div class="contents_list_area nico">
             <swiper
               class="nicolive"
@@ -139,7 +168,7 @@
               <swiper-slide
                 class="item"
                 v-for="data in newest_nicolive.data"
-                :key="data"
+                :key="data.id"
               >
                 <a :href="data.object.url">
                   <div class="thumb_area">
@@ -179,6 +208,73 @@
             </div>
           </div>
         </section>
+
+        <section class="contents_list_wrap blog">
+          <div class="contents_list_header">
+            <h2>ブログ記事</h2>
+            <a
+              href="https://www.nicovideo.jp/user/45048152/nicorepo?type=programOnair"
+            >
+              <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
+              もっとみる
+            </a>
+          </div>
+          <div class="contents_list_area blog">
+            <swiper
+              class="blog"
+              :options="swiperOption_blog"
+              v-if="blogdata"
+            >
+              <swiper-slide
+                class="item"
+                v-for="data in blogdata.contents"
+                :key="data.id"
+              >
+                <a :href="'https://blog.nekozuki.me/'+data.id">
+                  <div class="thumb_area">
+                    <span class="blog">記事</span>
+                    <img
+                      v-if="data.thumbnail"
+                      :src="data.thumbnail.url+'?fit=max&w=960&h=540'"
+                      :alt="data.title"
+                      srcset=""
+                    />
+                    <img
+                      v-if="!data.thumbnail"
+                      src="https://blog.nekozuki.me/favicon.png"
+                      :alt="data.title"
+                      srcset=""
+                    />
+                  </div>
+                  <div class="title_area">
+                    <p class="title live">{{ data.title }}</p>
+                    <p class="desc">
+                      {{
+                        $dateFns.format(
+                          new Date(data.publishedAt),
+                          "yyyy/MM/dd HH:mm"
+                        )
+                      }}
+                    </p>
+                  </div>
+                </a>
+              </swiper-slide>
+              <swiper-slide class="item more" v-if="blogdata">
+                <a
+                  href="https://blog.nekozuki.me/"
+                >
+                  <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
+                  <p>もっと見る</p>
+                </a>
+              </swiper-slide>
+            </swiper>
+            <div slot="button-prev" class="swiper-button-prev blog" />
+            <div slot="button-next" class="swiper-button-next blog" />
+            <div class="contents_list_area_err" v-if="!blogdata">
+              <p>データの取得に失敗しました</p>
+            </div>
+          </div>
+        </section>
       </client-only>
     </div>
   </div>
@@ -187,13 +283,10 @@
 <script>
 export default {
   async asyncData({ $axios, $microcms }) {
-    let yesterday_date = new Date();
-    yesterday_date.setDate(yesterday_date.getDate() - 1);
     let eventslist = await $microcms.get({
       endpoint: "schedule",
       queries: {
-        orders: "date",
-        filters: "date[greater_than]" + yesterday_date.toISOString(),
+        orders: "date"
       },
     });
 
@@ -205,10 +298,19 @@ export default {
       "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
     );
 
+    let blogdata = await $axios.$get(
+      "https://nekolog.microcms.io/api/v1/article",
+      {
+        headers: { "X-MICROCMS-API-KEY": process.env.MC_BLOG_API_KEY },
+        queries: { limit: 10 },
+      }
+    );
+
     return {
       eventslist,
       newest_nicovideo,
       newest_nicolive,
+      blogdata,
     };
   },
   data() {
@@ -256,6 +358,19 @@ export default {
           prevEl: ".swiper-button-prev.nicolive",
         },
       },
+      swiperOption_blog: {
+        width: 220,
+        autoheight: true,
+        setWrapperSize: true,
+        freeModeSticky: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next.blog",
+          prevEl: ".swiper-button-prev.blog",
+        },
+      },
     };
   },
 };
@@ -269,19 +384,73 @@ export default {
 }
 
 .contents_list_wrap {
+  margin: 1.5rem 0;
   position: relative;
 
-  .contents_list_header{
+  .contents_list_header {
     margin: 0 30px;
-    h2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
       display: inline-block;
       margin: 0;
-      padding: .25rem 1rem;
+      padding: 0.25rem 1.25rem;
       font-family: "M PLUS Rounded 1c", sans-serif;
       font-weight: 700;
       background-color: #7f7fff;
       color: white;
       border-radius: 20px;
+      position: relative;
+
+      &::before {
+        content: url(~assets/svg/ear.svg);
+        position: absolute;
+        top: -20px;
+        height: 20px;
+        width: 40px;
+      }
+      &::after {
+        content: url(~assets/svg/tail.svg);
+        position: absolute;
+        height: 20px;
+        width: 30px;
+        right: -15px;
+        bottom: 12.5px;
+      }
+    }
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 500;
+      color: white;
+      background-color: #7f7fff;
+      padding: 0.25rem 1.25rem;
+      border-radius: 20px;
+      z-index: 2;
+      transition: box-shadow ease 0.2s;
+
+      i,
+      svg {
+        margin-right: 5px;
+
+        &.nico-tvchan {
+          margin-bottom: 2px;
+        }
+        &.nico-namaco {
+          font-size: 120%;
+        }
+        &.blog {
+          margin-bottom: 2px;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 0 3px #7f7fff;
+      }
     }
   }
 
@@ -347,6 +516,10 @@ export default {
             }
             &.event {
               background-color: orangered;
+              color: #fafafa;
+            }
+            &.blog{
+              background-color: #7f7fff;
               color: #fafafa;
             }
           }
@@ -417,7 +590,8 @@ export default {
           i.nico-tvchan {
             font-size: 40px;
           }
-          svg.events {
+          svg.events,
+          svg.blog {
             font-size: 35px;
           }
 

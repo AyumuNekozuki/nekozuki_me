@@ -44,6 +44,12 @@ export default {
     'nuxt-helmet',
   ],
 
+  // proxy :{
+  //   '/api_nicovideo/':{
+  //     target: 'https://public.api.nicovideo.jp',
+  //     pathRewrite: {'^/api/nicovideo/': '/'}
+  //   }
+  // },
   webfontloader: {
     google: {
       families: [

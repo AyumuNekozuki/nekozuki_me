@@ -1,5 +1,6 @@
 <template>
   <header class="global_header">
+    <h1>nekozuki.me</h1>
     <nav class="wrap">
       <nuxt-link to="/about">About</nuxt-link>
       <nuxt-link to="/makes">Makes</nuxt-link>
@@ -12,6 +13,7 @@
 
 <style lang="scss" scoped>
 .global_header{
+  background: linear-gradient(white, rgba(250, 250, 250, 0));
   width: 100%;
   border-top: 20px solid #7F7FFF;
   position: sticky;
@@ -24,7 +26,11 @@
   justify-content: center;
 
   z-index: 30;
-  height: 50px;
+  height: 60px;
+
+  h1{
+    display: none;
+  }
 
   .wrap{
     display: flex;
