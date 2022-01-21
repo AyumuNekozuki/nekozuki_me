@@ -115,7 +115,6 @@
           </tbody>
         </table>
       </div>
-      </div>
     </div>
   </div>
 </template>
@@ -126,3 +125,20 @@
   margin: 20px auto;
 }
 </style>
+
+<script>
+import Meta from "~/mixins/meta";
+export default {
+  mixins: [Meta],
+  data() {
+    return {
+      meta: {
+        title: "About - ねこづきあゆむとは",
+        description: "ねこづきあゆむとは",
+        type: "pages",
+        url: "https://www.nekozuki.me/about",
+      },
+    };
+  },
+}
+</script>

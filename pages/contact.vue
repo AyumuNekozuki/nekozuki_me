@@ -61,3 +61,20 @@
   margin: 20px auto;
 }
 </style>
+
+<script>
+import Meta from "~/mixins/meta";
+export default {
+  mixins: [Meta],
+  data() {
+    return {
+      meta: {
+        title: "Contact - 連絡先",
+        description: "ねこづきあゆむの連絡先です",
+        type: "pages",
+        url: "https://www.nekozuki.me/contact",
+      },
+    };
+  },
+}
+</script>

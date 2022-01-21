@@ -1,5 +1,4 @@
 export default {
-  mode: "server",
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - nekozuki.me',
@@ -45,7 +44,6 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    'nuxt-microcms-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -53,6 +51,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'nuxt-webfontloader',
+    'nuxt-microcms-module',
     '@nuxtjs/date-fns',
     'nuxt-fontawesome',
     'nuxt-helmet',
@@ -66,6 +65,8 @@ export default {
       ]
     }
   },
+
+  // memo: microcms なんかうごかない
   microcms: {
     options: {
       serviceDomain: process.env.MC_SERVICE_DOMAIN,
@@ -73,6 +74,7 @@ export default {
     },
     mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
   },
+  
   fontawesome: {
     imports: [
       {
@@ -103,13 +105,19 @@ export default {
         '^/api_nicorepo/': '/v1/timelines/nicorepo/'
       }
     },
-    '/api_nekolog/': {
+    '/api_mc_nekolog/': {
       target: 'https://nekolog.microcms.io',
       pathRewrite: {
-        '^/api_nekolog/': '/api/'
+        '^/api_mc_nekolog/': '/api/'
       },
       headers: { "X-MICROCMS-API-KEY": process.env.MC_BLOG_API_KEY },
-      queries: { limit: 10 },
+    },
+    '/api_mc_nekozukime/': {
+      target: 'https://nekozuki-me.microcms.io',
+      pathRewrite: {
+        '^/api_mc_nekozukime/': '/api/'
+      },
+      headers: { "X-MICROCMS-API-KEY": process.env.MC_API_KEY },
     },
   },
 

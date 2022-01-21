@@ -1,7 +1,7 @@
 <template>
   <div class="links" id="page_links">
     <div class="wrapper">
-      <h2>Links - リンク集</h2><br>
+      <h2>Links - 関連リンク</h2><br>
       <h3>SNS＆Blog</h3>
       <a href="https://twitter.com/nekozuki_2525" class="twitter">
         <font-awesome-icon :icon="['fab', 'twitter']" /><span
@@ -83,3 +83,20 @@
   margin: 20px auto;
 }
 </style>
+
+<script>
+import Meta from "~/mixins/meta";
+export default {
+  mixins: [Meta],
+  data() {
+    return {
+      meta: {
+        title: "Links - 関連リンク",
+        description: "ねこづきあゆむの関連リンクです",
+        type: "pages",
+        url: "https://www.nekozuki.me/links",
+      },
+    };
+  },
+}
+</script>

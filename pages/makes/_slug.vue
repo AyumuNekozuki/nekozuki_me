@@ -7,7 +7,7 @@
         </h2>
         <div class="thumbnail">
           <img
-            :src="contetnts_document.thumbnail.url+'?fit=max&w=960&h=540'"
+            :src="contetnts_document.thumbnail.url + '?fit=max&w=960&h=540'"
             :alt="contetnts_document.title"
             srcset=""
           />
@@ -28,15 +28,13 @@
 import Meta from "~/mixins/meta";
 let ogp_title, ogp_id, ogp_image;
 export default {
-  async asyncData({ $microcms, params, error }) {
+  async asyncData({ $axios, params, error }) {
     try {
-
-      let contetnts_document = await $microcms
-        .get({
-          endpoint: `makes/${params.slug}`,
-          query: { limit: 0 },
-        })
-        .catch(function (error) {
+      let contetnts_document = await $axios
+        .$get(
+          `http://localhost:3000/api_mc_nekozukime/v1/makes/${params.slug}`
+        )
+        .catch((e) => {
           this.$nuxt.error({
             statusCode: 404,
             message: error,
@@ -83,7 +81,7 @@ export default {
   aspect-ratio: 16 / 9;
   display: flex;
   margin-top: 10px;
-  img{
+  img {
     height: 100%;
     width: 100%;
     object-fit: contain;

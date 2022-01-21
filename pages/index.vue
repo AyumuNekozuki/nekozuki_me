@@ -50,9 +50,11 @@
                   </div>
                   <div class="title_area">
                     <p class="title">{{ data.title }}</p>
-                    <p class="desc" v-if="data.type[0]!=='特になし'">
+                    <p class="desc" v-if="data.type[0] !== '特になし'">
                       <span v-if="data.type[0] == '締切'">〜</span>
-                      {{$dateFns.format(new Date(data.date), "yyyy/MM/dd HH:mm")}}
+                      {{
+                        $dateFns.format(new Date(data.date), "yyyy/MM/dd HH:mm")
+                      }}
                       <span v-if="data.type[0] == 'スタート'">〜</span>
                     </p>
                   </div>
@@ -214,9 +216,7 @@
         <section class="contents_list_wrap blog">
           <div class="contents_list_header">
             <h2>ブログ記事</h2>
-            <a
-              href="https://blog.nekozuki.me/"
-            >
+            <a href="https://blog.nekozuki.me/">
               <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
               もっとみる
             </a>
@@ -277,14 +277,12 @@
 </template>
 
 <script>
+import Meta from "~/mixins/meta";
 export default {
-  async asyncData({ $axios, $microcms }) {
-    let eventslist = await $microcms.get({
-      endpoint: "schedule",
-      queries: {
-        orders: "date",
-      },
-    });
+  async asyncData({ $axios }) {
+    let eventslist = await $axios.$get(
+      "http://localhost:3000/api_mc_nekozukime/v1/schedule"
+    );
 
     let newest_nicovideo = await $axios.$get(
       "http://localhost:3000/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
@@ -295,7 +293,7 @@ export default {
     );
 
     let blogdata = await $axios.$get(
-      "http://localhost:3000/api_nekolog/v1/article"
+      "http://localhost:3000/api_mc_nekolog/v1/article"
     );
 
     return {
@@ -303,6 +301,13 @@ export default {
       newest_nicovideo,
       newest_nicolive,
       blogdata,
+    };
+  },
+  mixins: [Meta],
+  head() {
+    return {
+      titleTemplate: null,
+      title: "nekozuki.me - ねこづきあゆむポータルサイト",
     };
   },
   data() {
