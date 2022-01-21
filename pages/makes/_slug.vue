@@ -32,7 +32,7 @@ export default {
     try {
       let contetnts_document = await $axios
         .$get(
-          `http://localhost:3000/api_mc_nekozukime/v1/makes/${params.slug}`
+          `/api_mc_nekozukime/v1/makes/${params.slug}`
         )
         .catch((e) => {
           this.$nuxt.error({
