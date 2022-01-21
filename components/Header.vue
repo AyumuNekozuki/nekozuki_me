@@ -2,11 +2,11 @@
   <header class="global_header">
     <h1>nekozuki.me</h1>
     <nav class="wrap">
-      <nuxt-link to="/about">About</nuxt-link>
-      <nuxt-link to="/makes">Makes</nuxt-link>
-      <nuxt-link to="/">nekozuki.me</nuxt-link>
-      <nuxt-link to="/links">Links</nuxt-link>
-      <nuxt-link to="/contact">Contact</nuxt-link>
+      <nuxt-link class="to_about" to="/about">About</nuxt-link>
+      <nuxt-link class="to_makes" to="/makes">Makes</nuxt-link>
+      <nuxt-link class="to_top" to="/">nekozuki.me</nuxt-link>
+      <nuxt-link class="to_links" to="/links">Links</nuxt-link>
+      <nuxt-link class="to_contact" to="/contact">Contact</nuxt-link>
     </nav>
   </header>
 </template>
@@ -26,7 +26,6 @@
   justify-content: center;
 
   z-index: 30;
-  height: 60px;
 
   h1{
     display: none;
@@ -50,6 +49,7 @@
     a{
       color: white;
       text-decoration: none;
+      padding: 0 .5rem;
     }
 
   }

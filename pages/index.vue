@@ -2,13 +2,16 @@
   <div class="index">
     <div class="wrapper">
       <section class="about">
-        
+        <div class="icon"></div>
+        <div class="text">
+          <p>ねこづきあゆむのポータルサイトへようこそ！</p>
+        </div>
       </section>
 
       <client-only>
         <section class="contents_list_wrap events">
           <div class="contents_list_header">
-            <h2>スケジュールピックアップ</h2>
+            <h2>ピックアップ＆お知らせ</h2>
             <a
               href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf"
             >
@@ -47,27 +50,12 @@
                   </div>
                   <div class="title_area">
                     <p class="title">{{ data.title }}</p>
-                    <p class="desc">
-                      {{
-                        $dateFns.format(
-                          new Date(data.date),
-                          "yyyy/MM/dd HH:mm"
-                        )
-                      }}~
+                    <p class="desc" v-if="data.type[0]!=='特になし'">
+                      <span v-if="data.type[0] == '締切'">〜</span>
+                      {{$dateFns.format(new Date(data.date), "yyyy/MM/dd HH:mm")}}
+                      <span v-if="data.type[0] == 'スタート'">〜</span>
                     </p>
                   </div>
-                </a>
-              </swiper-slide>
-
-              <swiper-slide class="item more" v-if="eventslist">
-                <a
-                  href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'calendar']"
-                    class="events"
-                  />
-                  <p>予定を見る</p>
                 </a>
               </swiper-slide>
             </swiper>
@@ -96,7 +84,7 @@
             <swiper
               class="nicovideo"
               :options="swiperOption_nicovideo"
-              v-if="newest_nicovideo"
+              v-if="newest_nicovideo && newest_nicovideo.meta.status == 200"
             >
               <swiper-slide
                 class="item"
@@ -136,14 +124,17 @@
             <div
               slot="button-prev"
               class="swiper-button-prev nicovideo"
-              v-if="newest_nicovideo"
+              v-if="newest_nicovideo && newest_nicovideo.meta.status == 200"
             />
             <div
               slot="button-next"
               class="swiper-button-next nicovideo"
-              v-if="newest_nicovideo"
+              v-if="newest_nicovideo && newest_nicovideo.meta.status == 200"
             />
-            <div class="contents_list_area_err" v-if="!newest_nicovideo">
+            <div
+              class="contents_list_area_err"
+              v-if="!newest_nicovideo || newest_nicovideo.meta.status !== 200"
+            >
               <p>データの取得に失敗しました</p>
             </div>
           </div>
@@ -163,7 +154,7 @@
             <swiper
               class="nicolive"
               :options="swiperOption_nicolive"
-              v-if="newest_nicolive"
+              v-if="newest_nicolive && newest_nicolive.meta.status == 200"
             >
               <swiper-slide
                 class="item"
@@ -201,9 +192,20 @@
                 </a>
               </swiper-slide>
             </swiper>
-            <div slot="button-prev" class="swiper-button-prev nicolive" />
-            <div slot="button-next" class="swiper-button-next nicolive" />
-            <div class="contents_list_area_err" v-if="!newest_nicolive">
+            <div
+              slot="button-prev"
+              class="swiper-button-prev nicolive"
+              v-if="newest_nicolive && newest_nicolive.meta.status == 200"
+            />
+            <div
+              slot="button-next"
+              class="swiper-button-next nicolive"
+              v-if="newest_nicolive && newest_nicolive.meta.status == 200"
+            />
+            <div
+              class="contents_list_area_err"
+              v-if="!newest_nicolive || newest_nicolive.meta.status !== 200"
+            >
               <p>データの取得に失敗しました</p>
             </div>
           </div>
@@ -213,29 +215,25 @@
           <div class="contents_list_header">
             <h2>ブログ記事</h2>
             <a
-              href="https://www.nicovideo.jp/user/45048152/nicorepo?type=programOnair"
+              href="https://blog.nekozuki.me/"
             >
               <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
               もっとみる
             </a>
           </div>
           <div class="contents_list_area blog">
-            <swiper
-              class="blog"
-              :options="swiperOption_blog"
-              v-if="blogdata"
-            >
+            <swiper class="blog" :options="swiperOption_blog" v-if="blogdata">
               <swiper-slide
                 class="item"
                 v-for="data in blogdata.contents"
                 :key="data.id"
               >
-                <a :href="'https://blog.nekozuki.me/'+data.id">
+                <a :href="'https://blog.nekozuki.me/' + data.id">
                   <div class="thumb_area">
                     <span class="blog">記事</span>
                     <img
                       v-if="data.thumbnail"
-                      :src="data.thumbnail.url+'?fit=max&w=960&h=540'"
+                      :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
                       :alt="data.title"
                       srcset=""
                     />
@@ -260,9 +258,7 @@
                 </a>
               </swiper-slide>
               <swiper-slide class="item more" v-if="blogdata">
-                <a
-                  href="https://blog.nekozuki.me/"
-                >
+                <a href="https://blog.nekozuki.me/">
                   <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
                   <p>もっと見る</p>
                 </a>
@@ -286,24 +282,20 @@ export default {
     let eventslist = await $microcms.get({
       endpoint: "schedule",
       queries: {
-        orders: "date"
+        orders: "date",
       },
     });
 
     let newest_nicovideo = await $axios.$get(
-      "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
+      "http://localhost:3000/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
     );
 
     let newest_nicolive = await $axios.$get(
-      "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
+      "http://localhost:3000/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
     );
 
     let blogdata = await $axios.$get(
-      "https://nekolog.microcms.io/api/v1/article",
-      {
-        headers: { "X-MICROCMS-API-KEY": process.env.MC_BLOG_API_KEY },
-        queries: { limit: 10 },
-      }
+      "http://localhost:3000/api_nekolog/v1/article"
     );
 
     return {
@@ -316,7 +308,7 @@ export default {
   data() {
     return {
       swiperOption_events: {
-        width: 220,
+        width: 320,
         autoheight: true,
         setWrapperSize: true,
         freeModeSticky: true,
@@ -386,6 +378,10 @@ export default {
 .contents_list_wrap {
   margin: 1.5rem 0;
   position: relative;
+
+  & + .contents_list_wrap {
+    margin: 2.5rem 0;
+  }
 
   .contents_list_header {
     margin: 0 30px;
@@ -518,7 +514,7 @@ export default {
               background-color: orangered;
               color: #fafafa;
             }
-            &.blog{
+            &.blog {
               background-color: #7f7fff;
               color: #fafafa;
             }
@@ -609,6 +605,12 @@ export default {
           }
         }
       }
+
+      &.events {
+        a {
+          width: 300px;
+        }
+      }
     }
 
     .swiper-button-prev,
@@ -617,11 +619,12 @@ export default {
     }
 
     .contents_list_area_err {
-      display: flex;
+      width: 90%;
+      margin: 0 auto;
 
       p {
         box-shadow: 0 0 3px #7f7fff;
-        width: 500px;
+        width: 100%;
         margin: 0.5rem;
         padding: 2rem 0.5rem;
         text-align: center;
@@ -630,6 +633,45 @@ export default {
         font-weight: 700;
         background-color: #efefff;
       }
+    }
+  }
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 1rem auto;
+
+  .icon {
+    height: 100px;
+    width: 100px;
+    background-image: url(~/assets/svg/icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    box-shadow: 0 0 3px #7f7fff;
+    border-radius: 100%;
+  }
+  .text {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 500;
+    margin: 10px 0 10px 2rem;
+    padding: 1rem;
+    box-shadow: 0 0 3px #7f7fff;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+
+    &::before {
+      content: "◀︎";
+      font-size: 150%;
+      position: absolute;
+      left: -20px;
+      top: 1.5rem;
+      color: white;
+      text-shadow: 0 0 3px #7f7fff;
     }
   }
 }

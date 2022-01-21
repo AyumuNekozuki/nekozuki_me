@@ -1,24 +1,38 @@
 export default {
+  mode: "server",
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nekozuki_me',
+    titleTemplate: '%s - nekozuki.me',
     htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#',
       lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'description', name: 'description', content: 'ねこづきあゆむのWebサイトです。' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'nekozuki.me' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://www.nekozuki.me' },
+      { hid: 'og:title', property: 'og:title', content: 'nekozuki.me' },
+      { hid: 'og:description', property: 'og:description', content: 'ねこづきあゆむのWebサイトです。' },
+      { hid: 'og:image', property: 'og:image', content: 'https://www.nekozuki.me/ogp.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/nicoicon_fonts/nicoicon.css',
+    '~/assets/style/color.scss',
+    '~/assets/style/loading.scss',
+    '~/assets/style/text_area.scss',
+    '~/assets/style/linklist.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -44,22 +58,16 @@ export default {
     'nuxt-helmet',
   ],
 
-  // proxy :{
-  //   '/api_nicovideo/':{
-  //     target: 'https://public.api.nicovideo.jp',
-  //     pathRewrite: {'^/api/nicovideo/': '/'}
-  //   }
-  // },
   webfontloader: {
     google: {
       families: [
         'Noto+Sans+JP:400,700',
         'M+PLUS+Rounded+1c:100,300,400,500,700,800,900'
-      ] 
+      ]
     }
   },
-  microcms:{
-    options:{
+  microcms: {
+    options: {
       serviceDomain: process.env.MC_SERVICE_DOMAIN,
       apiKey: process.env.MC_API_KEY
     },
@@ -85,7 +93,24 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    prefix: '/api',
+    proxy: true,
+  },
+  proxy: {
+    '/api_nicorepo/': {
+      target: 'https://public.api.nicovideo.jp',
+      pathRewrite: {
+        '^/api_nicorepo/': '/v1/timelines/nicorepo/'
+      }
+    },
+    '/api_nekolog/': {
+      target: 'https://nekolog.microcms.io',
+      pathRewrite: {
+        '^/api_nekolog/': '/api/'
+      },
+      headers: { "X-MICROCMS-API-KEY": process.env.MC_BLOG_API_KEY },
+      queries: { limit: 10 },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
