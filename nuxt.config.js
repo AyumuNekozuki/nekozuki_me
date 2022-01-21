@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'nekozuki_me',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -18,10 +18,12 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/nicoicon_fonts/nicoicon.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: "~/plugins/swiper", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,7 +37,39 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-webfontloader',
+    '@nuxtjs/date-fns',
+    'nuxt-microcms-module',
+    'nuxt-fontawesome',
   ],
+
+  webfontloader: {
+    google: {
+      families: [
+        'Noto+Sans+JP:400,700',
+        'M+PLUS+Rounded+1c:100,300,400,500,700,800,900'
+      ] 
+    }
+  },
+  microcms:{
+    options:{
+      serviceDomain: process.env.MC_SERVICE_DOMAIN,
+      apiKey: process.env.MC_API_KEY
+    },
+    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+  },
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab']
+      }
+    ]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
