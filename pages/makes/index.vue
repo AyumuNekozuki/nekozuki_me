@@ -278,19 +278,12 @@ export default {
     };
   },
   async asyncData({ $axios, params }) {
-    let pickup_datas = await $axios.$get(
-      "/api_mc_nekozukime/v1/works_pickup"
-    );
-
-    let extention_datas = await $axios.$get(
-      "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dextentions&orders=createdAt"
-    );
-    let web_datas = await $axios.$get(
-      "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dweb&orders=createdAt"
-    );
-    let contents_datas = await $axios.$get(
-      "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dcontents&orders=createdAt"
-    );
+     let [pickup_datas, extention_datas, web_datas, contents_datas] = await Promise.all([
+       $axios.$get("/api_mc_nekozukime/v1/works_pickup"),
+       $axios.$get("/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dextentions&orders=createdAt"),
+       $axios.$get("/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dweb&orders=createdAt"),
+       $axios.$get("/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dcontents&orders=createdAt"),
+     ]);
 
     return {
       pickup_datas,

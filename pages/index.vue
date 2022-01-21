@@ -280,21 +280,12 @@
 import Meta from "~/mixins/meta";
 export default {
   async asyncData({ $axios }) {
-    let eventslist = await $axios.$get(
-      "/api_mc_nekozukime/v1/schedule"
-    );
-
-    let newest_nicovideo = await $axios.$get(
-      "/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
-    );
-
-    let newest_nicolive = await $axios.$get(
-      "/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
-    );
-
-    let blogdata = await $axios.$get(
-      "/api_mc_nekolog/v1/article"
-    );
+    let [eventslist, newest_nicovideo, newest_nicolive, blogdata] = await Promise.all([
+      $axios.$get("/api_mc_nekozukime/v1/schedule"),
+      $axios.$get("/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"),
+      $axios.$get("/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"),
+      $axios.$get("/api_mc_nekolog/v1/article"),
+    ])
 
     return {
       eventslist,

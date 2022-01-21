@@ -55,6 +55,7 @@ export default {
     '@nuxtjs/date-fns',
     'nuxt-fontawesome',
     'nuxt-helmet',
+    '@nuxtjs/pwa'
   ],
 
   webfontloader: {
