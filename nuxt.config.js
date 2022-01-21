@@ -45,6 +45,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    'nuxt-microcms-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -53,7 +54,6 @@ export default {
     '@nuxtjs/axios',
     'nuxt-webfontloader',
     '@nuxtjs/date-fns',
-    'nuxt-microcms-module',
     'nuxt-fontawesome',
     'nuxt-helmet',
   ],
