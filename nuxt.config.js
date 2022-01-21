@@ -41,6 +41,7 @@ export default {
     '@nuxtjs/date-fns',
     'nuxt-microcms-module',
     'nuxt-fontawesome',
+    'nuxt-helmet',
   ],
 
   webfontloader: {
@@ -70,6 +71,10 @@ export default {
       }
     ]
   },
+  helmet: {
+    frameguard: false,
+    hidePoweredBy: true
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -79,5 +84,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+  buildDir: 'dist',
 }
