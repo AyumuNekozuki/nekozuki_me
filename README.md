@@ -1,4 +1,4 @@
-# nuxt_nekozuki_me
+# nekozuki_me
 
 ## Build Setup
 

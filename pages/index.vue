@@ -1,239 +1,683 @@
 <template>
-  <div id="page_index">
-    <main>
-      <Mainvisual />
-      <div id="page_index_about" class="text_pages">
-        <article>
-          <div class="text_area">
-            <h2>ねこづきあゆむとは</h2>
-            <p>
-              動画投稿・生配信・大百科編集をはじめ、Webアプリ/Webページ、ブラウザ拡張機能といった技術方面まで多方面で活動しているあまねくクリエイター。
-            </p>
-            <p>
-              好きなものはスイーツとガジェット。嫌いなものは辛い/苦いものと生き物。詳細は
-              <a href="/about">こちら</a> から。
-            </p>
+  <div class="index">
+    <div class="wrapper">
+      <section class="about">
+        <div class="icon"></div>
+        <div class="text">
+          <p>ねこづきあゆむのポータルサイトへようこそ！</p>
+        </div>
+      </section>
 
-            <h3>このサイトについて</h3>
-            <p>
-              このサイトは、猫月遥歩（ねこづきあゆむ）の多彩な活動を1点に集約しているポートフォリオ的なものである。
-            </p>
-          </div>
-        </article>
-      </div>
-      <div id="page_index_nico_area" class="text_pages">
-        <section>
-          <h3>
-            <a href="https://nico.ms/user/45048152"
-              ><i class="icon2-niconico"></i> 新着コンテンツ</a
+      <client-only>
+        <section class="contents_list_wrap events">
+          <div class="contents_list_header">
+            <h2>ピックアップ＆お知らせ</h2>
+            <a
+              href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf"
             >
-          </h3>
-          <div class="contents_list_area nico">
-            <div class="item" v-for="data in limitCount_movie" :key="data">
-              <a :href="data.object.url">
-                <div class="thumb_area">
-                  <span class="video">動画</span>
-                  <img :src="data.object.image" alt="" srcset="" />
-                </div>
-                <div class="title_area">
-                  <p class="title">{{ data.object.name }}</p>
-                </div>
-              </a>
-            </div>
-            <div class="contents_list_area_err" v-if="!latest_movies">
-              <p>データの取得に失敗しました</p>
-            </div>
+              <font-awesome-icon :icon="['fas', 'calendar']" class="events" />
+              予定を見る
+            </a>
           </div>
-          <div class="contents_list_area nico">
-            <div class="item" v-for="data in limitCount_streams" :key="data">
-              <a :href="data.object.url">
-                <div class="thumb_area">
-                  <span class="live">生放送</span>
-                  <img :src="data.object.image" alt="" srcset="" />
-                </div>
-                <div class="title_area">
-                  <p class="title">{{ data.object.name }}</p>
-                  <p class="desc">
-                    {{ $dateFns.format(new Date(data.updated), "yyyy/MM/dd HH:mm") }}
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="contents_list_area_err" v-if="!latest_streams">
-              <p>データの取得に失敗しました</p>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div id="page_index_parts_area" class="text_pages">
-        <section id="pickup" class="makes_pickup_contents">
-          <h3><a href="/makes">制作物ピックアップ</a></h3>
-          <div class="contents_list_area">
-            <div class="item" v-for="data in pickup_datas.pickupid" :key="data">
-              <a :href="'/makes/' + data.id">
-                <div class="thumb_area">
-                  <img :src="data.thumbnail.url" alt="" srcset="" />
-                </div>
-                <div class="title_area">
-                  <p class="title">{{ data.title }}</p>
-                  <p class="desc">{{ data.desc }}</p>
-                </div>
-              </a>
-            </div>
-            <div class="contents_list_area_err" v-if="!pickup_datas">
-              <p>データの取得に失敗しました</p>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div id="page_index_schedule" class="text_pages">
-        <article>
-          <div class="text_area">
-            <h2>猫月遥歩（ねこづきあゆむ）公開スケジュール</h2>
+          <div class="contents_list_area events">
+            <swiper
+              class="events"
+              :options="swiperOption_events"
+              v-if="eventslist"
+            >
+              <swiper-slide
+                class="item events"
+                v-for="data in eventslist.contents"
+                :key="data.id"
+              >
+                <a :href="data.href" :v-data-id="data.id" class="events">
+                  <div class="thumb_area">
+                    <span class="event">{{ data.category }}</span>
+                    <img
+                      class="events"
+                      v-if="data.thumbnail"
+                      :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
+                      :alt="data.title"
+                      srcset=""
+                    />
+                    <img
+                      class="events"
+                      v-if="!data.thumbnail"
+                      src="data.thumbnail.url"
+                      :alt="data.title"
+                      srcset=""
+                    />
+                  </div>
+                  <div class="title_area">
+                    <p class="title">{{ data.title }}</p>
+                    <p class="desc" v-if="data.type[0] !== '特になし'">
+                      <span v-if="data.type[0] == '締切'">〜</span>
+                      {{
+                        $dateFns.format(new Date(data.date), "yyyy/MM/dd HH:mm")
+                      }}
+                      <span v-if="data.type[0] == 'スタート'">〜</span>
+                    </p>
+                  </div>
+                </a>
+              </swiper-slide>
+            </swiper>
             <div
-              class="list_picks mb-4"
-              style="border-bottom: 2px dashed #ccc"
-              v-if="schedule_datas"
+              slot="button-prev"
+              class="swiper-button-prev events"
+              v-if="eventslist"
+            />
+            <div
+              slot="button-next"
+              class="swiper-button-next events"
+              v-if="eventslist"
+            />
+          </div>
+        </section>
+
+        <section class="contents_list_wrap nicovideo">
+          <div class="contents_list_header">
+            <h2>動画</h2>
+            <a href="https://www.nicovideo.jp/user/45048152/video">
+              <i class="nico-tvchan"></i>
+              もっとみる
+            </a>
+          </div>
+          <div class="contents_list_area nico">
+            <swiper
+              class="nicovideo"
+              :options="swiperOption_nicovideo"
+              v-if="newest_nicovideo && newest_nicovideo.meta.status == 200"
             >
-              <table class="mb-3">
-                <thead>
-                  <tr>
-                    <th style="width: 25%">形式</th>
-                    <th style="width: 20%">日時</th>
-                    <th>タイトル・リンク</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="scdata in schedule_datas.contents" :key="scdata">
-                    <td>
-                      <b-badge
-                        :variant="scdata.typecolor"
-                        style="font-size: 110%"
-                        >{{ scdata.category }}（{{ scdata.type }}）</b-badge
-                      >
-                    </td>
-                    <td>
+              <swiper-slide
+                class="item"
+                v-for="data in newest_nicovideo.data"
+                :key="data.id"
+              >
+                <a :href="data.object.url">
+                  <div class="thumb_area">
+                    <span class="video">動画</span>
+                    <img
+                      :src="data.object.image"
+                      :alt="data.object.name"
+                      srcset=""
+                    />
+                  </div>
+                  <div class="title_area">
+                    <p class="title">{{ data.object.name }}</p>
+                    <p class="desc">
                       {{
                         $dateFns.format(
-                          new Date(scdata.date),
+                          new Date(data.updated),
                           "yyyy/MM/dd HH:mm"
                         )
-                      }}〜
-                    </td>
-                    <td style="font-weight: 800">
-                      <a
-                        :href="scdata.href"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >{{ scdata.title }}</a
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="calender">
-              <b-button
-                href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf"
-                target="_blank"
-                rel="noopener noreferrer"
-                >スケジュールの詳細はこちらで！（クリックで開く）</b-button
-              >
-              <div class="wrap mt-3">
-                <div class="iframecover"></div>
-                <iframe
-                  src="https://calendar.google.com/calendar/embed?height=500&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&showTitle=0&showCalendars=0&showTz=1&showTabs=0&showPrint=0&showDate=1&showNav=1&src=Y19rM2wydHNmODdzNGxnOWZwY3BhYnFlMzVub0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%239E69AF"
-                  style="border-width: 0"
-                  width="1100"
-                  height="500"
-                  frameborder="0"
-                  scrolling="no"
-                ></iframe>
-              </div>
+                      }}
+                    </p>
+                  </div>
+                </a>
+              </swiper-slide>
+
+              <swiper-slide class="item more" v-if="newest_nicovideo">
+                <a href="https://www.nicovideo.jp/user/45048152/video">
+                  <i class="nico-tvchan"></i>
+                  <p>もっと見る</p>
+                </a>
+              </swiper-slide>
+            </swiper>
+            <div
+              slot="button-prev"
+              class="swiper-button-prev nicovideo"
+              v-if="newest_nicovideo && newest_nicovideo.meta.status == 200"
+            />
+            <div
+              slot="button-next"
+              class="swiper-button-next nicovideo"
+              v-if="newest_nicovideo && newest_nicovideo.meta.status == 200"
+            />
+            <div
+              class="contents_list_area_err"
+              v-if="!newest_nicovideo || newest_nicovideo.meta.status !== 200"
+            >
+              <p>データの取得に失敗しました</p>
             </div>
           </div>
-        </article>
-      </div>
-    </main>
+        </section>
+
+        <section class="contents_list_wrap nicolive">
+          <div class="contents_list_header">
+            <h2>生放送</h2>
+            <a
+              href="https://www.nicovideo.jp/user/45048152/nicorepo?type=programOnair"
+            >
+              <i class="nico-namaco"></i>
+              もっとみる
+            </a>
+          </div>
+          <div class="contents_list_area nico">
+            <swiper
+              class="nicolive"
+              :options="swiperOption_nicolive"
+              v-if="newest_nicolive && newest_nicolive.meta.status == 200"
+            >
+              <swiper-slide
+                class="item"
+                v-for="data in newest_nicolive.data"
+                :key="data.id"
+              >
+                <a :href="data.object.url">
+                  <div class="thumb_area">
+                    <span class="live">生放送</span>
+                    <img
+                      :src="data.object.image"
+                      :alt="data.object.name"
+                      srcset=""
+                    />
+                  </div>
+                  <div class="title_area">
+                    <p class="title live">{{ data.object.name }}</p>
+                    <p class="desc">
+                      {{
+                        $dateFns.format(
+                          new Date(data.updated),
+                          "yyyy/MM/dd HH:mm"
+                        )
+                      }}~
+                    </p>
+                  </div>
+                </a>
+              </swiper-slide>
+              <swiper-slide class="item more" v-if="newest_nicolive">
+                <a
+                  href="https://www.nicovideo.jp/user/45048152/nicorepo?type=programOnair"
+                >
+                  <i class="nico-namaco"></i>
+                  <p>もっと見る</p>
+                </a>
+              </swiper-slide>
+            </swiper>
+            <div
+              slot="button-prev"
+              class="swiper-button-prev nicolive"
+              v-if="newest_nicolive && newest_nicolive.meta.status == 200"
+            />
+            <div
+              slot="button-next"
+              class="swiper-button-next nicolive"
+              v-if="newest_nicolive && newest_nicolive.meta.status == 200"
+            />
+            <div
+              class="contents_list_area_err"
+              v-if="!newest_nicolive || newest_nicolive.meta.status !== 200"
+            >
+              <p>データの取得に失敗しました</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="contents_list_wrap blog">
+          <div class="contents_list_header">
+            <h2>ブログ記事</h2>
+            <a href="https://blog.nekozuki.me/">
+              <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
+              もっとみる
+            </a>
+          </div>
+          <div class="contents_list_area blog">
+            <swiper class="blog" :options="swiperOption_blog" v-if="blogdata">
+              <swiper-slide
+                class="item"
+                v-for="data in blogdata.contents"
+                :key="data.id"
+              >
+                <a :href="'https://blog.nekozuki.me/' + data.id">
+                  <div class="thumb_area">
+                    <span class="blog">記事</span>
+                    <img
+                      v-if="data.thumbnail"
+                      :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
+                      :alt="data.title"
+                      srcset=""
+                    />
+                    <img
+                      v-if="!data.thumbnail"
+                      src="https://blog.nekozuki.me/favicon.png"
+                      :alt="data.title"
+                      srcset=""
+                    />
+                  </div>
+                  <div class="title_area">
+                    <p class="title live">{{ data.title }}</p>
+                    <p class="desc">
+                      {{
+                        $dateFns.format(
+                          new Date(data.publishedAt),
+                          "yyyy/MM/dd HH:mm"
+                        )
+                      }}
+                    </p>
+                  </div>
+                </a>
+              </swiper-slide>
+              <swiper-slide class="item more" v-if="blogdata">
+                <a href="https://blog.nekozuki.me/">
+                  <font-awesome-icon :icon="['fas', 'blog']" class="blog" />
+                  <p>もっと見る</p>
+                </a>
+              </swiper-slide>
+            </swiper>
+            <div slot="button-prev" class="swiper-button-prev blog" />
+            <div slot="button-next" class="swiper-button-next blog" />
+            <div class="contents_list_area_err" v-if="!blogdata">
+              <p>データの取得に失敗しました</p>
+            </div>
+          </div>
+        </section>
+      </client-only>
+    </div>
   </div>
 </template>
 
 <script>
 import Meta from "~/mixins/meta";
-import Mainvisual from "~/components/Mainvisual.vue";
-1
-// let schedule_datas = [];
-let trycount = 0;
-
 export default {
-  components: {
-    Mainvisual,
+  async asyncData({ $axios }) {
+    let eventslist = await $axios.$get(
+      "http://localhost:3000/api_mc_nekozukime/v1/schedule"
+    );
+
+    let newest_nicovideo = await $axios.$get(
+      "http://localhost:3000/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
+    );
+
+    let newest_nicolive = await $axios.$get(
+      "http://localhost:3000/api_nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
+    );
+
+    let blogdata = await $axios.$get(
+      "http://localhost:3000/api_mc_nekolog/v1/article"
+    );
+
+    return {
+      eventslist,
+      newest_nicovideo,
+      newest_nicolive,
+      blogdata,
+    };
   },
   mixins: [Meta],
   head() {
     return {
       titleTemplate: null,
-      title: "ねこづきあゆむのうぇぶさいと",
+      title: "nekozuki.me - ねこづきあゆむポータルサイト",
     };
   },
-  async asyncData({ $microcms, $axios }) {
-    let pickup_datas = await $microcms.get({
-      endpoint: "works_pickup",
-    });
-
-    let yesterday_date = new Date();
-    yesterday_date.setDate(yesterday_date.getDate() - 1);
-
-    let schedule_datas = await $microcms.get({
-      endpoint: "schedule",
-      queries: {
-        orders: "date",
-        filters: "date[greater_than]" + yesterday_date.toISOString(),
-      },
-    });
-
-    function changedatetype(dt) {
-      var year = dt.getFullYear();
-      var month = dt.getMonth() + 1;
-      var date = dt.getDate();
-      var hours = dt.getHours();
-      var minutes = dt.getMinutes();
-      var ymdhms =
-        new String(year) +
-        "/" +
-        ("00" + new String(month)).slice(-2) +
-        "/" +
-        ("00" + new String(date)).slice(-2);
-      ymdhms +=
-        " " +
-        ("00" + new String(hours)).slice(-2) +
-        ":" +
-        ("00" + new String(minutes)).slice(-2);
-      return ymdhms;
-    }
-
-    let latest_movies = await $axios.$get(
-      "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=video&type=upload"
-    );
-
-    let latest_streams = await $axios.$get(
-      "https://public.api.nicovideo.jp/v1/timelines/nicorepo/last-6-months/users/45048152/pc/entries.json?object%5Btype%5D=program&type=onair"
-    );
-
+  data() {
     return {
-      pickup_datas,
-      schedule_datas,
-      latest_movies,
-      latest_streams,
+      swiperOption_events: {
+        width: 320,
+        autoheight: true,
+        setWrapperSize: true,
+        freeModeSticky: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next.events",
+          prevEl: ".swiper-button-prev.events",
+        },
+      },
+      swiperOption_nicovideo: {
+        width: 220,
+        autoheight: true,
+        setWrapperSize: true,
+        edgeSwipeDetection: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next.nicovideo",
+          prevEl: ".swiper-button-prev.nicovideo",
+        },
+      },
+      swiperOption_nicolive: {
+        width: 220,
+        autoheight: true,
+        setWrapperSize: true,
+        freeModeSticky: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next.nicolive",
+          prevEl: ".swiper-button-prev.nicolive",
+        },
+      },
+      swiperOption_blog: {
+        width: 220,
+        autoheight: true,
+        setWrapperSize: true,
+        freeModeSticky: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next.blog",
+          prevEl: ".swiper-button-prev.blog",
+        },
+      },
     };
-  },
-  computed: {
-    limitCount_movie() {
-      return this.latest_movies.data.slice(0, 4);
-    },
-    limitCount_streams() {
-      return this.latest_streams.data.slice(0, 4);
-    },
   },
 };
 </script>
+
+
+<style lang="scss" scoped>
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.contents_list_wrap {
+  margin: 1.5rem 0;
+  position: relative;
+
+  & + .contents_list_wrap {
+    margin: 2.5rem 0;
+  }
+
+  .contents_list_header {
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      display: inline-block;
+      margin: 0;
+      padding: 0.25rem 1.25rem;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 700;
+      background-color: #7f7fff;
+      color: white;
+      border-radius: 20px;
+      position: relative;
+
+      &::before {
+        content: url(~assets/svg/ear.svg);
+        position: absolute;
+        top: -20px;
+        height: 20px;
+        width: 40px;
+      }
+      &::after {
+        content: url(~assets/svg/tail.svg);
+        position: absolute;
+        height: 20px;
+        width: 30px;
+        right: -15px;
+        bottom: 12.5px;
+      }
+    }
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 500;
+      color: white;
+      background-color: #7f7fff;
+      padding: 0.25rem 1.25rem;
+      border-radius: 20px;
+      z-index: 2;
+      transition: box-shadow ease 0.2s;
+
+      i,
+      svg {
+        margin-right: 5px;
+
+        &.nico-tvchan {
+          margin-bottom: 2px;
+        }
+        &.nico-namaco {
+          font-size: 120%;
+        }
+        &.blog {
+          margin-bottom: 2px;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 0 3px #7f7fff;
+      }
+    }
+  }
+
+  .contents_list_area {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 0 35px;
+
+    .swiper-container {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: 100%;
+      right: 0;
+      position: absolute;
+      top: 0;
+      width: 100px;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(250, 250, 250, 0), white);
+    }
+
+    .item {
+      display: flex;
+      padding: 10px;
+
+      a {
+        border-radius: 10px;
+        width: 200px;
+        box-shadow: 0 0 3px #7f7fff;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+
+        .thumb_area {
+          aspect-ratio: 16 / 9;
+          width: 100%;
+          height: auto;
+          position: relative;
+          overflow: hidden;
+          border-radius: 10px 10px 0 0;
+          background-color: #efefff;
+
+          span {
+            position: absolute;
+            font-size: 10px;
+            margin: 0.5em;
+            padding: 0 0.25em;
+            border-radius: 3px;
+            z-index: 2;
+
+            &.video {
+              background-color: #252525;
+              color: #fafafa;
+            }
+            &.live {
+              background-color: #f03;
+              color: #fafafa;
+            }
+            &.event {
+              background-color: orangered;
+              color: #fafafa;
+            }
+            &.blog {
+              background-color: #7f7fff;
+              color: #fafafa;
+            }
+          }
+          img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px 10px 0 0;
+            transition: transform ease 0.1s;
+
+            &.events {
+              object-fit: cover;
+            }
+          }
+        }
+
+        .title_area {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          justify-content: space-between;
+          padding: 0.5rem;
+
+          .title {
+            font-family: "M PLUS Rounded 1c", sans-serif;
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+          .desc {
+            font-size: 11px;
+            margin-bottom: 0;
+            color: #333;
+            margin-top: 0;
+          }
+        }
+
+        &:hover {
+          .thumb_area {
+            img {
+              transform: scale(110%);
+            }
+          }
+        }
+      }
+
+      &.more {
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #252525;
+
+          * {
+            transition: transform ease 0.1s;
+          }
+
+          i.nico-namaco {
+            font-size: 50px;
+          }
+          i.nico-tvchan {
+            font-size: 40px;
+          }
+          svg.events,
+          svg.blog {
+            font-size: 35px;
+          }
+
+          p {
+            font-family: "M PLUS Rounded 1c", sans-serif;
+            font-weight: 700;
+            margin: 0.5rem;
+            font-size: 20px;
+          }
+
+          &:hover {
+            * {
+              transform: scale(110%);
+            }
+          }
+        }
+      }
+
+      &.events {
+        a {
+          width: 300px;
+        }
+      }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: #7f7fff;
+    }
+
+    .contents_list_area_err {
+      width: 90%;
+      margin: 0 auto;
+
+      p {
+        box-shadow: 0 0 3px #7f7fff;
+        width: 100%;
+        margin: 0.5rem;
+        padding: 2rem 0.5rem;
+        text-align: center;
+        border-radius: 10px;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-weight: 700;
+        background-color: #efefff;
+      }
+    }
+  }
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 1rem auto;
+
+  .icon {
+    height: 100px;
+    width: 100px;
+    background-image: url(~/assets/svg/icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    box-shadow: 0 0 3px #7f7fff;
+    border-radius: 100%;
+  }
+  .text {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 500;
+    margin: 10px 0 10px 2rem;
+    padding: 1rem;
+    box-shadow: 0 0 3px #7f7fff;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+
+    &::before {
+      content: "◀︎";
+      font-size: 150%;
+      position: absolute;
+      left: -20px;
+      top: 1.5rem;
+      color: white;
+      text-shadow: 0 0 3px #7f7fff;
+    }
+  }
+}
+</style>

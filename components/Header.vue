@@ -1,44 +1,57 @@
 <template>
-  <header class="commonHeader">
-    <b-navbar toggleable="lg" type="light" class="commonHeader_wrapper">
-      <b-navbar-brand href="/">
-        <h1 class="logo"></h1>
-      </b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item href="/about">About</b-nav-item>
-          <b-nav-item href="/makes">Makes</b-nav-item>
-          <b-nav-item href="/links">Links</b-nav-item>
-          <b-nav-item href="/contact">Contact</b-nav-item>
-          <b-nav-item href="https://blog.nekozuki.me">Blog</b-nav-item>
-        </b-navbar-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto sphide">
-          <b-nav-item target="_blank" href="https://twitter.com/nekozuki_2525">
-            <font-awesome-icon :icon="['fab', 'twitter']" />
-          </b-nav-item>
-          <b-nav-item
-            target="_blank"
-            href="https://friends.cafe/@nekozuki_2525"
-            rel="me"
-          >
-            <font-awesome-icon :icon="['fab', 'mastodon']" />
-          </b-nav-item>
-          <b-nav-item
-            target="_blank"
-            href="https://www.nicovideo.jp/user/45048152/video"
-          >
-            <i class="icon2-niconico"></i>
-          </b-nav-item>
-          <b-nav-item target="_blank" href="https://github.com/AyumuNekozuki">
-            <font-awesome-icon :icon="['fab', 'github']" />
-          </b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+  <header class="global_header">
+    <h1>nekozuki.me</h1>
+    <nav class="wrap">
+      <nuxt-link class="to_about" to="/about">About</nuxt-link>
+      <nuxt-link class="to_makes" to="/makes">Makes</nuxt-link>
+      <nuxt-link class="to_top" to="/">nekozuki.me</nuxt-link>
+      <nuxt-link class="to_links" to="/links">Links</nuxt-link>
+      <nuxt-link class="to_contact" to="/contact">Contact</nuxt-link>
+    </nav>
   </header>
 </template>
+
+<style lang="scss" scoped>
+.global_header{
+  background: linear-gradient(white, rgba(250, 250, 250, 0));
+  width: 100%;
+  border-top: 20px solid #7F7FFF;
+  position: sticky;
+  top: 0;
+
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+
+  z-index: 30;
+
+  h1{
+    display: none;
+  }
+
+  .wrap{
+    display: flex;
+    position: fixed;
+    top: 0;
+    justify-content: space-around;
+
+    max-width: 900px;
+    width: 100%;
+    background-color: #7F7FFF;
+    color: white;
+
+    padding: .5rem;
+    font-size: 20px;
+    border-radius: 0 0 5px 5px;
+
+    a{
+      color: white;
+      text-decoration: none;
+      padding: 0 .5rem;
+    }
+
+  }
+}
+</style>

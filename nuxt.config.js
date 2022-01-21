@@ -1,42 +1,42 @@
 export default {
-
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'server',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    titleTemplate: '%s - nekozuki.me',
     htmlAttrs: {
       prefix: 'og: http://ogp.me/ns#',
       lang: 'ja'
     },
-    titleTemplate: '%s - nekozuki.me',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'format-detection', content: 'telephone=no' },
-      { hid: 'description', name: 'description', content: 'ねこづきあゆむのうぇぶさいとです。' },
+      { hid: 'description', name: 'description', content: 'ねこづきあゆむのWebサイトです。' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'nekozuki.me' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
-      { hid: 'og:url', property: 'og:url', content: 'https://nekozuki.me' },
+      { hid: 'og:url', property: 'og:url', content: 'https://www.nekozuki.me' },
       { hid: 'og:title', property: 'og:title', content: 'nekozuki.me' },
-      { hid: 'og:description', property: 'og:description', content: 'ねこづきあゆむのうぇぶさいとです。' },
-      { hid: 'og:image', property: 'og:image', content: 'https://nekozuki.me/img/thumb/nekozuki.png' },
+      { hid: 'og:description', property: 'og:description', content: 'ねこづきあゆむのWebサイトです。' },
+      { hid: 'og:image', property: 'og:image', content: 'https://www.nekozuki.me/ogp.png' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@nekozuki_dev' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/img/ogp/icon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/static/icomoon_fonts/icomoon-style.css',
-    '~/assets/scss/main.scss'
+    '~/assets/nicoicon_fonts/nicoicon.css',
+    '~/assets/style/color.scss',
+    '~/assets/style/loading.scss',
+    '~/assets/style/text_area.scss',
+    '~/assets/style/linklist.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: "~/plugins/swiper", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,27 +44,37 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    'nuxt-microcms-module',
-    '@nuxtjs/date-fns'
   ],
-  microcms: {
-    options: {
-      serviceDomain: process.env.SERVICE_DOMAIN,
-      apiKey: process.env.API_KEY,
-    },
-    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
-  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    'nuxt-helmet',
-    'bootstrap-vue/nuxt',
-    'nuxt-fontawesome',
-    'nuxt-webfontloader',
+    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/date-fns'
+    'nuxt-webfontloader',
+    'nuxt-microcms-module',
+    '@nuxtjs/date-fns',
+    'nuxt-fontawesome',
+    'nuxt-helmet',
   ],
+
+  webfontloader: {
+    google: {
+      families: [
+        'Noto+Sans+JP:400,700',
+        'M+PLUS+Rounded+1c:100,300,400,500,700,800,900'
+      ]
+    }
+  },
+
+  // memo: microcms なんかうごかない
+  microcms: {
+    options: {
+      serviceDomain: process.env.MC_SERVICE_DOMAIN,
+      apiKey: process.env.MC_API_KEY
+    },
+    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+  },
+  
   fontawesome: {
     imports: [
       {
@@ -77,25 +87,42 @@ export default {
       }
     ]
   },
-  webfontloader: {
-    google: {
-      families: ['M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900']
-    }
-  },
   helmet: {
     frameguard: false,
     hidePoweredBy: true
   },
 
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    prefix: '/api',
+    proxy: true,
+  },
+  proxy: {
+    '/api_nicorepo/': {
+      target: 'https://public.api.nicovideo.jp',
+      pathRewrite: {
+        '^/api_nicorepo/': '/v1/timelines/nicorepo/'
+      }
+    },
+    '/api_mc_nekolog/': {
+      target: 'https://nekolog.microcms.io',
+      pathRewrite: {
+        '^/api_mc_nekolog/': '/api/'
+      },
+      headers: { "X-MICROCMS-API-KEY": process.env.MC_BLOG_API_KEY },
+    },
+    '/api_mc_nekozukime/': {
+      target: 'https://nekozuki-me.microcms.io',
+      pathRewrite: {
+        '^/api_mc_nekozukime/': '/api/'
+      },
+      headers: { "X-MICROCMS-API-KEY": process.env.MC_API_KEY },
+    },
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
   buildDir: 'dist',
-
-  loading: {
-    color: '#3273dc',
-    failedColor: 'red',
-    height: '2px'
-  },
 }

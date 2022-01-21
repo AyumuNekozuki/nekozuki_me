@@ -1,0 +1,187 @@
+$pastel_purple: #7f7fff;
+$pastel_purple_light: #efefff;
+
+$textcolor1: #4a4a4a;
+$textcolor2: #333;
+$urlcolor1: #7f7fff;
+$urlcolor2: #7f7fff;
+$background1: #f4f4f4;
+$background2: #fafafa;
+$border1: #ccc;
+$border2: #999;
+
+$bs-info: #17a2b8;
+
+$card-shadow: 0 4px 10px #00000020, 0 0 1px #00000020;
+
+$twitter: #1da1f2;
+$mastodon: #2691da;
+$nekolog: #2a2e4c;
+$nicovideo: #252525;
+$github: #333;
+$youtube: #f20103;
+$bilibili: #379be3;
+$fanbox: #f8bb29;
+$booth: #f34d51;
+$steam: #1b2838;
+$vrchat: #1c5891;
+$tso: #3289ff;
+$amazon: #f69a03;
+$switch: #e60113;
+$discord: #404fed;
+$ff14: #134FA2;
+
+$gform: #744bbc;
+
+#page_links {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 10px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+
+  h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 0.25rem 1.25rem;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    background-color: #7f7fff;
+    color: white;
+    border-radius: 20px;
+    position: relative;
+
+    &::before {
+      content: url(~assets/svg/ear.svg);
+      position: absolute;
+      top: -20px;
+      height: 20px;
+      width: 40px;
+    }
+    &::after {
+      content: url(~assets/svg/tail.svg);
+      position: absolute;
+      height: 20px;
+      width: 30px;
+      right: -15px;
+      bottom: 12.5px;
+    }
+  }
+  h3 {
+    display: inline-block;
+    background-color: #7f7fff;
+    color: white;
+    font-size: 1.5rem;
+    margin: 2rem 0 .5rem;
+    font-weight: 500;
+    padding: 0.25rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  a,
+  button {
+    width: 100%;
+    display: flex;
+    padding: .5rem;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em auto;
+    box-shadow: $card-shadow;
+    transition: box-shadow ease 0.3s;
+    transition: opacity ease 0.3s;
+    font-size: 110%;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      box-shadow: none;
+      opacity: 0.8;
+    }
+
+    & > * {
+      margin: 0 10px;
+    }
+
+    &.twitter {
+      background-color: $twitter;
+      border-color: $twitter;
+    }
+    &.mastodon {
+      background-color: $mastodon;
+      border-color: $mastodon;
+    }
+    &.nekolog {
+      background-color: $nekolog;
+      border-color: $nekolog;
+    }
+
+    &.nicovideo {
+      background-color: $nicovideo;
+      border-color: $nicovideo;
+    }
+    &.github {
+      background-color: $github;
+      border-color: $github;
+    }
+
+    &.youtube {
+      background-color: $youtube;
+      border-color: $youtube;
+    }
+    &.bilibili {
+      background-color: $bilibili;
+      border-color: $bilibili;
+    }
+    &.fanbox {
+      background-color: $fanbox;
+      border-color: $fanbox;
+    }
+    &.booth {
+      background-color: $booth;
+      border-color: $booth;
+    }
+    &.tso {
+      background-color: $tso;
+      border-color: $tso;
+    }
+    &.amazon {
+      background-color: $amazon;
+      border-color: $amazon;
+    }
+    &.steam {
+      background-color: $steam;
+      border-color: $steam;
+    }
+    &.vrchat {
+      background-color: $vrchat;
+      border-color: $vrchat;
+    }
+    &.ff14 {
+      background-color: $ff14;
+      border-color: $ff14;
+    }
+    &.switch {
+      background-color: $switch;
+      border-color: $switch;
+      &:hover {
+        cursor: default;
+        opacity: 1;
+        box-shadow: $card-shadow;
+      }
+    }
+
+    &.discord {
+      background-color: $discord;
+      border-color: $discord;
+    }
+
+    &.mail {
+      background-color: $bs-info;
+      border-color: $bs-info;
+    }
+    &.form {
+      background-color: $gform;
+      border-color: $gform;
+    }
+  }
+}

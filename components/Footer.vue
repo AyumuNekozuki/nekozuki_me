@@ -1,36 +1,15 @@
 <template>
-  <footer class="commonFooter">
-    <div class="container">
-      <div class="level">
-        <div class="level-start">
-          <a class="footer-logo is-block mb-2" href="/">
-            <img
-              class="logo-img"
-              src="@/assets/imgs/logo.png"
-              alt="ねころぐ"
-              height="28"
-            />
-          </a>
-          <p class="size-small">
-            © 2018 - 2021 AyumuNekozuki
-          </p>
-        </div>
-        <div class="level-end">
-          <div class="field has-addons">
-            <p class="control">
-              <a
-                class="button is-transparent is-large"
-                target="_blank"
-                rel="noopener"
-                title="Pullreq &amp; issue is Here"
-                href="https://github.com/AyumuNekozuki/nekozuki_me"
-              >
-                <font-awesome-icon :icon="['fab', 'github']" />
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <footer class="global_footer">
+    <small>&copy; 2018 - 2022 AyumuNekozuki</small>
   </footer>
 </template>
+
+<style lang="scss" scoped>
+.global_footer{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #7F7FFF;
+  color: white;
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+</style>

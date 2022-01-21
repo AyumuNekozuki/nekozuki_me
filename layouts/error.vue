@@ -1,37 +1,42 @@
 <template>
-  <div class="error">
-    <div class="text_pages">
-      <article>
-        <div class="article_thumb">
-          <img src="~static/img/assets/404_img.jpg" alt="" srcset="">
+  <div class="nuxt_error">
+    <div class="body_wrapper">
+
+      <div class="wrapper">
+        <div class="text_area" v-if="error.statusCode === 404">
+          <h2>ページが見つかりませんでした</h2>
+          <p>URLに間違いがないかご確認ください。</p>
+          <p><nuxt-link to="/"> TOP</nuxt-link></p>
         </div>
-        <div class="text_area">
-          <h2>{{ error.statusCode }} - {{ error.message }}</h2>
-          <p v-if="error.statusCode == 418">私はコーヒーが苦手なの！</p>
-          <p><nuxt-link to="/">Back to the TOP</nuxt-link></p>
+
+        <div class="text_area" v-if="error.statusCode !== 404">
+          <h2>エラーが発生しました</h2>
+          <p>URLに間違いがないかご確認ください。</p>
+          <p><nuxt-link to="/"> TOP</nuxt-link></p>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Meta from "~/mixins/meta";
-
 export default {
-  mixins: [Meta],
-  data() {
-    return {
-      meta: {
-        title: "Error!",
-        description: "",
-        type: "pages",
-        url: "https://nekozuki.me",
-      },
-    };
-  },
-  props: {
-    error: { type: Object, default () { return {} } }
-  }
-}
+  props: ["error"],
+};
 </script>
+
+<style lang="scss" scoped>
+.body_wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: white;
+  box-shadow: none;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 20px auto;
+}
+</style>

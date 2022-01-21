@@ -1,67 +1,23 @@
 <template>
-  <div id="page_makeids" class="text_pages">
+  <div id="page_makeids" class="wrapper">
     <article>
-      <div class="article_thumb">
-        <img
-          :src="contetnts_document.thumbnail.url"
-          :alt="contetnts_document.title"
-          srcset=""
-        />
-      </div>
       <div class="text_area">
         <h2 class="title">
-          {{ contetnts_document.title
-          }}<span class="desc">{{ contetnts_document.desc }}</span>
+          {{ contetnts_document.title }}
         </h2>
-        <div
-          class="heading_contents_area"
-          v-if="!taghide && contetnts_document.contents_text"
-        >
-          <div class="tag_area">
-            <p>Category: {{ contetnts_document.type }}</p>
-            <ul class="tag_list">
-              <li
-                v-for="tag in contetnts_document.tag"
-                :key="tag"
-              >
-                <font-awesome-icon :icon="['fas', 'tag']" />
-                {{ tag.tag }}
-              </li>
-            </ul>
-            <ul class="tag_img_list">
-              <li
-                v-for="imgtag in contetnts_document.imglinks"
-                :key="imgtag"
-              >
-                <img :src="imgtag.imglink" alt="" srcset="" />
-              </li>
-            </ul>
-          </div>
-          <div class="link_area">
-            <ul class="link_list">
-              <li
-                v-for="link in contetnts_document.links"
-                :key="link"
-              >
-                <a :href="link.href">
-                  <span class="title">{{ link.title }}</span>
-                  <span class="ex">
-                    <font-awesome-icon :icon="['fas', 'external-link-alt']" />
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div class="thumbnail">
+          <img
+            :src="contetnts_document.thumbnail.url + '?fit=max&w=960&h=540'"
+            :alt="contetnts_document.title"
+            srcset=""
+          />
         </div>
         <div v-if="contetnts_document.contents_text">
-          <div v-for="contntdata in contetnts_document.contents_text" :key="contntdata" v-html="contntdata.editor"></div>
-        </div>
-        <div v-if="!contetnts_document.contents_text">
-          <p class="h3 m-5 text-center">
-            <b-badge class="p-3" variant="warning"
-              >👷 このページは現在工事中です</b-badge
-            >
-          </p>
+          <div
+            v-for="contntdata in contetnts_document.contents_text"
+            :key="contntdata"
+            v-html="contntdata.editor"
+          ></div>
         </div>
       </div>
     </article>
@@ -71,39 +27,31 @@
 <script>
 import Meta from "~/mixins/meta";
 let ogp_title, ogp_id, ogp_image;
-
 export default {
-  async asyncData({ $microcms, params, error }) {
+  async asyncData({ $axios, params, error }) {
     try {
-      let taghide = false;
-
-      let contetnts_document = await $microcms.get({
-        endpoint: `makes/${params.slug}`,
-        query: {limit: 0}
-      }).catch(function (error) {
-        this.$nuxt.error({
-          statusCode: 404,
-          message: error,
+      let contetnts_document = await $axios
+        .$get(
+          `http://localhost:3000/api_mc_nekozukime/v1/makes/${params.slug}`
+        )
+        .catch((e) => {
+          this.$nuxt.error({
+            statusCode: 404,
+            message: error,
+          });
         });
-      });
-
-      if (contetnts_document.type == "contents") {
-        taghide = true;
-      }
 
       ogp_title = contetnts_document.title;
       ogp_id = contetnts_document.id;
       ogp_image = contetnts_document.thumbnail.url;
-
       return {
         contetnts_document,
         ogp_title,
         ogp_id,
         ogp_image,
-        taghide,
       };
     } catch {
-      error({ statusCode: 404, message: 'Page not Found' })
+      error({ statusCode: 404, message: "Page not Found" });
     }
   },
   mixins: [Meta],
@@ -120,3 +68,25 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 300px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  margin-top: 10px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+  }
+}
+</style>

@@ -1,12 +1,9 @@
 <template>
-    <div id="page_about" class="text_pages">
-    <article>
-      <div class="article_thumb">
-        <img src="~static/img/thumb/nekozuki.png" alt="" srcset="">
-      </div>
+  <div class="about">
+    <div class="wrapper">
       <div class="text_area">
-        <h2>『ねこづきあゆむのうぇぶさいと』関連情報</h2>
-        <h3 style="margin-top:0;">このサイトについて</h3>
+        <h2>nekozuki.me ポリシー</h2><br>
+        <h3>このサイトについて</h3>
         <p>当サイトは、猫月遥歩（ねこづきあゆむ）のポートフォリオ的なものです。猫月遥歩（ねこづきあゆむ）が何者なのかまとめています。猫月遥歩（ねこづきあゆむ）本人については <a href="/about">こちら</a> のページを御覧ください。</p>
         <p>当サイトに掲載されている情報は、 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja" target="_blank" rel="noopener noreferrer">CC BY-ND 4.0</a> で利用可能です。</p>
 
@@ -27,9 +24,16 @@
         <p>メール: <a href="mailto:ayumu@nekozuki.me">ayumu@nekozuki.me</a></p>
         <p>TwitterDM: <a href="https://twitter.com/nekozuki_2525">@nekozuki_2525</a></p>
       </div>
-    </article>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.wrapper {
+  max-width: 960px;
+  margin: 20px auto;
+}
+</style>
 
 <script>
 import Meta from "~/mixins/meta";
@@ -41,7 +45,7 @@ export default {
         title: "Policy",
         description: "当ウェブサイトのポリシーです",
         type: "pages",
-        url: "https://nekozuki.me/policy",
+        url: "https://www.nekozuki.me/policy",
       },
     };
   },

@@ -1,17 +1,19 @@
 <template>
-  <div id="page_about" class="text_pages">
-    <article>
-      <div class="article_thumb">
-        <img src="~static/img/thumb/nekozuki.png" alt="" srcset="">
-      </div>
+  <div class="about">
+    <div class="wrapper">
       <div class="text_area">
-        <h2>ねこづきあゆむとは</h2>
-        <p>重度のニコ厨。2021年4月現在、専門学生。将来のためにWeb方面を中心にプログラミングなどを勉強中。将来はドワンゴに入社してニコニコに携わりたいと思っている。</p>
-        <p>好きなものはスイーツとガジェット。嫌いなものは辛い/苦いものと生き物。趣味でVOICEROIDを利用した動画を投稿したり生放送をしたりしている。</p>
+        <h2>About - ねこづきあゆむとは</h2>
+        <p>
+          重度のニコ厨。2021年4月現在、専門学生。将来のためにWeb方面を中心にプログラミングなどを勉強中。将来はドワンゴに入社してニコニコに携わりたいと思っている。
+        </p>
+        <p>
+          好きなものはスイーツとガジェット。嫌いなものは辛い/苦いものと生き物。趣味でVOICEROIDを利用した動画を投稿したり生放送をしたりしている。
+        </p>
 
         <h3>活動</h3>
-        <p>Webページ・Webアプリ制作、ブラウザ拡張機能の制作をはじめ、動画制作、生配信、コンテンツ制作など、多岐にわたって活動を行っています。</p>
-        <p>活動の詳細は <nuxt-link to="makes">こちら</nuxt-link> をご覧ください。</p>
+        <p>
+          Webページ・Webアプリ制作、ブラウザ拡張機能の制作をはじめ、動画制作、生配信、コンテンツ制作など、多岐にわたって活動を行っています。
+        </p>
 
         <h3>受賞歴</h3>
         <table>
@@ -103,15 +105,26 @@
               <td>N高等学校を卒業、東京都内の専門学校に入学</td>
             </tr>
             <tr>
+              <td>2021/12</td>
+              <td>「niconico Darkmode」ユーザー１万人突破</td>
+            </tr>
+            <tr>
               <td></td>
               <td>現在、東京都内の専門学校に通学中。</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </article>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.wrapper {
+  max-width: 960px;
+  margin: 20px auto;
+}
+</style>
 
 <script>
 import Meta from "~/mixins/meta";
@@ -120,15 +133,12 @@ export default {
   data() {
     return {
       meta: {
-        title: "About",
+        title: "About - ねこづきあゆむとは",
         description: "ねこづきあゆむとは",
         type: "pages",
-        url: "https://nekozuki.me/about",
+        url: "https://www.nekozuki.me/about",
       },
     };
   },
 }
 </script>
-
-<style lang="scss">
-</style>
