@@ -33,4 +33,14 @@ body{
   background-color: white;
   box-shadow: 0 0 10px #7f7fff;
 }
+
+@media screen and (max-width: 767px) {
+  .body_wrapper{
+    padding: 10px 0;
+  }
+  .nuxt_default{
+    border-width: 10px;
+    background: none;
+  }
+}
 </style>

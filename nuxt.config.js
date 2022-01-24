@@ -51,7 +51,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'nuxt-webfontloader',
-    'nuxt-microcms-module',
+    // 'nuxt-microcms-module',
     '@nuxtjs/date-fns',
     'nuxt-fontawesome',
     'nuxt-helmet',

@@ -390,6 +390,8 @@ export default {
       margin: 0;
       padding: 0.25rem 1.25rem;
       font-family: "M PLUS Rounded 1c", sans-serif;
+      transform: rotate(.03deg);
+      transform: rotate(.03deg);
       font-weight: 700;
       background-color: #7f7fff;
       color: white;
@@ -417,6 +419,7 @@ export default {
       align-items: center;
       text-decoration: none;
       font-family: "M PLUS Rounded 1c", sans-serif;
+      transform: rotate(.03deg);
       font-weight: 500;
       color: white;
       background-color: #7f7fff;
@@ -537,6 +540,7 @@ export default {
 
           .title {
             font-family: "M PLUS Rounded 1c", sans-serif;
+            transform: rotate(.03deg);
             margin: 0;
             font-size: 14px;
             color: #333;
@@ -589,6 +593,7 @@ export default {
 
           p {
             font-family: "M PLUS Rounded 1c", sans-serif;
+            transform: rotate(.03deg);
             font-weight: 700;
             margin: 0.5rem;
             font-size: 20px;
@@ -626,6 +631,7 @@ export default {
         text-align: center;
         border-radius: 10px;
         font-family: "M PLUS Rounded 1c", sans-serif;
+        transform: rotate(.03deg);
         font-weight: 700;
         background-color: #efefff;
       }
@@ -652,6 +658,7 @@ export default {
   }
   .text {
     font-family: "M PLUS Rounded 1c", sans-serif;
+    transform: rotate(.03deg);
     font-weight: 500;
     margin: 10px 0 10px 2rem;
     padding: 1rem;
@@ -668,6 +675,76 @@ export default {
       top: 1.5rem;
       color: white;
       text-shadow: 0 0 3px #7f7fff;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  section.about{
+    .icon{
+      display: none;
+    }
+    .text{
+      margin: 0 5px;
+      padding: 10px; 
+      font-size: 14px;
+      p{
+        margin: 0;
+      }
+      &::before{
+        display: none;
+      }
+    }
+  }
+
+  section.contents_list_wrap{
+    margin: 1rem 0;
+    
+    &+.contents_list_wrap{
+      margin: 1rem 0;
+    }
+
+    .contents_list_header{
+      margin: 0 10px;
+      a{
+        display: none;
+      }
+      h2{
+        min-width: 70px;
+        padding: 0.25rem 20px 0.25rem 10px;
+        font-size: 16px;
+        &::before{
+          top: -10px;
+        }
+        &::after{
+          bottom: 5px;
+        }
+      }
+    }
+    .contents_list_area{
+      padding: 0 0 0 10px;
+
+      .swiper-container{
+        .item{
+          width: 150px !important;
+
+          a{
+            .title_area{
+              .title{
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+      &::after{
+        width: 20px;
+      }
+    }
+
+    [slot="button-prev"], [slot="button-next"]{
+      display: none;
     }
   }
 }

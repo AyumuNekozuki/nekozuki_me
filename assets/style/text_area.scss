@@ -12,6 +12,7 @@ $border2: #999;
 
 .text_area {
   font-family: "M PLUS Rounded 1c", sans-serif;
+  transform: rotate(.03deg);
   padding: 0 10px;
 
   h2 {
@@ -19,6 +20,7 @@ $border2: #999;
     margin: 0;
     padding: 0.25rem 1.25rem;
     font-family: "M PLUS Rounded 1c", sans-serif;
+    transform: rotate(.03deg);
     font-weight: 700;
     background-color: #7f7fff;
     color: white;
@@ -194,6 +196,39 @@ $border2: #999;
             opacity: 0.7;
           }
         }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .text_area {
+    font-size: 80% !important;
+
+    p {
+      margin: .5rem 0;
+    }
+    h2{
+      min-width: 70px;
+      padding: 0.25rem 20px 0.25rem 10px;
+      font-size: 16px;
+      &::before{
+        top: -10px;
+      }
+      &::after{
+        bottom: 5px;
+      }
+    }
+    h3{
+      margin: .5rem 0;
+      padding: 0.25rem 10px;
+      font-size: 16px;
+      &::before{
+        top: -10px;
+      }
+      &::after{
+        bottom: 5px;
       }
     }
   }

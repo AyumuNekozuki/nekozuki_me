@@ -278,18 +278,25 @@ export default {
     };
   },
   async asyncData({ $axios, params }) {
-     let [pickup_datas, extention_datas, web_datas, contents_datas] = await Promise.all([
-       $axios.$get("/api_mc_nekozukime/v1/works_pickup"),
-       $axios.$get("/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dextentions&orders=createdAt"),
-       $axios.$get("/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dweb&orders=createdAt"),
-       $axios.$get("/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dcontents&orders=createdAt"),
-     ]);
+    let [pickup_datas, extention_datas, web_datas, contents_datas] =
+      await Promise.all([
+        $axios.$get("/api_mc_nekozukime/v1/works_pickup"),
+        $axios.$get(
+          "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dextentions&orders=createdAt"
+        ),
+        $axios.$get(
+          "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dweb&orders=createdAt"
+        ),
+        $axios.$get(
+          "/api_mc_nekozukime/v1/makes?filters=type%5Bequals%5Dcontents&orders=createdAt"
+        ),
+      ]);
 
     return {
       pickup_datas,
       extention_datas,
       web_datas,
-      contents_datas
+      contents_datas,
     };
   },
 };
@@ -307,6 +314,7 @@ h2 {
   margin: 0 1rem;
   padding: 0.25rem 1.25rem;
   font-family: "M PLUS Rounded 1c", sans-serif;
+  transform: rotate(.03deg);
   font-weight: 700;
   background-color: #7f7fff;
   color: white;
@@ -348,6 +356,7 @@ h2 {
       margin: 0;
       padding: 0.25rem 1.25rem;
       font-family: "M PLUS Rounded 1c", sans-serif;
+      transform: rotate(.03deg);
       font-weight: 700;
       background-color: #7f7fff;
       color: white;
@@ -359,6 +368,7 @@ h2 {
       align-items: center;
       text-decoration: none;
       font-family: "M PLUS Rounded 1c", sans-serif;
+      transform: rotate(.03deg);
       font-weight: 500;
       color: white;
       background-color: #7f7fff;
@@ -475,6 +485,7 @@ h2 {
 
           .title {
             font-family: "M PLUS Rounded 1c", sans-serif;
+            transform: rotate(.03deg);
             margin: 0;
             font-size: 14px;
             color: #333;
@@ -527,6 +538,7 @@ h2 {
 
           p {
             font-family: "M PLUS Rounded 1c", sans-serif;
+            transform: rotate(.03deg);
             font-weight: 700;
             margin: 0.5rem;
             font-size: 20px;
@@ -558,9 +570,74 @@ h2 {
         text-align: center;
         border-radius: 10px;
         font-family: "M PLUS Rounded 1c", sans-serif;
+        transform: rotate(.03deg);
         font-weight: 700;
         background-color: #efefff;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper{
+    padding: 0;
+  }
+
+  h2 {
+    margin: 10px 10px 0;
+    min-width: 70px;
+    padding: 0.25rem 20px 0.25rem 10px;
+    font-size: 16px;
+    &::before {
+      top: -10px;
+    }
+    &::after {
+      bottom: 5px;
+    }
+  }
+
+  section.contents_list_wrap {
+    margin: 1rem 0;
+
+    & + .contents_list_wrap {
+      margin: 1rem 0;
+    }
+
+    .contents_list_header {
+      margin: 0 10px;
+      a {
+        display: none;
+      }
+      h3 {
+        min-width: 70px;
+        padding: 0.25rem 20px 0.25rem 10px;
+        font-size: 16px;
+      }
+    }
+    .contents_list_area {
+      padding: 0 0 0 10px;
+
+      .swiper-container {
+        .item {
+          width: 150px !important;
+
+          a {
+            .title_area {
+              .title {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+      &::after {
+        width: 20px;
+      }
+    }
+
+    [slot="button-prev"],
+    [slot="button-next"] {
+      display: none;
     }
   }
 }
