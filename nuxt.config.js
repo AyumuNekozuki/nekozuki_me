@@ -32,6 +32,7 @@ export default {
     '~/assets/style/loading.scss',
     '~/assets/style/text_area.scss',
     '~/assets/style/linklist.scss',
+    '~/assets/style/contents_list.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -44,7 +45,11 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/google-analytics'
   ],
+  googleAnalytics: {
+    id: 'UA-154884607-3'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
