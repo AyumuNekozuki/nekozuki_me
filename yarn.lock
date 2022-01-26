@@ -4781,10 +4781,10 @@ he@1.2.0, he@^1.1.0, he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-helmet@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/helmet/-/helmet-4.6.0.tgz#579971196ba93c5978eb019e4e8ec0e50076b4df"
-  integrity sha512-HVqALKZlR95ROkrnesdhbbZJFi/rIVSoNq6f3jA/9u6MIbTsPh3xZwihjeI5+DO/2sOV6HMHooXcEOuwskHpTg==
+helmet@^5.0.1:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-5.0.2.tgz#3264ec6bab96c82deaf65e3403c369424cb2366c"
+  integrity sha512-QWlwUZZ8BtlvwYVTSDTBChGf8EOcQ2LkGMnQJxSzD1mUu8CCjXJZq/BXP8eWw4kikRnzlhtYo3lCk0ucmYA3Vg==
 
 hex-color-regex@^1.1.0:
   version "1.1.0"
@@ -6743,13 +6743,13 @@ nuxt-fontawesome@^0.4.0:
     "@fortawesome/fontawesome-svg-core" "^1.2.12"
     "@fortawesome/vue-fontawesome" "^0.1.4"
 
-nuxt-helmet@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/nuxt-helmet/-/nuxt-helmet-2.0.1.tgz#805b6042755c5d294bb108a7110efb193f5a6c26"
-  integrity sha512-Eujogts6RSu+4t7Y3BM29pspv+o7uw7cuSbFN6aDPfoLuXDIL2J/62eug4OgR7am+OavTD14kZX34Kw8ZdQHVA==
+nuxt-helmet@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/nuxt-helmet/-/nuxt-helmet-3.0.0.tgz#983c02b2767f61f4b0ac73e914de816daab5c1a0"
+  integrity sha512-rPQz9vdh+DzARVJdSUrZIX0ojWPt0RbZiEf6mXvvk7/Y1gVm2w+6VA/199G+XQVdNNzYsDM92UXXCDU6UQHpRA==
   dependencies:
     consola "^2.11.3"
-    helmet "^4.6.0"
+    helmet "^5.0.1"
 
 nuxt-microcms-module@^2.0.0:
   version "2.0.0"
