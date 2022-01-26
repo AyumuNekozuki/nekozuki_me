@@ -448,10 +448,10 @@ export default {
   .icon {
     height: 100px;
     width: 100px;
-    background-image: url(~/assets/svg/icon.svg);
+    background-image: url(~/assets/icons/icon_1000x1000.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 70%;
+    background-size: cover;
     box-shadow: 0 0 3px #7f7fff;
     border-radius: 100%;
   }
