@@ -29,7 +29,8 @@ $tso: #3289ff;
 $amazon: #f69a03;
 $switch: #e60113;
 $discord: #404fed;
-$ff14: #134FA2;
+$ff14: #262626;
+$psn: #0F439C;
 
 $gform: #744bbc;
 
@@ -165,6 +166,15 @@ $gform: #744bbc;
     &.switch {
       background-color: $switch;
       border-color: $switch;
+      &:hover {
+        cursor: default;
+        opacity: 1;
+        box-shadow: $card-shadow;
+      }
+    }
+    &.psn {
+      background-color: $psn;
+      border-color: $psn;
       &:hover {
         cursor: default;
         opacity: 1;

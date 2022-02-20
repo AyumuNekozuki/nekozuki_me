@@ -1,7 +1,8 @@
 <template>
   <div class="links" id="page_links">
     <div class="wrapper">
-      <h2>Links - 関連リンク</h2><br>
+      <h2>Links - 関連リンク</h2>
+      <br />
       <h3>SNS＆Blog</h3>
       <a href="https://twitter.com/nekozuki_2525" class="twitter">
         <font-awesome-icon :icon="['fab', 'twitter']" /><span
@@ -37,10 +38,6 @@
       <a href="https://space.bilibili.com/395580752" class="bilibili">
         <span class="font-weight-bold">bilibili</span><span>nekozuki_2525</span>
       </a>
-      <a href="https://ayumunekozuki.fanbox.cc" class="fanbox">
-        <span class="font-weight-bold">pixivFANBOX</span
-        ><span>ayumunekozuki</span>
-      </a>
       <a
         href="https://www.amazon.jp/hz/wishlist/ls/3FW64MQR2N8WH?ref_=wl_share"
         class="amazon"
@@ -48,30 +45,21 @@
         <font-awesome-icon :icon="['fab', 'amazon']" /><span>干し芋</span>
       </a>
 
-      <h3 class="mt-5">Please Follow Me!</h3>
-      <a
-        href="https://steamcommunity.com/id/ayumunekozuki/"
-        class="steam"
-      >
+      <h3 class="mt-5">Game</h3>
+      <a href="https://steamcommunity.com/id/ayumunekozuki/" class="steam">
         <font-awesome-icon :icon="['fab', 'steam']" /><span>ayumunekozuki</span>
       </a>
-      <a
-        href="https://vrchat.com/home/user/usr_62e775f8-64f3-4192-8a3f-7d8d758c10c2"
-        class="vrchat"
-      >
-        <span>VRChat</span><span>AyumuNekozuki</span>
+      <a class="switch">
+        <span>Nintendo Switch</span><span>SW-16295666-8388</span>
       </a>
-      <a href="https://room.virtualcast.jp/users/100010" class="tso">
-        <span>VirtutalCast</span><span>users/100010</span>
+      <a class="psn">
+        <font-awesome-icon :icon="['fab', 'playstation']" /><span>AyumuNekozuki</span>
       </a>
       <a
         href="https://jp.finalfantasyxiv.com/lodestone/character/37497187/"
         class="ff14"
       >
         <span>FF14</span><span>Yuuna Minazuki (Asura)</span>
-      </a>
-      <a class="switch">
-        <span>Nintendo Switch</span><span>SW-16295666-8388</span>
       </a>
     </div>
   </div>
@@ -98,5 +86,5 @@ export default {
       },
     };
   },
-}
+};
 </script>
