@@ -26,6 +26,7 @@ $border2: #999;
     color: white;
     border-radius: 20px;
     position: relative;
+    white-space: nowrap;
 
     &::before {
       content: url(~assets/svg/ear.svg);
