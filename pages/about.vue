@@ -41,6 +41,10 @@
               <td>ニコニコ大百科より「百ッカデミー賞2021」受賞</td>
             </tr>
             <tr>
+              <td>2021/04</td>
+              <td>「The VOCALOID Collection -2021 Spring-」にてREMIXランキング 11位ランクイン</td>
+            </tr>
+            <tr>
               <td>2021/08</td>
               <td>CG-ARTS Webデザイナー検定 ベーシック　合格</td>
             </tr>
@@ -55,6 +59,10 @@
             <tr>
               <td>2021/12</td>
               <td>CG-ARTS Webデザイナー検定 エキスパート　合格</td>
+            </tr>
+            <tr>
+              <td>2022/03</td>
+              <td>「ニコニコ動画プレミアムアワード2022春」1次ノミネート</td>
             </tr>
             <tr>
               <td>2022/03</td>
