@@ -147,6 +147,33 @@ export default {
     icon: {
       source: '/static/favicon.png',
       fileName: 'favicon.png'
+    },
+    workbox: {
+      dev: true,
+      offline: false,
+      skipWaiting: true,
+      clientsClaim: true,
+      runtimeCaching: [
+        {
+          urlPattern: `/api_nicorepo/*`,
+          handler: 'staleWhileRevalidate',
+          method: 'GET',
+          strategyOptions: {
+            cacheExpiration: {
+              maxAgeSeconds: 60 * 15, // 15分
+            },
+            cacheableResponse: {
+              statuses: [200],
+            },
+          },
+        },
+        {
+          // デフォルト（最後に記述する）
+          urlPattern: '/*',
+          handler: 'networkFirst',
+          method: 'GET',
+        },
+      ],
     }
   },
 
