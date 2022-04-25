@@ -80,7 +80,7 @@ export default {
     },
     mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
   },
-  
+
   fontawesome: {
     imports: [
       {
@@ -131,4 +131,28 @@ export default {
   build: {
   },
   buildDir: 'dist',
+
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  pwa: {
+    manifest: {
+      name: 'nekozuki.me',
+      lang: 'ja',
+      short_name: 'nekozuki.me',
+      description: 'ねこづきあゆむのWebサイトです。',
+      display: 'standalone',
+      start_url: '/',
+      theme_color: '#7f7fff',
+      background_color: '#EFEFFF',
+    },
+    icon: {
+      source: '/static/favicon.png',
+      fileName: 'favicon.png'
+    }
+  },
+
+  loading: {
+    color: '#fafafa',
+    failedColor: 'red',
+    height: '2px'
+  },
 }

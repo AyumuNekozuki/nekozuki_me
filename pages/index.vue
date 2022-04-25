@@ -33,20 +33,20 @@
                 <a :href="data.href" :v-data-id="data.id" class="events">
                   <div class="thumb_area">
                     <span class="event">{{ data.category }}</span>
-                    <img
-                      class="events"
-                      v-if="data.thumbnail"
-                      :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
-                      :alt="data.title"
-                      srcset=""
-                    />
-                    <img
-                      class="events"
-                      v-if="!data.thumbnail"
-                      src="data.thumbnail.url"
-                      :alt="data.title"
-                      srcset=""
-                    />
+                    <picture>
+                      <source
+                        v-if="data.thumbnail"
+                        :srcset="data.thumbnail.url + '?fm=webp&w=960&h=270'"
+                        type="image/webp"
+                      />
+                      <img
+                        class="events"
+                        v-if="data.thumbnail"
+                        :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
+                        :alt="data.title"
+                        :srcset="data.thumbnail.url + '?fit=max&w=960&h=540'"
+                      />
+                    </picture>
                   </div>
                   <div class="title_area">
                     <p class="title">{{ data.title }}</p>
@@ -231,18 +231,25 @@
                 <a :href="'https://blog.nekozuki.me/' + data.id">
                   <div class="thumb_area">
                     <span class="blog">記事</span>
-                    <img
-                      v-if="data.thumbnail"
-                      :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
-                      :alt="data.title"
-                      srcset=""
-                    />
-                    <img
-                      v-if="!data.thumbnail"
-                      src="https://blog.nekozuki.me/favicon.png"
-                      :alt="data.title"
-                      srcset=""
-                    />
+                    <picture>
+                      <source
+                        v-if="data.thumbnail"
+                        :srcset="data.thumbnail.url + '?fm=webp&w=480&h=270'"
+                        type="image/webp"
+                      />
+                      <img
+                        v-if="data.thumbnail"
+                        :src="data.thumbnail.url + '?fit=max&w=480&h=270'"
+                        :alt="data.title"
+                        :srcset="data.thumbnail.url + '?fit=max&w=480&h=270'"
+                      />
+                      <img
+                        v-if="!data.thumbnail"
+                        src="https://blog.nekozuki.me/favicon.png"
+                        :alt="data.title"
+                        srcset="https://blog.nekozuki.me/favicon.png"
+                      />
+                    </picture>
                   </div>
                   <div class="title_area">
                     <p class="title live">{{ data.title }}</p>
@@ -275,12 +282,14 @@
         <section class="contents_list_wrap contents">
           <div class="contents_list_header">
             <h2>つくったもの</h2>
-            <nuxt-link to="/makes">
-              もっとみる
-            </nuxt-link>
+            <nuxt-link to="/makes"> もっとみる </nuxt-link>
           </div>
           <div class="contents_list_area contents">
-            <swiper class="contents" :options="swiperOption_contents" v-if="makesdata">
+            <swiper
+              class="contents"
+              :options="swiperOption_contents"
+              v-if="makesdata"
+            >
               <swiper-slide
                 class="item contents"
                 v-for="data in makesdata.pickupid"
@@ -288,19 +297,27 @@
               >
                 <nuxt-link :to="'/makes/' + data.id">
                   <div class="thumb_area">
-                    <span class="contents">{{data.type}}</span>
-                    <img
-                      class="contents"
-                      v-if="data.thumbnail"
-                      :src="data.thumbnail.url + '?fit=max&w=960&h=540'"
-                      :alt="data.title"
-                      srcset=""
-                    />
+                    <span class="contents">{{ data.type }}</span>
+                    <picture>
+                      <source
+                        class="contents"
+                        v-if="data.thumbnail"
+                        :srcset="data.thumbnail.url + '?fm=webp&w=480&h=270'"
+                        type="image/webp"
+                      />
+                      <img
+                        class="contents"
+                        v-if="data.thumbnail"
+                        :src="data.thumbnail.url + '?fit=max&w=480&h=270'"
+                        :alt="data.title"
+                        :srcset="data.thumbnail.url + '?fit=max&w=480&h=270'"
+                      />
+                    </picture>
                   </div>
                   <div class="title_area">
                     <p class="title live">{{ data.title }}</p>
                     <p class="desc">
-                      {{data.desc}}
+                      {{ data.desc }}
                     </p>
                   </div>
                 </nuxt-link>
@@ -345,7 +362,7 @@ export default {
       newest_nicovideo,
       newest_nicolive,
       blogdata,
-      makesdata
+      makesdata,
     };
   },
   mixins: [Meta],
