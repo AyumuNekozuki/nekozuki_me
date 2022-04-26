@@ -168,6 +168,32 @@ export default {
           },
         },
         {
+          urlPattern: `/api_mc_nekolog/*`,
+          handler: 'staleWhileRevalidate',
+          method: 'GET',
+          strategyOptions: {
+            cacheExpiration: {
+              maxAgeSeconds: 60 * 30, // 30分
+            },
+            cacheableResponse: {
+              statuses: [200],
+            },
+          },
+        },
+        {
+          urlPattern: `/api_mc_nekozukime/*`,
+          handler: 'staleWhileRevalidate',
+          method: 'GET',
+          strategyOptions: {
+            cacheExpiration: {
+              maxAgeSeconds: 60 * 60 * 3, // 3時間
+            },
+            cacheableResponse: {
+              statuses: [200],
+            },
+          },
+        },
+        {
           // デフォルト（最後に記述する）
           urlPattern: '/*',
           handler: 'networkFirst',
