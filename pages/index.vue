@@ -256,7 +256,7 @@
                     <p class="desc">
                       {{
                         $dateFns.format(
-                          new Date(data.publishedAt),
+                          new Date(data.revisedAt),
                           "yyyy/MM/dd HH:mm"
                         )
                       }}
