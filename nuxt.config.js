@@ -134,73 +134,73 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
-    manifest: {
-      name: 'nekozuki.me',
-      lang: 'ja',
-      short_name: 'nekozuki.me',
-      description: 'ねこづきあゆむのWebサイトです。',
-      display: 'standalone',
-      start_url: '/',
-      theme_color: '#7f7fff',
-      background_color: '#EFEFFF',
-    },
-    icon: {
-      source: '/static/favicon.png',
-      fileName: 'favicon.png'
-    },
-    workbox: {
-      dev: true,
-      offline: false,
-      skipWaiting: true,
-      clientsClaim: true,
-      runtimeCaching: [
-        {
-          urlPattern: `/api_nicorepo/*`,
-          handler: 'staleWhileRevalidate',
-          method: 'GET',
-          strategyOptions: {
-            cacheExpiration: {
-              maxAgeSeconds: 60 * 15, // 15分
-            },
-            cacheableResponse: {
-              statuses: [200],
-            },
-          },
-        },
-        {
-          urlPattern: `/api_mc_nekolog/*`,
-          handler: 'staleWhileRevalidate',
-          method: 'GET',
-          strategyOptions: {
-            cacheExpiration: {
-              maxAgeSeconds: 60 * 30, // 30分
-            },
-            cacheableResponse: {
-              statuses: [200],
-            },
-          },
-        },
-        {
-          urlPattern: `/api_mc_nekozukime/*`,
-          handler: 'staleWhileRevalidate',
-          method: 'GET',
-          strategyOptions: {
-            cacheExpiration: {
-              maxAgeSeconds: 60 * 60 * 3, // 3時間
-            },
-            cacheableResponse: {
-              statuses: [200],
-            },
-          },
-        },
-        {
-          // デフォルト（最後に記述する）
-          urlPattern: '/*',
-          handler: 'networkFirst',
-          method: 'GET',
-        },
-      ],
-    }
+    // manifest: {
+    //   name: 'nekozuki.me',
+    //   lang: 'ja',
+    //   short_name: 'nekozuki.me',
+    //   description: 'ねこづきあゆむのWebサイトです。',
+    //   display: 'standalone',
+    //   start_url: '/',
+    //   theme_color: '#7f7fff',
+    //   background_color: '#EFEFFF',
+    // },
+    // icon: {
+    //   source: '/static/favicon.png',
+    //   fileName: 'favicon.png'
+    // },
+    // workbox: {
+    //   dev: true,
+    //   offline: false,
+    //   skipWaiting: true,
+    //   clientsClaim: true,
+    //   runtimeCaching: [
+    //     {
+    //       urlPattern: `/api_nicorepo/*`,
+    //       handler: 'staleWhileRevalidate',
+    //       method: 'GET',
+    //       strategyOptions: {
+    //         cacheExpiration: {
+    //           maxAgeSeconds: 60 * 15, // 15分
+    //         },
+    //         cacheableResponse: {
+    //           statuses: [200],
+    //         },
+    //       },
+    //     },
+    //     {
+    //       urlPattern: `/api_mc_nekolog/*`,
+    //       handler: 'staleWhileRevalidate',
+    //       method: 'GET',
+    //       strategyOptions: {
+    //         cacheExpiration: {
+    //           maxAgeSeconds: 60 * 30, // 30分
+    //         },
+    //         cacheableResponse: {
+    //           statuses: [200],
+    //         },
+    //       },
+    //     },
+    //     {
+    //       urlPattern: `/api_mc_nekozukime/*`,
+    //       handler: 'staleWhileRevalidate',
+    //       method: 'GET',
+    //       strategyOptions: {
+    //         cacheExpiration: {
+    //           maxAgeSeconds: 60 * 60 * 3, // 3時間
+    //         },
+    //         cacheableResponse: {
+    //           statuses: [200],
+    //         },
+    //       },
+    //     },
+    //     {
+    //       // デフォルト（最後に記述する）
+    //       urlPattern: '/*',
+    //       handler: 'networkFirst',
+    //       method: 'GET',
+    //     },
+    //   ],
+    // }
   },
 
   loading: {
