@@ -245,9 +245,9 @@
                       />
                       <img
                         v-if="!data.thumbnail"
-                        src="https://blog.nekozuki.me/favicon.png"
+                        src="https://blog.nekozuki.me/ogp.png"
                         :alt="data.title"
-                        srcset="https://blog.nekozuki.me/favicon.png"
+                        srcset="https://blog.nekozuki.me/ogp.png"
                       />
                     </picture>
                   </div>
