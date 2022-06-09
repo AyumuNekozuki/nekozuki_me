@@ -50,7 +50,7 @@
         <font-awesome-icon :icon="['fab', 'steam']" /><span>ayumunekozuki</span>
       </a>
       <a class="switch">
-        <span>Nintendo Switch</span><span>SW-16295666-8388</span>
+        <span>Nintendo Switch</span><span>SW-1629-5666-8388</span>
       </a>
       <a class="psn">
         <font-awesome-icon :icon="['fab', 'playstation']" /><span>AyumuNekozuki</span>
