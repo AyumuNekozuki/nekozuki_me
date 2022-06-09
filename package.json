@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/date-fns": "^1.5.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vercel-builder": "^0.22.1",
-    "core-js": "^3.19.3",
+    "core-js": "^3.22.8",
     "nuxt": "^2.15.8",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-helmet": "^2.0.1",
+    "nuxt-helmet": "^2.1.1",
     "nuxt-microcms-module": "^2.0.0",
     "nuxt-webfontloader": "^1.1.0",
     "swiper": "5.x",
@@ -35,7 +35,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.4.4",
     "jest": "^27.4.4",
-    "sass": "^1.48.0",
+    "sass": "^1.52.3",
     "sass-loader": "10",
     "vue-jest": "^3.0.4"
   }
