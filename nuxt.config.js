@@ -134,6 +134,11 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    meta: false,
+    icon: false,
+    workbox: {
+      dev: process.env.NODE_ENV === 'development',
+    }
     // manifest: {
     //   name: 'nekozuki.me',
     //   lang: 'ja',
