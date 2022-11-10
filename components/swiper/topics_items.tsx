@@ -21,7 +21,7 @@ export default function Swiper_topics_items({itemdata} :any) {
 			loop={true}
 		>
 		{itemdata.map((item: any, index: any) => (
-			<SwiperSlide>
+			<SwiperSlide key={index}>
 				<a href={item.href} target="_blank" rel="noopener noreferrer" className='block relative'>
 					<img src={item.thumbnail.url} alt={item.title} className='z-0 rounded-lg' />
 					<div className="z-10 absolute top-0 h-full w-full">

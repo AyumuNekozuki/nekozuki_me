@@ -14,7 +14,7 @@ export default function Swiper_Newest_items({itemdata} :any) {
 			}}
 		>
 		{itemdata.map((item: any, index: any) => (
-			<SwiperSlide>
+			<SwiperSlide key={index}>
 				<a href={item.href} target="_blank" rel="noopener noreferrer" className='block relative max-w-xs'>
 					<img src={item.thumbnail.url} alt={item.title} className='z-0 rounded-lg shadow-card' />
 					<div className="z-10 absolute top-0 h-full w-full">
