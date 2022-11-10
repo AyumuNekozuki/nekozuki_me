@@ -7,7 +7,7 @@ export default function ComingSoonbox() {
     <div className="w-full max-w-sm mb-3 bg-white rounded-lg shadow-card md:mx-auto">
       <div className="flex flex-col items-center p-5">
 				<img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/favicon.png" alt="" />
-        <h5 className="mb-2 text-xl font-medium text-nicoblack">Coming Soon…</h5>
+        <h5 className="mb-2 text-xl font-medium text-nicoblack">AyumuNekozuki</h5>
 				{/* ================= */}
 				<hr className="w-full h-px my-4 bg-themepurple border-themepurple "></hr>
 				{/* ================= */}
