@@ -10,7 +10,7 @@ export default function BlogId({ ar, recentdata }: any) {
 
 	return (
 		<>
-			<Seo pageTitle='About - ねこづきあゆむとは' pageDescription='ねこづきあゆむとは' pagePath='/about' />
+			{/* <Seo pageTitle='About - ねこづきあゆむとは' pageDescription='ねこづきあゆむとは' pagePath='/about' /> */}
 			{/* <div className='flex flex-wrap max-w-screen-lg mx-auto'>
 				<main className='w-full p-2'>
 					<article className="mb-3 transition-all bg-white pages_about rounded-xl shadow-card text-nicoblack">

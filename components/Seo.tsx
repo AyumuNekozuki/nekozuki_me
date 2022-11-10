@@ -20,8 +20,8 @@ const Seo: VFC<MetaData> = ({
   pageImgHeight,
   pageType
 }) => {
-  const defaultTitle = 'nekozuki.me'
-  const defaultDescription = 'ねこづきあゆむのポータルサイトです。'
+  const defaultTitle = 'AyumuNekozuki'
+  const defaultDescription = ''
   const defaultPath = 'https://www.nekozuki.me'
 
   const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle
@@ -39,13 +39,13 @@ const Seo: VFC<MetaData> = ({
       <meta name="description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
-      <meta property="og:site_name" content='nekozuki.me' />
+      <meta property="og:site_name" content='AyumuNekozuki' />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:image" content={imgUrl} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@nekozuki_2525" />
-      <meta name="twitter:creator" content="@nekozuki_2525" />
+      <meta name="twitter:site" content="@nekozuki_dev" />
+      <meta name="twitter:creator" content="@nekozuki_dev" />
 
       <link rel="canonical" href={url} />
     </Head>

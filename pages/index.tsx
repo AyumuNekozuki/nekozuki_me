@@ -10,7 +10,7 @@ const Home: NextPage = ({topics_items} :any) => {
 
   return (
     <>
-			<Seo />
+			{/* <Seo /> */}
 			{/* <main className="flex flex-wrap max-w-screen-xl mx-auto pxs-5">
 				<Swiper_topics_items itemdata={topics_items} />
 				<Swiper_links />

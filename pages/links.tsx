@@ -10,7 +10,7 @@ export default function Links({ ar, recentdata }: any) {
 
 	return (
 		<>
-			<Seo pageTitle='Links - ねこづきあゆむの関連リンク' pageDescription='ねこづきあゆむの関連リンク' pagePath='/links' />
+			{/* <Seo pageTitle='Links - ねこづきあゆむの関連リンク' pageDescription='ねこづきあゆむの関連リンク' pagePath='/links' /> */}
 			{/* <div className='flex flex-wrap max-w-screen-lg mx-auto'>
 				<iframe id="profIframe" className='w-full p-2' src="https://prof.nekozuki.me">
 				</iframe>
