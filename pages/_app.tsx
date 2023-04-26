@@ -12,7 +12,7 @@ import ComingSoonbox from '../components/ComingSoonbox';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className='flex items-center justify-center h-screen'>
+    <div className='flex items-center justify-center h-screen bg-theme_bg'>
       {/* <Header />
       <div className='py-5 bg-themepurple_bg'>
         <Component {...pageProps} />
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Footer /> */}
 			<Seo />
 			<ComingSoonbox />
-			<Component {...pageProps} />
+			{/* <Component {...pageProps} /> */}
     </div>
   )
 }

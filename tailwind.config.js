@@ -8,8 +8,10 @@ module.exports = {
     colors:{
       transparent: 'transparent',
       current: 'currentColor',
-      'themepurple': '#66AD6F',
-      'themepurple_bg': '#F1F8F1',
+      'theme': '#7F6665',
+      'theme_bg': '#F0EFE9',
+      'theme_bg2': '#F6F5F0',
+      'theme_but': '#E4E2DC',
       'themepurple_shadow': '#F1F8F1',
       'white': '#ffffff',
       'black': '#000000',
