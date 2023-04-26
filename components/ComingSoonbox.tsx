@@ -17,9 +17,6 @@ export default function ComingSoonbox() {
 				<a href="https://blog.nekozuki.me/" rel="me" className='flex items-center justify-between w-full px-4 py-3 my-4 text-base text-white transition-all rounded-md shadow-lg hover:shadow-none bg-themepurple '>
 					<FaBlog />ブログ
 				</a>
-				<a href="https://ayumunekozuki.notion.site/AyumuNekozuki-s-Open-Schedule-4fc70ebaadf64ce6a9571278a895a4bf" rel="me" className='flex items-center justify-between w-full px-4 py-3 my-4 text-base text-white transition-all rounded-md shadow-lg hover:shadow-none bg-themepurple '>
-					<FaCalendar />公開スケジュール
-				</a>
       </div>
     </div>
   );
